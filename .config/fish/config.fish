@@ -5,8 +5,8 @@ if status is-interactive
     end
 
     # Use eza instead of tree
-    if command -v exa >/dev/null
-        alias tree="exa --tree --icons"
+    if command -v eza >/dev/null
+        alias tree="eza --tree --icons"
     end
 
     # Disable fish greeting
