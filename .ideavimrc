@@ -1,0 +1,48 @@
+" Allow copy to clipboard
+set clipboard+=unnamed
+
+" Enable relative line numbers
+set rnu
+
+" Enable vim commentary
+set commentary
+
+" Define spacebar as leader
+let mapleader=" "
+
+" Disable copying when deleting
+nnoremap x "_x
+nnoremap D "_D
+nnoremap dd "_dd
+nnoremap dw "_dw
+nnoremap d$ "_d$
+nnoremap d^ "_d^
+nnoremap db "_db
+nnoremap diw "_diw
+nnoremap daw "_daw
+nnoremap di" '"_di"'
+nnoremap da" '"_da"'
+nnoremap di' '"_di''
+nnoremap da' '"_da''
+nnoremap di( '"_di('
+nnoremap da( '"_da('
+nnoremap di) '"_di)'
+nnoremap da) '"_da)'
+nnoremap di{ '"_di{'
+nnoremap da{ '"_da{'
+nnoremap di} '"_di}'
+nnoremap da} '"_da}'
+
+" Increment / Decrement numbers
+nmap <Space>+ <C-a>
+nmap <Space>- <C-x>
+
+" Insert a new line below/above current line
+nmap <Space>o o<Esc>
+nmap <Space>O O<Esc>
+
+" Use leader+i = ~
+nmap <Space>i ~<Esc>
+
+" Use leader+w to save file
+nmap <Space>w :w <CR>
