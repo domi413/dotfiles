@@ -1,7 +1,12 @@
 if status is-interactive
-    # Add exa to fish and make alias to ls
+    # Use eza instead of ls
+    if command -v eza >/dev/null
+        alias ls="eza --oneline --icons"
+    end
+
+    # Use eza instead of tree
     if command -v exa >/dev/null
-        alias ls="exa --icons"
+        alias tree="exa --tree --icons"
     end
 
     # Disable fish greeting
