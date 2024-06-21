@@ -1,20 +1,12 @@
 if status is-interactive
     # Use eza instead of ls
     if command -v eza >/dev/null
-<<<<<<< HEAD
-        alias ls="eza --oneline --icons"
-=======
         alias ls="eza --oneline --group-directories-first --icons"
->>>>>>> ce99ea1 (changed config.fish)
     end
 
     # Use eza instead of tree
     if command -v eza >/dev/null
-<<<<<<< HEAD
-        alias tree="eza --tree --icons"
-=======
         alias tree="eza --tree --group-directories-first --icons"
->>>>>>> ce99ea1 (changed config.fish)
     end
 
     # Disable fish greeting
