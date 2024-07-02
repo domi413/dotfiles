@@ -70,6 +70,17 @@
             "before": [ "K" ],
             "commands": [ "editor.action.showDefinitionPreviewHover" ]
         },
+        // The following two options override the default behavior of the VSCode
+        // VIMs'u' and 'C-r' keys. But because of the fact that they are not
+        // working fully correctly, I prefer the default undo  / redo behavior.
+        {
+            "before": ["u"],
+            "commands": ["undo"]
+        },
+        {
+            "before": ["C-r"],
+            "commands": ["redo"]
+        }
     ],
     "vim.normalModeKeyBindings": [
         // Increment number 7
