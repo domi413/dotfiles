@@ -1,24 +1,8 @@
 {
-    "workbench.startupEditor": "none",
-    "workbench.activityBar.location": "top",
-    "redhat.telematry.enabled": false,
-    "window.titleBarStyle": "custom",
-    "editor.mouseWheelZoom": true,
-    "breadcrumbs.enabled": false,
-    "editor.cursorBlinking": "smooth",
-    "editor.smoothScrolling": true,
-    "workbench.list.smoothScrolling": true,
     "C_Cpp.autocompleteAddParentheses": true,
     "C_Cpp.inlayHints.parameterNames.enabled": true,
     "C_Cpp.suggestSnippets": false,
     "C_Cpp.clang_format_fallbackStyle": "{\"BasedOnStyle\": \"LLVM\", \"IndentWidth\": 4, \"TabWidth\": 4}",
-    "workbench.colorTheme": "Catppuccin Mocha",
-    "statsBar.modules": [
-        "cpuLoad",
-        "networkSpeed",
-        "memoUsage"
-    ],
-    "haskell.manageHLS": "GHCup",
     "redhat.telemetry.enabled": false,
     "codeium.enableConfig": {
         "*": true,
@@ -26,14 +10,122 @@
     },
     "explorer.decorations.colors": false,
     "C_Cpp.default.compilerPath": "",
-    "editor.minimap.scale": 2,
-    "editor.minimap.enabled": false,
-    "editor.selectionClipboard": false,
-    "editor.stickyScroll.enabled": false,
-    "editor.lineNumbers": "relative",
     "latex-workshop.view.pdf.invert": 1,
     "explorer.confirmDelete": false,
     "latex-workshop.latex.recipe.default": "lastUsed",
     "diffEditor.ignoreTrimWhitespace": false,
     "git.enableSmartCommit": true,
+
+
+
+
+
+
+    "workbench.activityBar.location": "top",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.list.smoothScrolling": true,
+    "workbench.startupEditor": "none",
+
+    "editor.mouseWheelZoom": true,          // Use ctrl + mouse wheel to zoom
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.fontLigatures": true,
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": true,
+    "editor.minimap.scale": 1,
+    "editor.smoothScrolling": true,
+    "editor.stickyScroll.enabled": false,
+    "editor.fontFamily": "'Lilex Nerd Font', 'monospace', monospace",   // Set font
+
+    "breadcrumbs.enabled": false,                                       // Disables the path in the title bar
+    "terminal.integrated.enableMultiLinePasteWarning": "never",         // Disables paste warning in terminal
+    "window.titleBarStyle": "custom",                                   // Use the default VS Code title bar
+    
+    
+    // *** Statsbar plugin ***
+    "statsBar.modules": [
+        "cpuLoad",
+        "networkSpeed",
+        "memoUsage"
+    ],
+
+
+    // *** VIM CONFIGURATION ***
+    "vim.leader": "<space>",                // Set space as leader
+    "vim.useSystemClipboard": true,         // Enables copy to system clipboard
+    "vim.useCtrlKeys": true,                // Override default behavior of ctrl keys
+    "vim.hlsearch": true,                   // Highlight search results
+    // "vim.highlightedyank.enable": true,  // Highlight yanked text
+
+    "vim.insertModeKeyBindings": [
+        // Use jk to exit insert mode
+        {
+            "before": [ "j", "k" ],
+            "after": [ "<Esc>" ]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // Show definition
+        {
+            "before": [ "K" ],
+            "commands": [ "editor.action.showDefinitionPreviewHover" ]
+        },
+    ],
+    "vim.normalModeKeyBindings": [
+        // Increment number 7
+        {
+            "before": [ "leader", "+" ],
+            "commands": [ "extension.vim_ctrl+a" ]
+        },
+        // Decrement number
+        {
+            "before": [ "leader", "-" ],
+            "commands": [ "extension.vim_ctrl+x" ]
+        },
+        // New line below
+        {
+            "before": [ "leader", "o" ],
+            "commands": [ "editor.action.insertLineAfter" ]
+        },
+        // New line beloW
+        {
+            "before": [ "leader", "O" ],
+            "commands": [ "editor.action.insertLineBefore" ]
+        },
+        // Toggle case
+        {
+            "before": [ "leader", "i" ],
+            "after": [ "~" ]
+        },
+        // Reset highlight
+        {
+            "before": [ "leader", "n", "h" ],
+            "commands": [ ":nohl" ]
+        },
+        // Save file
+        {
+            "before": [ "leader", "w" ],
+            "commands": [ "workbench.action.files.save" ]
+        },
+        // Toggle line wrap
+        {
+            "before": [
+                "leader",
+                "$"
+            ],
+            "commands": [
+                "editor.action.toggleWordWrap",
+            ]
+        },
+        // Show command palette
+        {
+            "before": [ "leader", ":" ],
+            "commands": [ "workbench.action.showCommands", ],
+            "silent": true
+        },
+    ],
+    // To improve performance
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
 }
