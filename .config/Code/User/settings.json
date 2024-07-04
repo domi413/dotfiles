@@ -1,48 +1,68 @@
 {
-    "C_Cpp.autocompleteAddParentheses": true,
-    "C_Cpp.inlayHints.parameterNames.enabled": true,
-    "C_Cpp.suggestSnippets": false,
-    "C_Cpp.clang_format_fallbackStyle": "{\"BasedOnStyle\": \"LLVM\", \"IndentWidth\": 4, \"TabWidth\": 4}",
-    "redhat.telemetry.enabled": false,
-    "codeium.enableConfig": {
-        "*": true,
-        "java": false
-    },
-    "explorer.decorations.colors": false,
-    "C_Cpp.default.compilerPath": "",
-    "latex-workshop.view.pdf.invert": 1,
+    // EXPLORER
     "explorer.confirmDelete": false,
-    "latex-workshop.latex.recipe.default": "lastUsed",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "git.enableSmartCommit": true,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.decorations.colors": false,
 
-
-
-
-
-
+    // WORKBENCH
     "workbench.activityBar.location": "top",
-    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.colorTheme": "Rosé Pine",
     "workbench.list.smoothScrolling": true,
     "workbench.startupEditor": "none",
 
-    "editor.mouseWheelZoom": true,          // Use ctrl + mouse wheel to zoom
+    // EDITOR
     "editor.cursorBlinking": "smooth",
     "editor.cursorSmoothCaretAnimation": "on",
+    "editor.fontFamily": "'Lilex Nerd Font', 'monospace', monospace",   // Disables the path in the title bar
     "editor.fontLigatures": true,
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": true,
     "editor.minimap.scale": 1,
+    "editor.mouseWheelZoom": true,          // Use ctrl + mouse wheel to zoom
     "editor.smoothScrolling": true,
     "editor.stickyScroll.enabled": false,
-    "editor.fontFamily": "'Lilex Nerd Font', 'monospace', monospace",   // Set font
 
-    "breadcrumbs.enabled": false,                                       // Disables the path in the title bar
+    // OTHERS
+    "breadcrumbs.enabled": false,
+    "git.enableSmartCommit": true,
+    "scm.experimental.showHistoryGraph": true,                          // Shows commit history
     "terminal.integrated.enableMultiLinePasteWarning": "never",         // Disables paste warning in terminal
     "window.titleBarStyle": "custom",                                   // Use the default VS Code title bar
     
+
+    // *** JAVA ***
+    "redhat.telemetry.enabled": false,
+
+
+    // *** PYLANCE ***
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.typeCheckingMode": "standard",
+
+
+    // *** LATEX ***
+    "latex-workshop.view.pdf.invert": 1,
+    "latex-workshop.intellisense.unimathsymbols.enabled": true,
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+
+
+    // *** C/CPP ***
+    // Ensure that gdb & gcc are installed
+    "C_Cpp.suggestSnippets": false,
+    "C_Cpp.autocompleteAddParentheses": true,
+    "C_Cpp.clang_format_fallbackStyle": "{\"BasedOnStyle\": \"LLVM\", \"IndentWidth\": 4, \"TabWidth\": 4}",
+    "C_Cpp.default.compilerPath": "",
+    "C_Cpp.inlayHints.parameterNames.enabled": true,
     
-    // *** Statsbar plugin ***
+    
+    // *** CODEIUM ***
+    "codeium.enableCodeLens": "hide_x",
+    "codeium.enableConfig": {
+        "*": true
+    },
+    
+
+    // *** STATSBAR ***
     "statsBar.modules": [
         "cpuLoad",
         "networkSpeed",
@@ -51,17 +71,27 @@
 
 
     // *** VIM CONFIGURATION ***
-    "vim.leader": "<space>",                // Set space as leader
+    "vim.leader": "space",                  // Set space as leader
     "vim.useSystemClipboard": true,         // Enables copy to system clipboard
     "vim.useCtrlKeys": true,                // Override default behavior of ctrl keys
     "vim.hlsearch": true,                   // Highlight search results
     // "vim.highlightedyank.enable": true,  // Highlight yanked text
 
+    // You can use the following command to trace keyboard shortcuts:
+    // Developer: Toggle Keyboard Shortcuts Troubleshooting
+    
     "vim.insertModeKeyBindings": [
         // Use jk to exit insert mode
         {
             "before": [ "j", "k" ],
             "after": [ "<Esc>" ]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        // Toggle case
+        {
+            "before": [ "leader", "i" ],
+            "after": [ "~" ]
         },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -83,7 +113,8 @@
         }
     ],
     "vim.normalModeKeyBindings": [
-        // Increment number 7
+        // * ADDITIONAL MOTION-EDITING *
+        // Increment number
         {
             "before": [ "leader", "+" ],
             "commands": [ "extension.vim_ctrl+a" ]
@@ -108,7 +139,119 @@
             "before": [ "leader", "i" ],
             "after": [ "~" ]
         },
-        // Reset highlight
+
+        // * TAB & EDITOR NAVIGATION *
+        // Go to next tab
+        {
+            "before": [ "Tab" ],
+            "commands": [ "workbench.action.nextEditor" ]
+        },
+        // Go to previous tab
+        {
+            "before": [ "S-Tab" ],
+            "commands": [ "workbench.action.previousEditor" ]
+        },
+        // Open new tab
+        {
+            "before": [ "leader", "n", "t" ],
+            "commands": [ "workbench.action.files.newUntitledFile" ]
+        },
+        // Close active tab/editor
+        {
+            "before": [ "leader", "c", "t" ],
+            "commands": [ "workbench.action.closeActiveEditor" ]
+        },
+        // Split editor up
+        {
+            "before": [ "leader", "s", "k" ],
+            "commands": [ "workbench.action.splitEditorUp" ]
+        },
+        // Split editor down
+        {
+            "before": [ "leader", "s", "j" ],
+            "commands": [ "workbench.action.splitEditorDown" ]
+        },
+        // Split editor left
+        {
+            "before": [ "leader", "s", "h" ],
+            "commands": [ "workbench.action.splitEditorLeft" ]
+        },
+        // Split editor right
+        {
+            "before": [ "leader", "s", "l" ],
+            "commands": [ "workbench.action.splitEditorRight" ]
+        },
+        // Move editor up
+        {
+            "before": [ "leader", "m", "k" ],
+            "commands": [ "workbench.action.navigateUp" ]
+        },
+        // Move editor down
+        {
+            "before": [ "leader", "m", "j" ],
+            "commands": [ "workbench.action.navigateDown" ]
+        },
+        // Move editor left
+        {
+            "before": [ "leader", "m", "h" ],
+            "commands": [ "workbench.action.navigateLeft" ]
+        },
+        // Move editor right
+        {
+            "before": [ "leader", "m", "l" ],
+            "commands": [ "workbench.action.navigateRight" ]
+        },
+
+        // * TOGGLE PANELS *
+        // Toggle terminal
+        {
+            "before": [ "leader", "j" ],
+            "commands": [ "workbench.action.terminal.toggleTerminal" ]
+        },
+        // Toggle sidebar
+        {
+            "before": [ "leader", "b" ],
+            "commands": [ "workbench.action.toggleSidebarVisibility" ]
+        },
+        // Toggle right (auxiliary/secondary) sidebar
+        {
+            "before": [ "leader", "B" ],
+            "commands": [ "workbench.action.toggleAuxiliaryBar" ]
+        },
+
+        // * COMPILE & RUN & DEBUG *
+        // The commands are always like this:
+        // leader + leader + *first letter of language* + *([c]compile/[r]un/[d]debug)*
+        // For example:
+        // leader + leader + c + c   -> Will compile a c file
+        // Legend for what language what shortcut:
+        // c/c++    -> c
+        // go       -> g
+        // java     -> j
+        // python   -> p
+        // rust     -> r
+
+        // C / C++
+        {
+            "before": [ "leader", "leader", "c", "d" ],
+            "commands": [ "C_Cpp.BuildAndDebugFile" ]
+        },
+        {
+            "before": [ "leader", "leader", "c", "r" ],
+            "commands": [ "C_Cpp.BuildAndRunFile" ]
+        },
+        // Python
+        {
+            "before": [ "leader", "leader", "p", "d" ],
+            "commands": [ "debugpy.debugInTerminal" ]
+        },
+        {
+            "before": [ "leader", "leader", "p", "r" ],
+            "commands": [ "python.execInTerminal-icon" ]
+        },
+
+        // * OTHER SHORT-CUTS *
+        // Reset highlighting
         {
             "before": [ "leader", "n", "h" ],
             "commands": [ ":nohl" ]
@@ -118,22 +261,30 @@
             "before": [ "leader", "w" ],
             "commands": [ "workbench.action.files.save" ]
         },
+        // Paste from clipboard
+        {        // latex    -> l: [ "editor.action.clipboardPasteAction" ]
+        },
         // Toggle line wrap
         {
-            "before": [
-                "leader",
-                "$"
-            ],
-            "commands": [
-                "editor.action.toggleWordWrap",
-            ]
+            "before": [ "leader", "$" ],
+            "commands": [ "editor.action.toggleWordWrap" ]
         },
         // Show command palette
         {
             "before": [ "leader", ":" ],
-            "commands": [ "workbench.action.showCommands", ],
+            "commands": [ "workbench.action.showCommands" ],
             "silent": true
         },
+        // Normal search
+        {
+            "before": [ "leader", "/" ],
+            "commands": [ "actions.find" ]
+        },
+        // Global search
+        {
+            "before": [ "leader", "f", "f" ],
+            "commands": [ "workbench.action.findInFiles" ]
+        }
     ],
     // To improve performance
     "extensions.experimental.affinity": {
