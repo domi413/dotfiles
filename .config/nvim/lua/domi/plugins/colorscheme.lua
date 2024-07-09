@@ -26,4 +26,7 @@ return {
 	{
 		"neanias/everforest-nvim",
 	},
+	{
+		"rose-pine/neovim",
+	},
 }

@@ -21,7 +21,7 @@
     "editor.mouseWheelZoom": true,          // Use ctrl + mouse wheel to zoom
     "editor.smoothScrolling": true,
     "editor.stickyScroll.enabled": false,
-
+    
     // OTHERS
     "breadcrumbs.enabled": false,
     "git.enableSmartCommit": true,
@@ -53,6 +53,9 @@
     "C_Cpp.clang_format_fallbackStyle": "{\"BasedOnStyle\": \"LLVM\", \"IndentWidth\": 4, \"TabWidth\": 4}",
     "C_Cpp.default.compilerPath": "",
     "C_Cpp.inlayHints.parameterNames.enabled": true,
+    "C_Cpp.default.includePath": [
+        "/usr/include"
+    ],
     
     
     // *** CODEIUM ***
@@ -262,7 +265,9 @@
             "commands": [ "workbench.action.files.save" ]
         },
         // Paste from clipboard
-        {        // latex    -> l: [ "editor.action.clipboardPasteAction" ]
+        {        
+            "before": [ "leader", "p" ],
+            "commands": [ "editor.action.clipboardPasteAction" ]
         },
         // Toggle line wrap
         {
@@ -274,6 +279,11 @@
             "before": [ "leader", ":" ],
             "commands": [ "workbench.action.showCommands" ],
             "silent": true
+        },
+        // Toggle breakpoint
+        {
+            "before": [ "leader", "d" ],
+            "commands": [ "editor.debug.action.toggleBreakpoint" ]
         },
         // Normal search
         {
