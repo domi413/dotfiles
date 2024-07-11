@@ -22,8 +22,6 @@ copy ".config/alacritty/alacritty.toml"
 copy ".config/Code/User/settings.json"
 copy ".config/fish/config.fish"
 copy ".config/kitty/kitty.conf"
-copy ".config/texstudio/texstudio.ini"
-copy ".config/indicator-sound-switcher.json"
 copy ".ideavimrc"
 
 # Add specific directories to the dotfiles
