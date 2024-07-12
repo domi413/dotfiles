@@ -1,0 +1,8 @@
+[Nemo Action]
+Name=Bulk Rename with Bulky
+Comment=Rename multiple files with Bulky
+Exec=bulky %F
+Icon-Name=bulky
+Selection=Any
+Extensions=any;
+Dependencies=bulky;

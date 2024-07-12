@@ -70,24 +70,40 @@ software_installer() {
     esac
 }
 
+copy() {
+    local src="$TARGET_DIR/$1"
+    local dest="$HOME/$1"
+
+    if [ -d "$src" ]; then
+        mkdir -p "$dest"
+        rsync -a "$src/" "$dest/"
+        echo -e "\033[32mDirectory copied: $src to $dest.\033[0m"
+    elif [ -f "$src" ]; then
+        mkdir -p "$(dirname "$dest")"
+        cp -f "$src" "$dest"
+        echo -e "\033[32mFile copied: $src to $dest.\033[0m"
+    else
+        echo -e "\e[31mFile or directory not found: $src.\e[0m"
+    fi
+
+    DE_dots "$DESKTOP_ENV" "$dest"
+}
+
+DE_dots() {
+    local de="$1"
+    local dest="$2"
+
+    local de_script="$TARGET_DIR/DE_dots/$de/$de.sh"
+
+    if [ -f "$de_script" ]; then
+        echo "Executing script for desktop environment: $de"
+        bash "$de_script"
+    else
+        echo -e "\e[31mScript not found: $de_script. No actions performed.\e[0m"
+    fi
+}
+
 load_dotfiles() {
-    copy() {
-        local src="$TARGET_DIR/$1"
-        local dest="$HOME/$1"
-
-        if [ -d "$src" ]; then
-            mkdir -p "$dest"
-            rsync -a "$src/" "$dest/"
-            echo -e "\033[32mDirectory copied: $src to $dest.\033[0m"
-        elif [ -f "$src" ]; then
-            mkdir -p "$(dirname "$dest")"
-            cp -f "$src" "$dest"
-            echo -e "\033[32mFile copied: $src to $dest.\033[0m"
-        else
-            echo -e "\e[31mFile or directory not found: $src.\e[0m"
-        fi
-    }
-
     # Add specific files to the dotfiles
     copy ".ideavimrc"
 

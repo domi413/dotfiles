@@ -1,0 +1,9 @@
+[General]
+clipboardGroup=PostScreenshotCopyImage
+showCaptureInstructions=false
+
+[GuiConfig]
+captureMode=0
+
+[VideoSave]
+translatedScreencastsFolder=Screencasts
