@@ -132,9 +132,10 @@ done
 echo -e "${GREEN}\n\nInstalled fonts${NC}"
 
 # ------------------------------------- Spotify -------------------------------
-sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y # Free software
-sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y # Non-Free software
-sudo dnf install lpf-spotify-client -y
+# >>> Its kinda buggy to install spotify...
+# sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y # Free software
+# sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y # Non-Free software
+# sudo dnf install lpf-spotify-client -y
 
 # You must run the spotx command manually after you have installed spotify
 # bash <(curl -sSL https://spotx-official.github.io/run.sh) -f # -f -> force rerun if already tried
@@ -147,11 +148,9 @@ dnf check-update
 sudo dnf install code # or code-insiders
 
 # ------------------------------------- VSCodium ------------------------------
-# sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-# echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
-#
-# dnf check-update
-# sudo dnf install code # or code-insiders
+# sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
+# printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
+# sudo dnf install codium
 
 ### ---------------------------------------------------------------------------
 ### ----------------------------------- copr ----------------------------------
@@ -423,6 +422,9 @@ lpf update
 
 # ------------------------------------- Cleanup cache -------------------------
 sudo dnf clean all
+
+# ------------------------------------- Add user to pkg-build group -----------
+sudo usermod -aG pkg-build $(whoami)
 
 # ------------------------------------- change shell --------------------------
 chsh -s /bin/fish

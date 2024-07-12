@@ -46,7 +46,7 @@ software_installer() {
                 exit 1
             fi
             ;;
-        "Fedora")
+        "Fedora" | "Fedora Linux" )
             SPECIFIC_SCRIPT_PATH="$TARGET_DIR/distros/fedora/fedora_${DESKTOP_ENV}.sh"
             GENERAL_SCRIPT_PATH="$TARGET_DIR/distros/fedora/fedora.sh"
             if [ -f "$SPECIFIC_SCRIPT_PATH" ] && [ -f "$GENERAL_SCRIPT_PATH" ]; then

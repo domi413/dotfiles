@@ -8,25 +8,8 @@ GREEN='\033[0;32m'      # Success
 LIGHTBLUE='\033[1;34m'  # Configs
 NC='\033[0m'            # No Color (reset to default value)
 
-# Remove undesired preinstalled gnome applications
-
-apps_to_remove=(
-    xterm
-    gnome-text-editor
-    gnome-power-manager
-    gnome-usage
-    gnome-calculator
-    gnome-system-monitor
-    stoken
-)
-
-for tool in "${apps_to_remove[@]}"; do
-    echo -e "${YELLOW}\n\nRemoving$tool...${NC}"
-    sudo pacman -Rdduns "$tool" --noconfirm
-done
-
-# ------------------------------------- Terminal tools ------------------------
 apps=(
+    "gnome"
     # Terminal tools
     # "gnome-menus"           # To enable menu
 
@@ -55,6 +38,22 @@ for tool in "${apps[@]}"; do
         paru -S "$tool" --noconfirm
 done
 
+# Remove undesired preinstalled gnome applications
+
+apps_to_remove=(
+    xterm
+    gnome-text-editor
+    gnome-power-manager
+    gnome-usage
+    gnome-calculator
+    gnome-system-monitor
+    stoken
+)
+
+for tool in "${apps_to_remove[@]}"; do
+    echo -e "${YELLOW}\n\nRemoving$tool...${NC}"
+    sudo pacman -Rdduns "$tool" --noconfirm
+done
 
 # ------------------------------------- advanced touchpad support -------------
 # sudo pacman -S touchegg --noconfirm

@@ -8,7 +8,7 @@ YELLOW='\033[1;33m'     # Packages
 GREEN='\033[0;32m'      # Success
 BLUE='\033[0;34m'       # Installation
 LIGHTBLUE='\033[1;34m'  # Configs
-NC='\033[0m' # No Color
+NC='\033[0m'            # No Color
 
 # Set the directory where the keybinding files are stored
 keybinding_dir="./"  # assuming the current directory, adjust as necessary
