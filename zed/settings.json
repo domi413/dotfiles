@@ -1,0 +1,117 @@
+// ISSUES: VIM MODE STILL MISSING MULTIPLE FEATURES
+//
+// Plugins:
+// python lsp always shows K-info twice
+// shellcheck missing
+// Formatter missing for multiple filetypes (except c/cpp/go)
+// Debugger missing
+// autocompletion pop up buggy for not default languages (like c/cpp/go)
+// platformio missing
+{
+  // Doesn't make sense because it's installed through package manager
+  "auto_update": false,
+
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ Telemetry                                                │
+  // ╰──────────────────────────────────────────────────────────╯
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ UI                                                       │
+  // ╰──────────────────────────────────────────────────────────╯
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+    "selections_menu": true
+  },
+  "gutter": {
+    "code_actions": false,
+    "folds": false
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "chat_panel": {
+    "button": false
+  },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false
+  },
+  "tabs": {
+    // Show git status colors in the editor tabs.
+    "git_status": true,
+    "file_icons": true,
+    "activate_on_close": "neighbour"
+  },
+
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ Editor                                                   │
+  // ╰──────────────────────────────────────────────────────────╯
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 1000
+    }
+  },
+
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ Font                                                     │
+  // ╰──────────────────────────────────────────────────────────╯
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "buffer_line_height": "standard",
+
+  "buffer_font_family": "FiraCode Nerd Font",
+  // "buffer_font_family": "CaskaydiaCove Nerd Font",
+  "buffer_font_features": {
+    // Font features not working!!??
+    // Firacode
+    "cv01": true,
+    "cv02": true,
+    "cv15": true,
+    "cv19": true,
+    "cv23": true,
+    "cv29": true,
+    "cv31": true,
+    "ss01": true,
+    "ss03": true,
+    "ss05": true
+
+    // CaskaydiaCove
+    // "ss19": true
+  },
+
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ Theme                                                    │
+  // ╰──────────────────────────────────────────────────────────╯
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Kanagawa"
+  },
+
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ Vim                                                      │
+  // ╰──────────────────────────────────────────────────────────╯
+  "vim_mode": true,
+  "cursor_blink": false,
+  "relative_line_numbers": true,
+  // "scroll_beyond_last_line": "off",
+  "scrollbar": { "show": "never" },
+  "vim": {
+    "use_multiline_find": true,
+    "use_smartcase_find": true
+  }
+
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ Languages                                                │
+  // ╰──────────────────────────────────────────────────────────╯
+  // TODO: Configure language specific settings like formatting...
+}

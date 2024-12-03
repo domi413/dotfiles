@@ -1,0 +1,140 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ UI                                                       │
+  // ╰──────────────────────────────────────────────────────────╯
+  {
+    "bindings": {
+      "ctrl-k": "menu::SelectPrev",
+      "ctrl-j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    // Put key bindings here if you want them to work in normal & visual mode.
+    "bindings": {
+      // ╭──────────────────────────────────────────────────────────╮
+      // │ Editing / Editor                                         │
+      // ╰──────────────────────────────────────────────────────────╯
+      // Toggle case
+      "space i": "vim::ChangeCase"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    // ╭──────────────────────────────────────────────────────────╮
+    // │ Editing / Editor                                         │
+    // ╰──────────────────────────────────────────────────────────╯
+    // Leave insert-mode with jk
+    "bindings": {
+      "j k": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrev",
+      "ctrl-j": "editor::ContextMenuNext",
+
+      // INFO: Not sure if the context for copilot is correct
+      // Copilot
+      "ctrl-.": "copilot::NextSuggestion",
+      "ctrl-,": "copilot::PreviousSuggestion",
+      "ctrl-space": "editor::AcceptPartialCopilotSuggestion",
+      "ctrl-f": "editor::AcceptInlineCompletion"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Editor && vim_mode != insert",
+    "bindings": {
+      // Move to next/previous window
+      "ctrl-p": "pane::ActivateNextItem",
+      "ctrl-n": "pane::ActivatePrevItem",
+
+      // Create new/close Window
+      "space n t": "workspace::NewFile",
+      "space x": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      // ╭──────────────────────────────────────────────────────────╮
+      // │ Window tiling                                            │
+      // ╰──────────────────────────────────────────────────────────╯
+      "space s k": "pane::SplitUp",
+      "space s j": "pane::SplitDown",
+      "space s h": "pane::SplitLeft",
+      "space s l": "pane::SplitRight",
+      // TODO: How to end split
+      // TODO: How to move within splits
+
+      // ╭──────────────────────────────────────────────────────────╮
+      // │ Tab management                                           │
+      // ╰──────────────────────────────────────────────────────────╯
+      // Move to next/previous window
+      "ctrl-p": "pane::ActivateNextItem",
+      "ctrl-n": "pane::ActivatePrevItem",
+
+      // Create new/close Window
+      "space n t": "workspace::NewFile",
+      "space x": "pane::CloseActiveItem",
+
+      // ╭──────────────────────────────────────────────────────────╮
+      // │ Editing / Editor                                         │
+      // ╰──────────────────────────────────────────────────────────╯
+      // Increment/Decrement numbers
+      "space +": "vim::Increment",
+      "space -": "vim::Decrement",
+
+      // Repeat last macro
+      // "space ,": "" // TODO: No clue how to Implement
+
+      // Toggle File Explorer
+      "space e": "workspace::ToggleLeftDock",
+      // Clear search highlights
+      // "space n": ":nohlsearch", // TODO: not working yet
+
+      // Create new line above/below in normal mode
+      "space o": "editor::NewlineBelow",
+      "space O": "editor::NewlineAbove",
+
+      // Save file
+      "space w": "workspace::Save",
+
+      // Toggle line wrapping
+      "space $": "editor::ToggleSoftWrap",
+
+      // Toggle outline
+      // "space c o": "outline_panel::ToggleFocus" // Outline is kinda bullshit yet and is not toggleable
+
+      // ╭──────────────────────────────────────────────────────────╮
+      // │ Telescope (or what i would call Telescope in nvim)       │
+      // ╰──────────────────────────────────────────────────────────╯
+      // "space f c": "fuzzy find content" // TODO:
+      // "space f f": "file_finder::Toggle", // TODO: Not really what I am looking for
+      "space f t": "theme_selector::Toggle",
+      "space s t": "tab_switcher::Toggle"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // Put key bindings here (in addition to the context above) if you want them to
+      // work when no editor exists.
+      // "space f": "file_finder::Toggle"
+    }
+  }
+]
