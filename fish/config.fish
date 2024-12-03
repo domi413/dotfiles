@@ -28,7 +28,7 @@ export FZF_DEFAULT_OPTS=" \
 # ╰──────────────────────────────────────────────────────────╯
 set fish_greeting
 
-# Enable vim keybindings (without changing some useful default shorcuts)
+# Enable vim keybindings (without changing some useful default shortcuts)
 fish_hybrid_key_bindings
 bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
@@ -40,7 +40,7 @@ alias emoij="kitten unicode-input"
 set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
 set -gx SUDO_EDITOR $EDITOR
- 
+
 # ╭──────────────────────────────────────────────────────────╮
 # │ Aliases                                                  │
 # ╰──────────────────────────────────────────────────────────╯
@@ -49,9 +49,6 @@ alias logout="gnome-session-quit"
 
 # Hibernate
 alias hibernate="sudo systemctl hibernate"
-
-# Set alias to rerun the last command with sudo rights
-alias do="sudo !!"
 
 # Neovim
 alias vim="nvim"
@@ -85,6 +82,15 @@ alias cd="z"
 # ╭──────────────────────────────────────────────────────────╮
 # │ Custom Functions                                         │
 # ╰──────────────────────────────────────────────────────────╯
+function do --description "Rerun the last command using sudo"
+    if test (count $argv) -eq 0
+        echo sudo $history[1]
+        eval command sudo $history[1]
+    else
+        command sudo $argv
+    end
+end
+
 function mkd --description "Create a file or directory with its parent directories"
     if test (count $argv) -eq 0
         echo -e "Combines the functionality of mkdir and touch\n"
@@ -104,12 +110,12 @@ function mkd --description "Create a file or directory with its parent directori
 end
 
 function y
-	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-	yazi $argv --cwd-file="$tmp"
-	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-		builtin cd -- "$cwd"
-	end
-	rm -f -- "$tmp"
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
 end
 
 # ╭──────────────────────────────────────────────────────────╮
@@ -117,10 +123,9 @@ end
 # ╰──────────────────────────────────────────────────────────╯
 set -gx PNPM_HOME "/home/domi/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 
- 
 # ╭──────────────────────────────────────────────────────────╮
 # │ Zoxide                                                   │
 # ╰──────────────────────────────────────────────────────────╯
