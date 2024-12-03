@@ -1,3 +1,5 @@
+" Vim configs for jetbrains IDEs
+
 " Allow copy to clipboard
 set clipboard+=unnamed
 
@@ -10,28 +12,62 @@ set commentary
 " Define spacebar as leader
 let mapleader=" "
 
-" Disable copying when deleting
+" Disable copying when deleting in normal mode
 nnoremap x "_x
-nnoremap D "_D
-nnoremap dd "_dd
-nnoremap dw "_dw
-nnoremap d$ "_d$
-nnoremap d^ "_d^
-nnoremap db "_db
-nnoremap diw "_diw
-nnoremap daw "_daw
-nnoremap di" '"_di"'
-nnoremap da" '"_da"'
-nnoremap di' '"_di''
-nnoremap da' '"_da''
-nnoremap di( '"_di('
-nnoremap da( '"_da('
-nnoremap di) '"_di)'
-nnoremap da) '"_da)'
-nnoremap di{ '"_di{'
-nnoremap da{ '"_da{'
-nnoremap di} '"_di}'
-nnoremap da} '"_da}'
+" nnoremap D "_D
+" nnoremap dd "_dd
+" nnoremap dw "_dw
+" nnoremap d$ "_d$
+" nnoremap d^ "_d^
+" nnoremap db "_db
+" nnoremap diw "_diw
+" nnoremap daw "_daw
+" nnoremap di" '"_di"'
+" nnoremap da" '"_da"'
+" nnoremap di' '"_di''
+" nnoremap da' '"_da''
+" nnoremap di( '"_di('
+" nnoremap da( '"_da('
+" nnoremap di) '"_di)'
+" nnoremap da) '"_da)'
+" nnoremap di{ '"_di{'
+" nnoremap da{ '"_da{'
+" nnoremap di} '"_di}'
+" nnoremap da} '"_da}'
+" nnoremap d% "_d%
+" nnoremap dt" '"_dt"'
+" nnoremap dT" '"_dT"'
+" nnoremap dl "_dl
+" nnoremap dh "_dh
+" nnoremap df "_df
+" nnoremap dF "_dF
+" nnoremap dt "_dt
+" nnoremap dk "_dk
+" nnoremap dj "_dj
+"
+" " Disable copying when deleting in visual mode
+" vnoremap d '"_d'
+" vnoremap x '"_x'
+" vnoremap dl '"_dl'
+" vnoremap dh '"_dh'
+" vnoremap dk '"_dk'
+" vnoremap dj '"_dj'
+" vnoremap df '"_df'
+" vnoremap dF '"_dF'
+" vnoremap dt '"_dt'
+" vnoremap dT '"_dT'
+"
+" " Disable copying when deleting in visual block mode
+" xnoremap d '"_d'
+" xnoremap x '"_x'
+" xnoremap dl '"_dl'
+" xnoremap dh '"_dh'
+" xnoremap dk '"_dk'
+" xnoremap dj '"_dj'
+" xnoremap df '"_df'
+" xnoremap dF '"_dF'
+" xnoremap dt '"_dt'
+" xnoremap dT '"_dT'
 
 " Increment / Decrement numbers
 nmap <Space>+ <C-a>
@@ -46,3 +82,6 @@ nmap <Space>i ~<Esc>
 
 " Use leader+w to save file
 nmap <Space>w :w <CR>
+
+" Use jk to exit insert mode (doesn't work because j is getting buggy)
+"inoremap jk <Esc>
