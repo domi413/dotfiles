@@ -1,9 +1,0 @@
-The following configs are missing yet:
-
-- specific cinnamon/plasma/gnome
-
-- VSCodium?
-
-- LibreOffice
-
-- Firefox
