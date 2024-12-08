@@ -2,12 +2,23 @@ My dotfiles...
 
 Paste them into `$HOME/.config/` if you want to use them
 
+### INFO:
+
+The `.ideavimrc` must be moved to `$HOME`
+
 ### TODO:
 
 - [ ] Cleaner zed configs
-- [ ] kitty save session (tmux?)
 - [ ] Apply themes
 - [ ] Kanagawa, Catppuccin Mocha, Rose-pine for themeable applications
+
+### Kitty
+
+#### TODO
+
+- [ ] Save session (tmux?)
+- [ ] Move themes into separate file
+- [ ] Fix tab bar
 
 ### Neovim
 
@@ -15,6 +26,7 @@ Paste them into `$HOME/.config/` if you want to use them
 
 - [ ] Install debugger with mason
 - [ ] Install latexindent with mason
+- [ ] Vimtex
 - [ ] Java-debugger
 - [ ] C/C++ Debugger
 - [ ] Rewrite configs
@@ -22,7 +34,6 @@ Paste them into `$HOME/.config/` if you want to use them
     - [ ] Enhance config quality and leave some unnecessary plugins out
 - [ ] First column lua/go/...
 - [ ] Save selected theme as default
-- [ ] html/css completion
 
 ##### Plugin issues
 
