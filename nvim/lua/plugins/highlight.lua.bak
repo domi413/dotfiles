@@ -1,0 +1,35 @@
+-- return {
+--     "yamatsum/nvim-cursorline",
+--     config = function()
+--         require('nvim-cursorline').setup {
+--             cursorline = {
+--                 enable = true,
+--                 timeout = 0,
+--                 number = false,
+--             },
+--             cursorword = {
+--                 enable = true,
+--                 min_length = 1,
+--                 hl = {
+--                     fg = "#c0caf5",
+--                     bg = "#565f89",
+--                     underline = true,
+--                 },
+--             }
+--         }
+--     end
+-- }
+
+return {
+    "itchyny/vim-cursorword",
+
+    config = function()
+                -- Change refresh time (default is 50)
+                -- (low value may cause performance issues)
+                vim.g.cursorword_delay = 0
+                
+        -- Set the custom highlight (default is underline)
+        -- vim.api.nvim_set_hl(0, "CursorWord", { bg = "#565f89" })
+        -- vim.api.nvim_set_hl(0, "CursorWord", { fg = "#c0caf5", bg = "#565f89" })
+    end
+}
