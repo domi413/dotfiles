@@ -1,7 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	-- dependencies = { "nvim-tree/nvim-web-devicons" },
-	dependencies = { "DaikyXendo/nvim-material-icon" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 
 	config = function()
 		-- Count selected lines and characters in visual mode

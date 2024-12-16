@@ -9,13 +9,41 @@ local opt = vim.opt -- for conciseness
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Show indentation                                         │
 -- ╰──────────────────────────────────────────────────────────╯
-opt.list = true
-opt.listchars = {
+local use_dot = false -- Set this to `false` to use spaces instead of dots
+local lead_char = use_dot and "·" or " "
+
+local function update_lead()
+	local tabstop = vim.o.tabstop
+
+	local lead_space = "│" .. string.rep(lead_char, tabstop - 1)
+
+	vim.opt.listchars = vim.tbl_extend("force", vim.opt.listchars:get(), {
+		leadmultispace = lead_space,
+	})
+end
+
+-- Update the lead when tabstop or filetype changes
+vim.api.nvim_create_autocmd("OptionSet", {
+	-- pattern = { "listchars", "tabstop", "filetype" },
+	callback = function()
+		local filename = vim.fn.expand("%")
+		if filename ~= "" then
+			update_lead()
+		end
+	end,
+})
+
+-- Run the update_lead at start
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = update_lead,
+	once = true,
+})
+
+vim.opt.list = true
+vim.opt.listchars = {
 	-- eol = "↲",
-	-- leadmultispace = "│···",
-	leadmultispace = "│   ",
-	-- tab = "│·",
-	tab = "│ ",
+	leadmultispace = "│ ", -- Placeholder until updated by update_lead
+	tab = "│" .. lead_char,
 }
 
 -- ╭──────────────────────────────────────────────────────────╮

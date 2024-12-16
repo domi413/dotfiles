@@ -1,7 +1,6 @@
 return {
 	"akinsho/bufferline.nvim",
-	-- dependencies = { "nvim-tree/nvim-web-devicons" },
-	dependencies = { "DaikyXendo/nvim-material-icon" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		-- Function to detect amount of tabs
 		function close_tab_if_multiple()
@@ -17,7 +16,7 @@ return {
 		local bufferline = require("bufferline")
 		bufferline.setup({
 			options = {
-				mode = "tabs",
+				mode = "buffers",
 
 				-- numbers: none, ordinal(1, 2, 3), buffer_id, both, ...
 				numbers = "none",

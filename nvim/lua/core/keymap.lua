@@ -7,12 +7,18 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Window tiling                                            │
+-- │ Window tiling and buffer management                      │
 -- ╰──────────────────────────────────────────────────────────╯
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>sr", "<C-w>=", { desc = "Reset splitted window width / height" })
-keymap.set("n", "<leader>x", ":close<CR>", { desc = "Close splitted window" })
+vim.keymap.set("n", "<leader>x", function()
+	if #vim.api.nvim_tabpage_list_wins(0) > 1 then
+		vim.cmd("close")
+	else
+		vim.cmd("bdelete!")
+	end
+end, { desc = "Close window or buffer" })
 
 -- Resize splitted windows
 keymap.set("n", "<leader>v+", ":vertical resize +10<CR>", { desc = "Increase width of splitted window" })
@@ -20,19 +26,18 @@ keymap.set("n", "<leader>v-", ":vertical resize -10<CR>", { desc = "Decrease wid
 keymap.set("n", "<leader>h+", ":resize +5<CR>", { desc = "Increase height of splitted window" })
 keymap.set("n", "<leader>h-", ":resize -5<CR>", { desc = "Decrease height of splitted window" })
 
--- ╭──────────────────────────────────────────────────────────╮
--- │ Tab management                                           │
--- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>nt", ":tabnew<CR>", { desc = "Open new tab" })
-keymap.set("n", "<leader>ct", ":tabclose<CR>", { desc = "Close tab" })
+-- Move buffer
+vim.keymap.set("n", "<Leader>>", ":BufferLineMoveNext<CR>", { desc = "Move tab to right" })
+vim.keymap.set("n", "<Leader><", ":BufferLineMovePrev<CR>", { desc = "Move tab to left" })
 
-keymap.set("n", "<C-p>", ":tabn<CR>") -- Go to next tab
-keymap.set("n", "<C-n>", ":tabp<CR>") -- To go previous tab
+-- Toggle pin buffer
+keymap.set("n", "<leader>pt", ":BufferLineTogglePin<CR>", { desc = "Toggle pin buffer" })
 
--- <Tab> and <C-i> are equivalent, therefore Tab overwrites ctrl+i,
--- use Ctrl+shift+i instead to get the same result as ctrl+i
--- keymap.set("n", "<Tab>", ":tabn<CR>") -- Go to next tab
--- keymap.set("n", "<S-Tab>", ":tabp<CR>") -- To go previous tab
+keymap.set("n", "<leader>nt", ":enew<CR>", { desc = "Open new buffer" })
+
+-- Tab navigation
+keymap.set("n", "<C-p>", ":BufferLineCycleNext<CR>")
+keymap.set("n", "<C-n>", ":BufferLineCyclePrev<CR>")
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Editing / Editor                                         │
@@ -82,10 +87,6 @@ keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>", { desc = "Toggle undoTree" 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Telescope                                                │
 -- ╰──────────────────────────────────────────────────────────╯
--- Open file browser
--- keymap.set("n", "<leader>fe", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { desc = "File Browser" })
-keymap.set("n", "<leader>fe", ":Telescope file_browser select_buffer=true<CR>", { desc = "File Browser" })
-
 -- Open fuzzy file finder
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 

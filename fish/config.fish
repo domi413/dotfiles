@@ -57,6 +57,9 @@ alias vi="nvim"
 # Set alias svim to open nvim with sudo rights
 alias svim="sudo -s -E nvim"
 
+# Lazygit
+alias lg="lazygit"
+
 # Zoxide
 abbr --erase z &>/dev/null
 alias z=__zoxide_z

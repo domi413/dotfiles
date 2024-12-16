@@ -38,9 +38,6 @@ return {
 				opts.desc = "Go definition"
 				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
-				opts.desc = "Go definition in new tab"
-				keymap.set("n", "gD", "<cmd>tab split | Telescope lsp_definitions<CR>", opts)
-
 				opts.desc = "Code actions"
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
