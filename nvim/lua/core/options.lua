@@ -2,14 +2,35 @@
 -- │ Options                                                  │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Here are some general editor configs defined like
--- "relative numbers" and clipbboard-support
+-- relative-numbers and clipbboard-support
 
 local opt = vim.opt -- for conciseness
 
 -- ╭──────────────────────────────────────────────────────────╮
+-- │ Show indentation                                         │
+-- ╰──────────────────────────────────────────────────────────╯
+opt.list = true
+opt.listchars = {
+	-- eol = "↲",
+	-- leadmultispace = "│···",
+	leadmultispace = "│   ",
+	-- tab = "│·",
+	tab = "│ ",
+}
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Mouse                                                    │
+-- ╰──────────────────────────────────────────────────────────╯
+vim.cmd([[
+  aunmenu PopUp.How-to\ disable\ mouse
+  aunmenu PopUp.-1-
+]])
+opt.mouse = "a"
+
+-- ╭──────────────────────────────────────────────────────────╮
 -- │ Disable the "~" character at blank lines                 │
 -- ╰──────────────────────────────────────────────────────────╯
-vim.opt.fillchars = {
+opt.fillchars = {
 	fold = " ",
 	vert = "│",
 	eob = " ",
@@ -20,7 +41,7 @@ vim.opt.fillchars = {
 -- │ Command line                                             │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Disable command line bar
-vim.opt.cmdheight = 0
+opt.cmdheight = 0
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Indentation                                              │
@@ -40,7 +61,7 @@ opt.expandtab = true
 -- Show relative line numbers
 opt.relativenumber = true
 
--- Show absoulte line number on cursor line (when relative line number is on)
+-- Show absoulte line number on cursor (current) line (when relative line number is on)
 opt.number = true
 
 -- ╭──────────────────────────────────────────────────────────╮

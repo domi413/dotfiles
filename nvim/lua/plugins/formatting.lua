@@ -40,10 +40,11 @@ return {
 					end,
 				},
 				latexindent = {
-					-- install latexindent from package manager
+					-- install latexindent from package manager:
 					-- texlive-binextra perl-yaml-tiny perl-file-homedir
 					command = "latexindent",
 					args = { "-m" },
+					-- args = { "-m", '-y=defaultIndent:"    "' }, -- indent with 4 spaces
 				},
 			},
 			format_after_save = {

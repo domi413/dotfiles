@@ -10,7 +10,6 @@ return {
 	},
 	{ "rose-pine/neovim" },
 	{ "loctvl842/monokai-pro.nvim" },
-	{ "eldritch-theme/eldritch.nvim" },
 	-- { "olivercederborg/poimandres.nvim" },
 	-- { "scottmckendry/cyberdream.nvim" }, -- would be great theme for blurred background
 }

@@ -7,14 +7,6 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Mouse                                                    │
--- ╰──────────────────────────────────────────────────────────╯
-vim.cmd([[
-  aunmenu PopUp.How-to\ disable\ mouse
-  aunmenu PopUp.-1-
-]])
-
--- ╭──────────────────────────────────────────────────────────╮
 -- │ Window tiling                                            │
 -- ╰──────────────────────────────────────────────────────────╯
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
@@ -118,9 +110,24 @@ end, { desc = "Switch tabs" })
 -- lua/plugins/telescope-file-browser.lua
 
 -- ╭──────────────────────────────────────────────────────────╮
+-- │ Vimtex                                                   │
+-- ╰──────────────────────────────────────────────────────────╯
+-- Start compilation
+keymap.set("n", "<leader>lc", ":VimtexCompile<cr><cr>", { desc = "Start compilation" })
+
+-- Jump in PDF to the current position in tex file
+keymap.set("n", "<leader>lp", ":VimtexView<cr><cr>", { desc = "Jump in PDF to current position" })
+
+-- Cleanup files
+keymap.set("n", "<leader>lC", ":VimtexClean<cr><cr>", { desc = "Cleanup files" })
+
+-- Toggle TOC
+keymap.set("n", "<leader>lt", ":VimtexTocToggle<cr>", { desc = "Toggle TOC" })
+
+-- ╭──────────────────────────────────────────────────────────╮
 -- │ NVIM Tree (File Explorer)                                │
 -- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
+-- keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ LSP                                                      │
