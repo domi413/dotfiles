@@ -44,23 +44,26 @@ set -gx SUDO_EDITOR $EDITOR
 # ╭──────────────────────────────────────────────────────────╮
 # │ Aliases                                                  │
 # ╰──────────────────────────────────────────────────────────╯
+### System
 # Logout
 alias logout="gnome-session-quit"
 
 # Hibernate
 alias hibernate="sudo systemctl hibernate"
 
-# Neovim
+### Neovim
 alias vim="nvim"
 alias vi="nvim"
 
 # Set alias svim to open nvim with sudo rights
 alias svim="sudo -s -E nvim"
 
-# Lazygit
+### Lazygit
 alias lg="lazygit"
 
-# Zoxide
+### Zoxide
+alias cd="z"
+
 abbr --erase z &>/dev/null
 alias z=__zoxide_z
 alias cd=__zoxide_z
@@ -73,14 +76,14 @@ abbr --erase zr &>/dev/null
 # Remove current directory from the database
 alias zr=__zoxide_forget_zr
 
-# Eza (better ls)
+### Eza (better ls)
 alias ls="eza --oneline --group-directories-first --icons --hyperlink"
 
 # Use eza instead of tree
 alias tree="eza --tree --group-directories-first --icons"
 
-# Zoxide (better cd)
-alias cd="z"
+### fzf (fuzzy finder)
+alias f="fzf --height 40% --layout reverse --border"
 
 # ╭──────────────────────────────────────────────────────────╮
 # │ Custom Functions                                         │
@@ -119,6 +122,14 @@ function y
         builtin cd -- "$cwd"
     end
     rm -f -- "$tmp"
+end
+
+function fyi --description "Searching for AUR-/Pacman-packages"
+    yay -Slq | fzf -q "$argv" -m --preview 'yay -Si {1}' | xargs -ro yay -S
+end
+
+function fyr --description "Removing installed package"
+    yay -Qq | fzf -q "$argv" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 end
 
 # ╭──────────────────────────────────────────────────────────╮

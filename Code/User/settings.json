@@ -16,7 +16,7 @@
 
     // EDITOR
     "editor.autoClosingOvertype": "always", // "Jumping" over the bracket when typing ")"
-    "editor.bracketPairColorization.enabled": false, // Disable rainbow brackets
+    "editor.bracketPairColorization.enabled": true, // Disable rainbow brackets
     "editor.cursorBlinking": "solid",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.fontFamily": "FiraCode Nerd Font",
@@ -37,6 +37,8 @@
 
     // OTHERS
     "breadcrumbs.enabled": false,
+    "git.blame.editorDecoration.enabled": false,
+    "git.blame.editorDecoration.template": "${authorName} - ${hashShort}",
     "git.enableSmartCommit": true,
     "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.enableMultiLinePasteWarning": "never", // Disables paste warning in terminal
@@ -47,9 +49,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false,
     "prettier.tabWidth": 4,
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
     "[c]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
         // "editor.defaultFormatter": "ms-vscode.cpptools"
@@ -70,7 +69,13 @@
     "[lua]": {
         "editor.defaultFormatter": "sumneko.lua"
     },
-
+    "[nix]": {
+        "editor.defaultFormatter": "jnoortheen.nix-ide"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    
     // *** CMake ***
     "cmake.options.statusBarVisibility": "icon",
     "cmake.pinnedCommands": [
@@ -194,6 +199,12 @@
         { "before": ["leader", "d"],      "commands": ["editor.debug.action.toggleBreakpoint"] }, // Toggle breakpoint
         { "before": ["leader", "f", "v"], "commands": ["editor.action.formatDocument"] },         // Format document
         { "before": [","],                "after":    ["@","@"] },                                // Repat last macro
+
+        // ╭──────────────────────────────────────────────────────────╮
+        // │ LSP shorcuts                                             │
+        // ╰──────────────────────────────────────────────────────────╯
+        { "before": ["leader", "r", "n"], "commands": ["editor.action.rename"] },  // Rename variable
+        // { "before": ["g", "r"], "commands": ["editor.action.gotoReferences"] }, // Go to references (doesn't really work, already covered by gd)
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ Tab management                                           │
