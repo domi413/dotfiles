@@ -75,7 +75,7 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    
+
     // *** CMake ***
     "cmake.options.statusBarVisibility": "icon",
     "cmake.pinnedCommands": [
@@ -136,7 +136,7 @@
     // "C_Cpp.intelliSenseEngine": "disabled",
 
     // *** CODEIUM ***
-    "codeium.enableCodeLens": "hide_x",
+    "codeium.enableCodeLens": false,
     "codeium.enableConfig": {
         "*": true,
         "html": false,
@@ -148,12 +148,12 @@
     "statsBar.modules": ["cpuLoad", "networkSpeed", "memoUsage"],
 
     // *** VIM CONFIGURATION ***
-    "vim.leader": "space",          // Set space as leader
-    "vim.useSystemClipboard": true, // Enables copy to system clipboard
-    "vim.useCtrlKeys": true,        // Override default behavior of ctrl keys
-    "vim.hlsearch": true,           // Highlight search results
+    "vim.leader": "space",                  // Set space as leader
+    "vim.useSystemClipboard": true,         // Enables copy to system clipboard
+    "vim.useCtrlKeys": true,                // Override default behavior of ctrl keys
+    "vim.hlsearch": true,                   // Highlight search results
     // "vim.highlightedyank.enable": true,  // Highlight yanked text
-    "extensions.experimental.affinity": { // To improve performance
+    "extensions.experimental.affinity": {   // To improve performance
         "vscodevim.vim": 1
     },
 
@@ -167,19 +167,10 @@
     // ╭──────────────────────────────────────────────────────────╮
     // │ Editor/Editing                                           │
     // ╰──────────────────────────────────────────────────────────╯
-    "vim.insertModeKeyBindings": [
-        // Use jk to exit insert mode
-        { "before": ["j", "k"], "after": ["<Esc>"] }
-    ],
-    "vim.visualModeKeyBindings": [
-        // Toggle case
-        { "before": ["leader", "i"], "after": ["~"] }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        // Show definition
-        { "before": ["K"],
-            // "commands": [ "editor.action.showDefinitionPreviewHover" ]
-            "after": ["g", "h"]
+    "vim.insertModeKeyBindings": [ { "before": ["j", "k"],      "after": ["<Esc>"] } ], // Use jk to exit insert mode
+    "vim.visualModeKeyBindings": [ { "before": ["leader", "i"], "after": ["~"] } ],     // Toggle case
+    "vim.normalModeKeyBindingsNonRecursive": [ {
+            "before": ["K"], "after": ["g", "h"] // Show definition
         },
         // The following two options override the default behavior of the VSCode
         // VIMs'u' and 'C-r' keys. But because of the fact that they are not
@@ -198,7 +189,7 @@
         { "before": ["leader", "$"],      "commands": ["editor.action.toggleWordWrap"] },         // Toggle line wrap
         { "before": ["leader", "d"],      "commands": ["editor.debug.action.toggleBreakpoint"] }, // Toggle breakpoint
         { "before": ["leader", "f", "v"], "commands": ["editor.action.formatDocument"] },         // Format document
-        { "before": [","],                "after":    ["@","@"] },                                // Repat last macro
+        { "before": [","],                "after":    ["@", "@"] },                               // Repat last macro
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ LSP shorcuts                                             │
@@ -213,7 +204,7 @@
         { "before": ["C-n"],              "commands": ["workbench.action.previousEditor"] },        // Go to previous tab
         { "before": ["leader", "n", "t"], "commands": ["workbench.action.files.newUntitledFile"] }, // Open new tab
         { "before": ["leader", "x"],      "commands": ["workbench.action.closeActiveEditor"] },     // Close active tab
-        
+
         // ╭──────────────────────────────────────────────────────────╮
         // │ Window tiling                                            │
         // ╰──────────────────────────────────────────────────────────╯
@@ -267,12 +258,12 @@
         // ╭──────────────────────────────────────────────────────────╮
         // │ Other commands                                           │
         // ╰──────────────────────────────────────────────────────────╯
-        { "before": ["leader", ":"],      "commands": ["workbench.action.showCommands"], }, // Show command palette
-        { "before": ["leader", "/"],      "commands": ["actions.find"] },                   // Local search (or in file search)
-        { "before": ["leader", "f", "f"], "commands": ["workbench.action.findInFiles"] },   // Global search
-        { "before": ["leader", "f", "t"], "commands": ["workbench.action.selectTheme"] },   // Change color scheme
-        { "before": ["leader", "f", "r"], "after":    [":", "r","e","g", "enter"] },        // Open register
-        { "before": ["leader", "s", "t"], "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"] }, // Switch tabs
+        { "before": ["leader", ":"],      "commands": ["workbench.action.showCommands"] },                                 // Show command palette
+        { "before": ["leader", "/"],      "commands": ["actions.find"] },                                                  // Local search (or in file search)
+        { "before": ["leader", "f", "f"], "commands": ["workbench.action.findInFiles"] },                                  // Global search
+        { "before": ["leader", "f", "t"], "commands": ["workbench.action.selectTheme"] },                                  // Change color scheme
+        { "before": ["leader", "f", "r"], "after":    [":", "r", "e", "g", "enter"] },                                     // Open register
+        { "before": ["leader", "s", "t"], "commands": [ "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup" ] }, // Switch tabs
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ Disable cutting                                          │
@@ -282,5 +273,5 @@
             // "before": ["x"],
             // "after": [ "\"", "_", "x" ]
         }
-    ],
+    ]
 }

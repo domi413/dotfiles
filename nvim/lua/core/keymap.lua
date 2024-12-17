@@ -12,13 +12,8 @@ local keymap = vim.keymap
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>sr", "<C-w>=", { desc = "Reset splitted window width / height" })
-vim.keymap.set("n", "<leader>x", function()
-	if #vim.api.nvim_tabpage_list_wins(0) > 1 then
-		vim.cmd("close")
-	else
-		vim.cmd("bdelete!")
-	end
-end, { desc = "Close window or buffer" })
+keymap.set("n", "<leader>x", ":bd!<cr>", { desc = "Close buffer" })
+keymap.set("n", "<leader>cs", ":close<cr>", { desc = "Close split" })
 
 -- Resize splitted windows
 keymap.set("n", "<leader>v+", ":vertical resize +10<CR>", { desc = "Increase width of splitted window" })
