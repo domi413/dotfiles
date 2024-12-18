@@ -4,7 +4,8 @@ Paste them into `$HOME/.config/` if you want to use them
 
 ### INFO:
 
-The `.ideavimrc` must be moved to `$HOME`
+- The `.ideavimrc` must be moved to `$HOME`
+- The `nvim_minimal` is an alternative config for neovim with less plugins. It must be renamed to `nvim` if you want to use it
 
 ### TODO:
 

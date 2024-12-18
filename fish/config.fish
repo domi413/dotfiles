@@ -13,7 +13,7 @@ fish_add_path /home/domi/.spicetify
 # ╭──────────────────────────────────────────────────────────╮
 # │ Themes                                                   │
 # ╰──────────────────────────────────────────────────────────╯
-# You may have to update the bat cache with: bat cache --build
+# INFO: You may have to update the bat cache with: bat cache --build
 export BAT_THEME="Catppuccin Mocha"
 
 export FZF_DEFAULT_OPTS=" \
