@@ -11,6 +11,7 @@
     "workbench.editor.labelFormat": "default", // Use "short" to hide the path
     "workbench.iconTheme": "catppuccin-mocha",
     "workbench.list.smoothScrolling": true,
+    "workbench.navigationControl.enabled": false,
     "workbench.startupEditor": "none",
     "workbench.tree.indent": 20,
 
@@ -37,6 +38,7 @@
 
     // OTHERS
     "breadcrumbs.enabled": false,
+    "chat.commandCenter.enabled": false,
     "git.blame.editorDecoration.enabled": false,
     "git.blame.editorDecoration.template": "${authorName} - ${hashShort}",
     "git.enableSmartCommit": true,
@@ -75,7 +77,7 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-
+    
     // *** CMake ***
     "cmake.options.statusBarVisibility": "icon",
     "cmake.pinnedCommands": [
@@ -144,14 +146,16 @@
         "cpp": false
     },
 
+    // *** STATSBAR ***
+    "statsBar.modules": ["cpuLoad", "networkSpeed", "memoUsage"],
+
     // *** VIM CONFIGURATION ***
-    "vim.leader": "space", // Set space as leader
+    "vim.leader": "space",          // Set space as leader
     "vim.useSystemClipboard": true, // Enables copy to system clipboard
-    "vim.useCtrlKeys": true, // Override default behavior of ctrl keys
-    "vim.hlsearch": true, // Highlight search results
+    "vim.useCtrlKeys": true,        // Override default behavior of ctrl keys
+    "vim.hlsearch": true,           // Highlight search results
     // "vim.highlightedyank.enable": true,  // Highlight yanked text
-    "extensions.experimental.affinity": {
-        // To improve performance
+    "extensions.experimental.affinity": { // To improve performance
         "vscodevim.vim": 1
     },
 
@@ -165,118 +169,75 @@
     // ╭──────────────────────────────────────────────────────────╮
     // │ Editor/Editing                                           │
     // ╰──────────────────────────────────────────────────────────╯
-    "vim.insertModeKeyBindings": [{ "before": ["j", "k"], "after": ["<Esc>"] }], // Use jk to exit insert mode
+    "vim.insertModeKeyBindings": [
+        // Use jk to exit insert mode
+        { "before": ["j", "k"], "after": ["<Esc>"] }
+    ],
     "vim.visualModeKeyBindings": [
+        // Toggle case
         { "before": ["leader", "i"], "after": ["~"] }
-    ], // Toggle case
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["K"],
-            "after": ["g", "h"] // Show definition
+        // Show definition
+        { "before": ["K"],
+            // "commands": [ "editor.action.showDefinitionPreviewHover" ]
+            "after": ["g", "h"]
         },
         // The following two options override the default behavior of the VSCode
         // VIMs'u' and 'C-r' keys. But because of the fact that they are not
         // working fully correctly, I prefer the default undo/redo behavior.
-        { "before": ["u"], "commands": ["undo"] },
+        { "before": ["u"],   "commands": ["undo"] },
         { "before": ["C-r"], "commands": ["redo"] }
     ],
     "vim.normalModeKeyBindings": [
-        { "before": ["leader", "+"], "commands": ["extension.vim_ctrl+a"] }, // Increment number
-        { "before": ["leader", "-"], "commands": ["extension.vim_ctrl+x"] }, // Decrement number
-        {
-            "before": ["leader", "o"],
-            "commands": ["editor.action.insertLineAfter"]
-        }, // New line below
-        {
-            "before": ["leader", "O"],
-            "commands": ["editor.action.insertLineBefore"]
-        }, // New line above
-        { "before": ["leader", "i"], "after": ["~"] }, // Toggle case
-        { "before": ["leader", "n", "h"], "commands": [":nohl"] }, // Reset highlighting
-        {
-            "before": ["leader", "w"],
-            "commands": ["workbench.action.files.save"]
-        }, // Save file
-        {
-            "before": ["leader", "$"],
-            "commands": ["editor.action.toggleWordWrap"]
-        }, // Toggle line wrap
-        {
-            "before": ["leader", "d"],
-            "commands": ["editor.debug.action.toggleBreakpoint"]
-        }, // Toggle breakpoint
-        {
-            "before": ["leader", "f", "v"],
-            "commands": ["editor.action.formatDocument"]
-        }, // Format document
-        { "before": [","], "after": ["@", "@"] }, // Repat last macro
+        { "before": ["leader", "+"],      "commands": ["extension.vim_ctrl+a"] },                 // Increment number
+        { "before": ["leader", "-"],      "commands": ["extension.vim_ctrl+x"] },                 // Decrement number
+        { "before": ["leader", "o"],      "commands": ["editor.action.insertLineAfter"] },        // New line below
+        { "before": ["leader", "O"],      "commands": ["editor.action.insertLineBefore"] },       // New line above
+        { "before": ["leader", "i"],      "after":    ["~"] },                                    // Toggle case
+        { "before": ["leader", "n", "h"], "commands": [":nohl"] },                                // Reset highlighting
+        { "before": ["leader", "w"],      "commands": ["workbench.action.files.save"] },          // Save file
+        { "before": ["leader", "$"],      "commands": ["editor.action.toggleWordWrap"] },         // Toggle line wrap
+        { "before": ["leader", "d"],      "commands": ["editor.debug.action.toggleBreakpoint"] }, // Toggle breakpoint
+        { "before": ["leader", "f", "v"], "commands": ["editor.action.formatDocument"] },         // Format document
+        { "before": [","],                "after":    ["@","@"] },                                // Repat last macro
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ LSP shorcuts                                             │
         // ╰──────────────────────────────────────────────────────────╯
-        {
-            "before": ["leader", "r", "n"],
-            "commands": ["editor.action.rename"]
-        }, // Rename variable
+        { "before": ["leader", "r", "n"], "commands": ["editor.action.rename"] },  // Rename variable
         // { "before": ["g", "r"], "commands": ["editor.action.gotoReferences"] }, // Go to references (doesn't really work, already covered by gd)
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ Tab management                                           │
         // ╰──────────────────────────────────────────────────────────╯
-        { "before": ["C-p"], "commands": ["workbench.action.nextEditor"] }, // Go to next tab
-        { "before": ["C-n"], "commands": ["workbench.action.previousEditor"] }, // Go to previous tab
-        {
-            "before": ["leader", "n", "t"],
-            "commands": ["workbench.action.files.newUntitledFile"]
-        }, // Open new tab
-        {
-            "before": ["leader", "x"],
-            "commands": ["workbench.action.closeActiveEditor"]
-        }, // Close active tab
-
+        { "before": ["C-p"],              "commands": ["workbench.action.nextEditor"] },            // Go to next tab
+        { "before": ["C-n"],              "commands": ["workbench.action.previousEditor"] },        // Go to previous tab
+        { "before": ["leader", "n", "t"], "commands": ["workbench.action.files.newUntitledFile"] }, // Open new tab
+        { "before": ["leader", "x"],      "commands": ["workbench.action.closeActiveEditor"] },     // Close active tab
+        
         // ╭──────────────────────────────────────────────────────────╮
         // │ Window tiling                                            │
         // ╰──────────────────────────────────────────────────────────╯
-        {
-            "before": ["leader", "s", "k"],
-            "commands": ["workbench.action.splitEditorUp"]
-        }, // Split editor up
-        {
-            "before": ["leader", "s", "j"],
-            "commands": ["workbench.action.splitEditorDown"]
-        }, // Split editor down
-        {
-            "before": ["leader", "s", "h"],
-            "commands": ["workbench.action.splitEditorLeft"]
-        }, // Split editor left
-        {
-            "before": ["leader", "s", "l"],
-            "commands": ["workbench.action.splitEditorRight"]
-        }, // Split editor right
+        { "before": ["leader", "s", "k"], "commands": ["workbench.action.splitEditorUp"] },    // Split editor up
+        { "before": ["leader", "s", "j"], "commands": ["workbench.action.splitEditorDown"] },  // Split editor down
+        { "before": ["leader", "s", "h"], "commands": ["workbench.action.splitEditorLeft"] },  // Split editor left
+        { "before": ["leader", "s", "l"], "commands": ["workbench.action.splitEditorRight"] }, // Split editor right
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ Window navigation                                        │
         // ╰──────────────────────────────────────────────────────────╯
-        { "before": ["C-k"], "commands": ["workbench.action.navigateUp"] }, // Move editor up
-        { "before": ["C-j"], "commands": ["workbench.action.navigateDown"] }, // Move editor down
-        { "before": ["C-h"], "commands": ["workbench.action.navigateLeft"] }, // Move editor left
+        { "before": ["C-k"], "commands": ["workbench.action.navigateUp"] },    // Move editor up
+        { "before": ["C-j"], "commands": ["workbench.action.navigateDown"] },  // Move editor down
+        { "before": ["C-h"], "commands": ["workbench.action.navigateLeft"] },  // Move editor left
         { "before": ["C-l"], "commands": ["workbench.action.navigateRight"] }, // Move editor right
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ Toggle panels                                            │
         // ╰──────────────────────────────────────────────────────────╯
-        {
-            "before": ["leader", "j"],
-            "commands": ["workbench.action.terminal.toggleTerminal"]
-        }, // Toggle terminal
-        {
-            "before": ["leader", "e"],
-            "commands": ["workbench.action.toggleSidebarVisibility"]
-        }, // Toggle File Explorer
-        {
-            "before": ["leader", "E"],
-            "commands": ["workbench.action.toggleAuxiliaryBar"]
-        }, // Toggle right sidebar
+        { "before": ["leader", "j"], "commands": ["workbench.action.terminal.toggleTerminal"] }, // Toggle terminal
+        { "before": ["leader", "e"], "commands": ["workbench.action.toggleSidebarVisibility"] }, // Toggle File Explorer
+        { "before": ["leader", "E"], "commands": ["workbench.action.toggleAuxiliaryBar"] },      // Toggle right sidebar
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ Compile & Run & Debug                                    │
@@ -294,61 +255,26 @@
         // rust     -> r
 
         // C / C++
-        {
-            "before": ["leader", "leader", "d", "c"],
-            "commands": ["C_Cpp.BuildAndDebugFile"]
-        },
-        {
-            "before": ["leader", "leader", "r", "c"],
-            "commands": ["C_Cpp.BuildAndRunFile"]
-        },
+        { "before": ["leader", "leader", "d", "c"], "commands": ["C_Cpp.BuildAndDebugFile"] },
+        { "before": ["leader", "leader", "r", "c"], "commands": ["C_Cpp.BuildAndRunFile"] },
 
         // Python
-        {
-            "before": ["leader", "leader", "d", "p"],
-            "commands": ["debugpy.debugInTerminal"]
-        },
-        {
-            "before": ["leader", "leader", "r", "p"],
-            "commands": ["python.execInTerminal-icon"]
-        },
+        { "before": ["leader", "leader", "d", "p"], "commands": ["debugpy.debugInTerminal"] },
+        { "before": ["leader", "leader", "r", "p"], "commands": ["python.execInTerminal-icon"] },
 
         // CMake
-        {
-            "before": ["leader", "leader", "s", "m"],
-            "commands": ["cmake.selectLaunchTarget"]
-        },
-        {
-            "before": ["leader", "leader", "r", "m"],
-            "commands": ["cmake.launchTarget"]
-        },
+        { "before": ["leader", "leader", "s", "m"], "commands": ["cmake.selectLaunchTarget"] },
+        { "before": ["leader", "leader", "r", "m"], "commands": ["cmake.launchTarget"] },
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ Other commands                                           │
         // ╰──────────────────────────────────────────────────────────╯
-        {
-            "before": ["leader", ":"],
-            "commands": ["workbench.action.showCommands"]
-        }, // Show command palette
-        { "before": ["leader", "/"], "commands": ["actions.find"] }, // Local search (or in file search)
-        {
-            "before": ["leader", "f", "f"],
-            "commands": ["workbench.action.findInFiles"]
-        }, // Global search
-        {
-            "before": ["leader", "f", "t"],
-            "commands": ["workbench.action.selectTheme"]
-        }, // Change color scheme
-        {
-            "before": ["leader", "f", "r"],
-            "after": [":", "r", "e", "g", "enter"]
-        }, // Open register
-        {
-            "before": ["leader", "s", "t"],
-            "commands": [
-                "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
-            ]
-        }, // Switch tabs
+        { "before": ["leader", ":"],      "commands": ["workbench.action.showCommands"], }, // Show command palette
+        { "before": ["leader", "/"],      "commands": ["actions.find"] },                   // Local search (or in file search)
+        { "before": ["leader", "f", "f"], "commands": ["workbench.action.findInFiles"] },   // Global search
+        { "before": ["leader", "f", "t"], "commands": ["workbench.action.selectTheme"] },   // Change color scheme
+        { "before": ["leader", "f", "r"], "after":    [":", "r","e","g", "enter"] },        // Open register
+        { "before": ["leader", "s", "t"], "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"] }, // Switch tabs
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ Disable cutting                                          │
@@ -358,5 +284,5 @@
             // "before": ["x"],
             // "after": [ "\"", "_", "x" ]
         }
-    ]
+    ],
 }

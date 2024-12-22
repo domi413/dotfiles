@@ -58,6 +58,9 @@ alias vi="nvim"
 # Set alias svim to open nvim with sudo rights
 alias svim="sudo -s -E nvim"
 
+### Man
+alias man="batman"
+
 ### Lazygit
 alias lg="lazygit"
 
