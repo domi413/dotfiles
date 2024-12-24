@@ -5,8 +5,9 @@ return {
 			formatters_by_ft = {
 				bash = { "shfmt" },
 				c = { "clang_format" },
-				css = { "prettier" },
 				cpp = { "clang_format" },
+				-- cs = { "clang_format" },
+				css = { "prettier" },
 				graphql = { "prettier" },
 				html = { "prettier" },
 				javascript = { "prettier" },
@@ -31,7 +32,17 @@ return {
 				clang_format = {
 					command = "clang-format",
 					append_args = function()
-						return { "--style={BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 80, ReflowComments: false}" }
+						return {
+							"--style={\
+								BasedOnStyle: llvm,\
+								IndentWidth: 4,\
+								ColumnLimit: 80,\
+								ReflowComments: false,\
+								AlignArrayOfStructures: Left,\
+								AlignConsecutiveMacros: Consecutive,\
+								RemoveParentheses: ReturnStatement,\
+							}",
+						}
 					end,
 				},
 				prettier = {

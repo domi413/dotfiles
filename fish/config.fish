@@ -58,11 +58,11 @@ alias vi="nvim"
 # Set alias svim to open nvim with sudo rights
 alias svim="sudo -s -E nvim"
 
-### Man
-alias man="batman"
-
 ### Lazygit
 alias lg="lazygit"
+
+### Man
+alias man="batman"
 
 ### Zoxide
 alias cd="z"
@@ -87,6 +87,9 @@ alias tree="eza --tree --group-directories-first --icons"
 
 ### fzf (fuzzy finder)
 alias f="fzf --height 40% --layout reverse --border"
+
+# Fuzzy find with preview
+alias fp='fzf --preview="bat --color=always {}"'
 
 # ╭──────────────────────────────────────────────────────────╮
 # │ Custom Functions                                         │
