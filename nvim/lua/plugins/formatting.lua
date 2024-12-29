@@ -15,7 +15,7 @@ return {
 				json = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
-				python = { "isort", "black" },
+				python = { "ruff_format", "ruff_organize_imports" },
 				-- rust = { "rustfmt" },
 				svelte = { "prettier" },
 				tex = { "latexindent" },

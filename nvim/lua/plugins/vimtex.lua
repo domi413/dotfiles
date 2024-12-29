@@ -16,11 +16,11 @@ return {
 
 		-- Set xelatex as default compiler
 		-- tectonic already has xelatex as default
-		vim.g.vimtex_compiler_latexrun_engines = {
-			["_"] = "-xelatex",
-		}
-		vim.g.vimtex_compiler_latexmk_engines = {
-			["_"] = "-xelatex",
-		}
+		-- vim.g.vimtex_compiler_latexrun_engines = {
+		-- 	["_"] = "-xelatex",
+		-- }
+		-- vim.g.vimtex_compiler_latexmk_engines = {
+		-- 	["_"] = "-xelatex",
+		-- }
 	end,
 }

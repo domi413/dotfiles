@@ -40,13 +40,11 @@ return {
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"black", -- python formatter
 				"clang-format", -- c/c++ formatter
 				"css-lsp",
 				"html-lsp",
-				"isort", -- python formatter
 				"prettier", -- prettier formatter
-				-- "ruff", -- python formatter
+				"ruff", -- python formatter
 				"shellcheck",
 				"shfmt", -- shell formatter
 				"stylua", -- lua formatter

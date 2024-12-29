@@ -7,23 +7,18 @@ Paste them into `$HOME/.config/` if you want to use them
 - The `.ideavimrc` must be moved to `$HOME`
 - The `nvim_minimal` is an alternative config for neovim with less plugins. It must be renamed to `nvim` if you want to use it
 
-### TODO:
+## TODO:
+
+### Zed
 
 - [ ] Cleaner zed configs
-- [ ] Apply themes
-- [ ] Kanagawa, Catppuccin Mocha, Rose-pine for themeable applications
 
 ### Kitty
 
-#### TODO
-
 - [ ] Save session (tmux?)
-- [ ] Move themes into separate file
 - [ ] Fix tab bar
 
 ### Neovim
-
-#### TODO
 
 - [ ] Install debugger with mason
 - [ ] Install latexindent with mason

@@ -75,7 +75,11 @@
         "editor.defaultFormatter": "jnoortheen.nix-ide"
     },
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
     },
     
     // *** CMake ***
@@ -205,8 +209,8 @@
         // ╭──────────────────────────────────────────────────────────╮
         // │ LSP shorcuts                                             │
         // ╰──────────────────────────────────────────────────────────╯
-        { "before": ["leader", "r", "n"], "commands": ["editor.action.rename"] },  // Rename variable
-        // { "before": ["g", "r"], "commands": ["editor.action.gotoReferences"] }, // Go to references (doesn't really work, already covered by gd)
+        { "before": ["leader", "r", "n"], "commands": ["editor.action.rename"] }, // Rename variable
+        { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },   // Go to references
 
         // ╭──────────────────────────────────────────────────────────╮
         // │ Tab management                                           │
