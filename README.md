@@ -13,15 +13,8 @@ Paste them into `$HOME/.config/` if you want to use them
 
 - Fastfetch
     - [ ] Kanagawa
-    - [ ] Rose-pine
-- Fish
-    - [ ] Kanagawa
-    - [ ] Rose-pine
 - Ghostty
-    - [ ] Kanagawa light theme
-- Lazygit
-    - [ ] Kanagawa
-    - [ ] Rose-pine
+    - [ ] Kanagawa-lotus (light theme)
 
 ### Yazi
 

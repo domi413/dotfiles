@@ -14,14 +14,36 @@ fish_add_path /home/domi/.spicetify
 # │ Themes                                                   │
 # ╰──────────────────────────────────────────────────────────╯
 # INFO: You may have to update the bat cache with: bat cache --build
-export BAT_THEME="Catppuccin Mocha"
 
+### Bat
+export BAT_THEME="Catppuccin Mocha"
+# export BAT_THEME="kanagawa"
+# export BAT_THEME="rose-pine"
+
+### Fuzzy finder
+# Catppuccin-mocha
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --color=selected-bg:#45475a \
 --multi"
+
+# Rose-Pine
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#21202e,bg:#1f1d2e,spinner:#eb6f92,hl:#ebbcba \
+# --color=fg:#e0def4,header:#ebbcba,info:#c4a7e7,pointer:#eb6f92 \
+# --color=marker:#9ccfd8,fg+:#e0def4,prompt:#c4a7e7,hl+:#ebbcba \
+# --color=selected-bg:#403d52 \
+# --multi"
+
+# Kanagawa
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#1F1F28,bg:#16161D,spinner:#FF5D62,hl:#D27E99 \
+# --color=fg:#DCD7BA,header:#D27E99,info:#7E9CD8,pointer:#FF5D62 \
+# --color=marker:#A3D4D5,fg+:#DCD7BA,prompt:#7E9CD8,hl+:#D27E99 \
+# --color=selected-bg:#2D4F67 \
+# --multi"
 
 # ╭──────────────────────────────────────────────────────────╮
 # │ Fish shell                                               │
@@ -200,3 +222,6 @@ function __zoxide_forget_zr
     command zoxide remove -- (__zoxide_pwd)
 end
 
+
+# Created by `pipx` on 2024-12-30 18:42:41
+set PATH $PATH /home/domi/.local/bin

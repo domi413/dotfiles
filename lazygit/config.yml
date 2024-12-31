@@ -1,5 +1,11 @@
+notARepository: "skip"
+disableStartupPopups: true
+os:
+    editPreset: "nvim"
 gui:
-    # Use the mocha catppuccin theme
+    nerdFontsVersion: "3"
+
+    # Catppuccin-mocha
     theme:
         activeBorderColor:
             - "#89b4fa"
@@ -22,3 +28,52 @@ gui:
             - "#cdd6f4"
         searchingActiveBorderColor:
             - "#f9e2af"
+
+    # Kanagawa
+    # theme:
+    #     activeBorderColor:
+    #         - "#7FB4CA"
+    #         - bold
+    #     inactiveBorderColor:
+    #         - "#54546D"
+    #     optionsTextColor:
+    #         - "#7FB4CA"
+    #     selectedLineBgColor:
+    #         - "#2A2A37"
+    #     selectedRangeBgColor:
+    #         - "#2A2A37"
+    #     cherryPickedCommitBgColor:
+    #         - "#363646"
+    #     cherryPickedCommitFgColor:
+    #         - "#7FB4CA"
+    #     unstagedChangesColor:
+    #         - "#E46876"
+    #     defaultFgColor:
+    #         - "#DCD7BA"
+    #     searchingActiveBorderColor:
+    #         - "#DCA561"
+    #
+
+    # Rose-pine
+    # theme:
+    #     activeBorderColor:
+    #         - "#31748f"
+    #         - bold
+    #     inactiveBorderColor:
+    #         - "#908caa"
+    #     optionsTextColor:
+    #         - "#6e6a86"
+    #     selectedLineBgColor:
+    #         - "#21202e"
+    #     selectedRangeBgColor:
+    #         - "#21202e"
+    #     cherryPickedCommitBgColor:
+    #         - "#403d52"
+    #     cherryPickedCommitFgColor:
+    #         - "#6e6a86"
+    #     unstagedChangesColor:
+    #         - "#eb6f92"
+    #     defaultFgColor:
+    #         - "#e0def4"
+    #     searchingActiveBorderColor:
+    #         - "#f6c177"

@@ -1,3 +1,5 @@
+# You can use custom colors e.g. foreground = { rgb = [69, 69, 69] }
+
 [style.description]
 underline = false
 bold = false
