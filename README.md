@@ -9,6 +9,25 @@ Paste them into `$HOME/.config/` if you want to use them
 
 ## TODO:
 
+### Themes
+
+- Fastfetch
+    - [ ] Kanagawa
+    - [ ] Rose-pine
+- Fish
+    - [ ] Kanagawa
+    - [ ] Rose-pine
+- Ghostty
+    - [ ] Kanagawa light theme
+- Lazygit
+    - [ ] Kanagawa
+    - [ ] Rose-pine
+
+### Yazi
+
+- [ ] Flavor looks buggy
+- [ ] Add flavor for Rose-pine
+
 ### Zed
 
 - [ ] Cleaner zed configs

@@ -1,0 +1,83 @@
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]="#1F1F28"  # sumiInk1
+
+# Main text color
+theme[main_fg]="#DCD7BA"  # fujiWhite
+
+# Title color for boxes
+theme[title]="#DCD7BA"  # fujiWhite
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#7E9CD8"  # crystalBlue
+
+# Background color of selected item in processes box
+theme[selected_bg]="#2D4F67"  # waveBlue2
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#7E9CD8"  # crystalBlue
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#727169"  # fujiGray
+
+# Color of text appearing on top of graphs, i.e uptime and current network graph scaling
+theme[graph_text]="#F5E0DC"  # winterGreen
+
+# Background color of the percentage meters
+theme[meter_bg]="#2D4F67"  # waveBlue2
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#F5E0DC"  # winterGreen
+
+# CPU, Memory, Network, Proc box outline colors
+theme[cpu_box]="#94E2D5"  # cpu_start (Teal)
+theme[mem_box]="#76946A"  # autumnGreen
+theme[net_box]="#E46876"  # waveRed
+theme[proc_box]="#7E9CD8"  # crystalBlue
+
+# Box divider line and small boxes line color
+theme[div_line]="#6C7086"  # sumiInk4
+
+# Temperature graph color (Green -> Yellow -> Red)
+theme[temp_start]="#76946A"  # autumnGreen
+theme[temp_mid]="#F9E2AF"  # winterYellow
+theme[temp_end]="#E46876"  # waveRed
+
+# CPU graph colors (Teal -> Lavender)
+theme[cpu_start]="#94E2D5"  # cpu_start (Teal)
+theme[cpu_mid]="#74C7EC"  # cached_start (Sapphire)
+theme[cpu_end]="#B4BEFE"  # free_mid (Lavender)
+
+# Mem/Disk free meter (Mauve -> Lavender -> Blue)
+theme[free_start]="#CBA6F7"  # cpu_box (Mauve)
+theme[free_mid]="#B4BEFE"  # free_end (Blue)
+theme[free_end]="#89B4FA"  # selected_fg (Blue)
+
+# Mem/Disk cached meter (Sapphire -> Lavender)
+theme[cached_start]="#74C7EC"  # cached_start (Sapphire)
+theme[cached_mid]="#89B4FA"  # selected_fg (Blue)
+theme[cached_end]="#B4BEFE"  # free_end (Lavender)
+
+# Mem/Disk available meter (Peach -> Red)
+theme[available_start]="#FF9E3B"  # roninYellow
+theme[available_mid]="#E46876"  # waveRed
+theme[available_end]="#F38BA8"  # temp_end (Red)
+
+# Mem/Disk used meter (Green -> Sky)
+theme[used_start]="#A6E3A1"  # mem_box (Green)
+theme[used_mid]="#94E2D5"  # cpu_start (Teal)
+theme[used_end]="#89DCEB"  # cpu_end (Blue)
+
+# Download graph colors (Peach -> Red)
+theme[download_start]="#FF9E3B"  # roninYellow
+theme[download_mid]="#E46876"  # waveRed
+theme[download_end]="#F38BA8"  # temp_end (Red)
+
+# Upload graph colors (Green -> Sky)
+theme[upload_start]="#A6E3A1"  # mem_box (Green)
+theme[upload_mid]="#94E2D5"  # cpu_start (Teal)
+theme[upload_end]="#89DCEB"  # cpu_end (Blue)
+
+# Process box color gradient for threads, mem and cpu usage (Sapphire -> Mauve)
+theme[process_start]="#74C7EC"  # cached_start (Sapphire)
+theme[process_mid]="#B4BEFE"  # free_end (Blue)
+theme[process_end]="#CBA6F7"  # cpu_box (Mauve)
