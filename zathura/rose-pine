@@ -1,0 +1,49 @@
+# Default Colors
+set default-bg              rgba(31,29,46,1) # If you want the same color as background as the page background
+set default-bg              rgba(26,26,36,1)
+set default-fg              rgba(224,222,244,1)
+
+# Completion Colors
+set completion-bg           rgba(49,116,143,1)
+set completion-fg           rgba(224,222,244,1)
+set completion-highlight-bg rgba(64,61,82,1)
+set completion-highlight-fg rgba(224,222,244,1)
+set completion-group-bg     rgba(49,116,143,1)
+set completion-group-fg     rgba(196,167,231,1)
+
+# Status Bar Colors
+set statusbar-bg            rgba(49,116,143,1)
+set statusbar-fg            rgba(224,222,244,1)
+
+# Notification Colors
+set notification-bg         rgba(49,116,143,1)
+set notification-fg         rgba(224,222,244,1)
+set notification-error-bg   rgba(49,116,143,1)
+set notification-error-fg   rgba(235,111,146,1)
+set notification-warning-bg rgba(49,116,143,1)
+set notification-warning-fg rgba(246,193,119,1)
+
+# Input Bar Colors
+set inputbar-bg             rgba(49,116,143,1)
+set inputbar-fg             rgba(224,222,244,1)
+
+# Recolor Settings
+set recolor                 "true"
+set recolor-keephue         "true"
+set recolor-lightcolor      rgba(31,29,46,1)
+set recolor-darkcolor       rgba(224,222,244,1)
+
+# Index Colors
+set index-bg                rgba(31,29,46,1)
+set index-fg                rgba(224,222,244,1)
+set index-active-bg         rgba(49,116,143,1)
+set index-active-fg         rgba(224,222,244,1)
+
+# Render Loading Colors
+set render-loading-bg       rgba(31,29,46,1)
+set render-loading-fg       rgba(224,222,244,1)
+
+# Highlight Colors
+set highlight-color         rgba(33,32,46,0.5)
+set highlight-fg            rgba(235,111,146,0.5)
+set highlight-active-color  rgba(235,111,146,0.5)

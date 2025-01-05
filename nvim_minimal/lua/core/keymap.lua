@@ -77,6 +77,11 @@ keymap.set("n", ",", "@@", { desc = "Repeat last macro" })
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ UndoTree                                                 │
 -- ╰──────────────────────────────────────────────────────────╯
+keymap.set("n", "<leader>zt", ":ZenMode<CR>", { desc = "Toggle ZenMode" })
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ UndoTree                                                 │
+-- ╰──────────────────────────────────────────────────────────╯
 keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>", { desc = "Toggle undoTree" })
 
 -- ╭──────────────────────────────────────────────────────────╮
@@ -121,6 +126,11 @@ keymap.set("n", "<leader>lC", ":VimtexClean<cr><cr>", { desc = "Cleanup files" }
 keymap.set("n", "<leader>lt", ":VimtexTocToggle<cr>", { desc = "Toggle TOC" })
 
 -- ╭──────────────────────────────────────────────────────────╮
+-- │ Toggle spellchecker                                      │
+-- ╰──────────────────────────────────────────────────────────╯
+keymap.set("n", "<leader>ts", "<cmd>set spell!<cr>", { desc = "Toggle spellchecker" })
+
+-- ╭──────────────────────────────────────────────────────────╮
 -- │ NVIM Tree (File Explorer)                                │
 -- ╰──────────────────────────────────────────────────────────╯
 -- keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
@@ -157,3 +167,11 @@ end, { desc = "Toggle show changes" })
 -- │ Codeium                                                  │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Codeium keybindings are defined in lua/plugins/codeium.lua
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Command line                                             │
+-- ╰──────────────────────────────────────────────────────────╯
+vim.keymap.set("c", "<C-h>", "<Left>", { desc = "Move cursor left" })
+vim.keymap.set("c", "<C-l>", "<Right>", { desc = "Move cursor right" })
+vim.keymap.set("c", "<C-0>", "<Home>", { desc = "Move cursor to beginning of line" })
+vim.keymap.set("c", "<C-$>", "<End>", { desc = "Move cursor to end of line" })

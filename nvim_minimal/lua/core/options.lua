@@ -39,8 +39,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	once = true,
 })
 
-vim.opt.list = true
-vim.opt.listchars = {
+opt.list = true
+opt.listchars = {
 	-- eol = "↲",
 	leadmultispace = "│ ", -- Placeholder until updated by update_lead
 	tab = "│" .. lead_char,
@@ -70,6 +70,11 @@ opt.fillchars = {
 -- ╰──────────────────────────────────────────────────────────╯
 -- Wrap the whole word and don't split the word in half
 opt.linebreak = true
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Spell language                                           │
+-- ╰──────────────────────────────────────────────────────────╯
+opt.spelllang = "en,de"
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Command line                                             │
@@ -126,10 +131,8 @@ opt.smartcase = true
 opt.cursorline = true
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Cursor line                                              │
+-- │ Terminal colors (needs a true color terminal)            │
 -- ╰──────────────────────────────────────────────────────────╯
--- Turn on termguicolors for nightfly colorscheme to work
--- (Have to use a true color terminal)
 opt.termguicolors = true
 
 -- ╭──────────────────────────────────────────────────────────╮

@@ -1,0 +1,6 @@
+include catppuccin-mocha
+# include kanagawa
+# include rose-pine
+
+map j feedkeys "<C-Down>"
+map k feedkeys "<C-Up>"
