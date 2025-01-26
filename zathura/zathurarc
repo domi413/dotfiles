@@ -2,5 +2,7 @@ include catppuccin-mocha
 # include kanagawa
 # include rose-pine
 
+set selection-clipboard clipboard
+
 map j feedkeys "<C-Down>"
 map k feedkeys "<C-Up>"

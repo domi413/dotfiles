@@ -4,9 +4,8 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-path", -- source for file system paths
+		-- "hrsh7th/cmp-nvim-lsp-signature-help", -- Doens't work well
 		"L3MON4D3/LuaSnip", -- snippet engine
-		-- "saadparwaiz1/cmp_luasnip", -- for autocompletion
-		-- "rafamadriz/friendly-snippets", -- useful snippets
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 	},
 	config = function()
@@ -39,14 +38,14 @@ return {
 			},
 			formatting = {
 				expandable_indicator = true,
-				fields = { "abbr", "kind", "menu" }, -- Add this line to specify required fields
+				fields = { "abbr", "kind", "menu" }, -- Specify required fields
 				format = lspkind.cmp_format({
 					mode = "symbol_text",
 					maxwidth = {
 						menu = 25,
 						abbr = 25,
 					},
-					ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+					ellipsis_char = "...", -- Show dots when abbreviations are too long
 				}),
 			},
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
@@ -56,7 +55,6 @@ return {
 			},
 			mapping = cmp.mapping.preset.insert({
 				["<C-j>"] = cmp.mapping(function(fallback)
-					-- ["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
 					else
@@ -64,7 +62,6 @@ return {
 					end
 				end, { "i", "s" }),
 				["<C-k>"] = cmp.mapping(function(fallback)
-					-- ["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
 					else
@@ -93,23 +90,14 @@ return {
 				["<CR>"] = cmp.mapping.confirm({ select = false }), -- Enter to confirm the selection
 			}),
 
-			-- Mapping to close the completion window with Esc in insert mode
-			-- ["<Esc>"] = cmp.mapping(function(fallback)
-			-- 	if cmp.visible() then
-			-- 		cmp.abort()
-			-- 	else
-			-- 		fallback()
-			-- 	end
-			-- end, { "i", "s" }),
-			-- sources for autocompletion
-
 			-- Sources for the autocompletion
-			sources = cmp.config.sources({
+			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- snippets
 				-- { name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
-			}),
+				-- { name = "nvim_lsp_signature_help" },
+			},
 		})
 	end,
 }

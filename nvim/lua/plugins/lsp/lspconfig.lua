@@ -38,6 +38,9 @@ return {
 				opts.desc = "Go definition"
 				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
+				opts.desc = "Go definition in new tab"
+				keymap.set("n", "gD", "<cmd>tab split | Telescope lsp_definitions<CR>", opts)
+
 				opts.desc = "Code actions"
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
@@ -83,7 +86,7 @@ return {
 				})
 			end,
 			["lua_ls"] = function()
-				-- configure lua server (with special settings)
+				-- configure lua server
 				lspconfig["lua_ls"].setup({
 					capabilities = capabilities,
 					settings = {
@@ -104,7 +107,11 @@ return {
 				-- configure clangd server
 				lspconfig["clangd"].setup({
 					capabilities = capabilities,
-					cmd = { "clangd", "--background-index" }, -- you can add other options here
+					cmd = {
+						"clangd",
+						"--background-index",
+						"--clang-tidy", -- FIXME: Doesn't work
+					},
 					filetypes = { "c", "cpp", "objc", "objcpp" },
 					root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
 				})

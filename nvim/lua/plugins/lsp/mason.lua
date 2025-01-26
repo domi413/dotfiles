@@ -32,8 +32,8 @@ return {
 				"gopls",
 				-- "jdtls", -- Install from package manager because of install path
 				"lua_ls",
-				"pyright",
 				-- "omnisharp",  -- doesn't seem to work, install from package manager instead
+				"pyright",
 				"texlab",
 			},
 		})

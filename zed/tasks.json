@@ -1,0 +1,36 @@
+[
+  // Lazygit
+  {
+    "label": "LazyGit",
+    "command": "lazygit -p $ZED_WORKTREE_ROOT",
+    "hide": "always",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+
+  // Run or compile file
+  {
+    "label": "Run file",
+    "command": "bash ~/.config/zed/run_or_compile.sh run",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus"
+  },
+  {
+    "label": "Compile file",
+    "command": "bash ~/.config/zed/run_or_compile.sh compile",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus"
+  },
+
+  // Yazi
+  // Doesn't work well because it opens the file in nvim
+  {
+    "label": "Yazi",
+    "command": "yazi $ZED_WORKTREE_ROOT",
+    "hide": "always",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  }
+]

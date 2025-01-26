@@ -5,15 +5,22 @@ return {
 			backdrop = 1,
 			width = 0.8,
 			height = 1,
-			options = {
-				-- signcolumn = "no", -- disable signcolumn
-				-- number = false, -- disable number column
-				-- relativenumber = false, -- disable relative numbers
-				-- cursorline = false, -- disable cursorline
-				-- cursorcolumn = false, -- disable cursor column
-				-- foldcolumn = "0", -- disable fold column
-				-- list = false, -- disable whitespace characters
-			},
+			options = {},
 		},
+		on_open = function(win)
+			local view = require("zen-mode.view")
+			local layout = view.layout(view.opts)
+			vim.api.nvim_win_set_config(win, {
+				width = layout.width,
+				height = layout.height - 1,
+			})
+			vim.api.nvim_win_set_config(view.bg_win, {
+				width = vim.o.columns,
+				height = view.height() - 1,
+				row = 1,
+				col = layout.col,
+				relative = "editor",
+			})
+		end,
 	},
 }

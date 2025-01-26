@@ -5,22 +5,24 @@ return {
 		-- Set zathura as pdf viewer
 		vim.g.vimtex_view_method = "zathura"
 
-		-- Disable continuous compilation with latexmk by using tectonic
+		-- Set latex engine
 		vim.g.vimtex_compiler_method = "tectonic"
 
 		-- Use treesitter for syntax highlighting
 		vim.g.vimtex_syntax_enabled = 0
 		vim.g.vimtex_syntax_conceal_disable = 1
 
-		-- vim.g.vimtex_compiler_method = "latexrun"
-
-		-- Set xelatex as default compiler
-		-- tectonic already has xelatex as default
-		-- vim.g.vimtex_compiler_latexrun_engines = {
-		-- 	["_"] = "-xelatex",
-		-- }
-		-- vim.g.vimtex_compiler_latexmk_engines = {
-		-- 	["_"] = "-xelatex",
-		-- }
+		-- TOC
+		vim.g.vimtex_toc_config = {
+			name = "Table of Contents",
+			indent_levels = 1,
+			show_help = 0,
+			layer_status = {
+				content = 1,
+				label = 1,
+				todo = 1,
+				include = 0,
+			},
+		}
 	end,
 }

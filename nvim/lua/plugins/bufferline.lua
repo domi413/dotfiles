@@ -16,7 +16,7 @@ return {
 		local bufferline = require("bufferline")
 		bufferline.setup({
 			options = {
-				mode = "buffers",
+				mode = "tabs",
 
 				-- numbers: none, ordinal(1, 2, 3), buffer_id, both, ...
 				numbers = "none",
