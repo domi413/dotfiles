@@ -73,6 +73,9 @@ alias logout="gnome-session-quit"
 # Hibernate
 alias hibernate="sudo systemctl hibernate"
 
+### Fastfetch
+alias ff="fastfetch"
+
 ### Neovim
 alias vim="nvim"
 alias vi="nvim"
@@ -111,7 +114,14 @@ alias tree="eza --tree --group-directories-first --icons"
 alias f="fzf --height 40% --layout reverse --border"
 
 # Fuzzy find with preview
+# NOTE: You may have to run: bat cache --build
 alias fp='fzf --preview="bat --color=always {}"'
+
+# rga-fzf
+alias fr='rga-fzf'
+
+# Zed
+alias zed="zeditor"
 
 # ╭──────────────────────────────────────────────────────────╮
 # │ Custom Functions                                         │
