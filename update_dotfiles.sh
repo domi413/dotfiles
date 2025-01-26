@@ -82,7 +82,7 @@ elif [ "$load" = true ]; then
     copy ".config/fish/config.fish"
     copy ".config/kitty/"
     copy ".config/lazygit/config.yml"
-    copy ".config/nvim/"
+    # copy ".config/nvim/"
     copy ".config/starship.toml"
     copy ".config/tealdeer/config.toml"
     copy ".config/yazi/init.lua"

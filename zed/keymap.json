@@ -91,8 +91,8 @@
       "#": ["workspace::SendKeystrokes", "@ @"],
 
       // Create new line above/below in normal mode
-      "space o": "editor::NewlineBelow",
-      "space O": "editor::NewlineAbove",
+      "space o": ["workspace::SendKeystrokes", "o escape"],
+      "space O": ["workspace::SendKeystrokes", "shift-o escape"],
 
       // Save file
       "space w": "workspace::Save",
