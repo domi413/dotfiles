@@ -25,10 +25,9 @@
   },
 
   // Yazi
-  // Doesn't work well because it opens the file in nvim
   {
     "label": "Yazi",
-    "command": "yazi $ZED_WORKTREE_ROOT",
+    "command": "yazi_zed $ZED_FILE",
     "hide": "always",
     "use_new_terminal": true,
     "allow_concurrent_runs": false

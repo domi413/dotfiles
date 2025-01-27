@@ -57,8 +57,8 @@
     "context": "Editor && vim_mode == normal || ProjectPanel",
     "bindings": {
       // Toggle docks
-      "space e": "workspace::ToggleLeftDock",
-      "space E": "workspace::ToggleRightDock",
+      // "space e": "workspace::ToggleLeftDock",
+      // "space E": "workspace::ToggleRightDock",
 
       // Disable cutting (Blackhole register)
       "x": ["workspace::SendKeystrokes", "\" _ x"],
@@ -129,6 +129,10 @@
       "space l g": [
         "task::Spawn",
         { "task_name": "LazyGit", "reveal_target": "center" }
+      ],
+      "space e": [
+        "task::Spawn",
+        { "task_name": "Yazi", "reveal_target": "center" }
       ],
 
       // Run/Compile Code

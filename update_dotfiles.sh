@@ -66,7 +66,6 @@ if [ "$update" = true ]; then
     copy ".config/yazi/keymap.toml"
     copy ".config/yazi/yazi.toml"
     copy ".config/yazi/theme.toml"
-    copy ".config/yazi/package.toml"
     copy ".config/yazi/rose-pine-theme.toml" # waiting for a flavor
     copy ".config/zathura/"
     copy ".config/zed/"
@@ -91,7 +90,6 @@ elif [ "$load" = true ]; then
     copy ".config/yazi/keymap.toml"
     copy ".config/yazi/yazi.toml"
     copy ".config/yazi/theme.toml"
-    copy ".config/yazi/package.toml"
     copy ".config/yazi/rose-pine-theme.toml" # waiting for a flavor
     copy ".config/zathura/"
     copy ".config/zed/"
