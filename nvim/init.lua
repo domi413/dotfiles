@@ -28,7 +28,6 @@ require("core.disable_cutting")
 require("core.options")
 require("core.keymap")
 require("core.run_code")
--- require("core.CMake")
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -41,7 +40,6 @@ require("lazy").setup({
 		{ import = "plugins.debugger" },
 		{ import = "plugins.git" },
 		{ import = "plugins.lsp" },
-		{ import = "plugins.telescope" },
 	},
 	-- Configure any other settings here.
 	-- colorscheme that will be used when installing plugins.

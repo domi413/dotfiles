@@ -51,6 +51,7 @@ end
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
+		"LukasPietzschmann/telescope-tabs",
 		"nvim-lua/plenary.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -122,14 +123,17 @@ return {
 					height = 0.80,
 					preview_cutoff = 120,
 				},
+
 				file_sorter = require("telescope.sorters").get_fuzzy_file,
 				file_ignore_patterns = { "node_modules" },
 				generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 				path_display = { "truncate" },
 				winblend = 0,
 				border = {},
+
 				-- default borders
 				borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+
 				-- no borders
 				-- borderchars = { "", "", "", "", "", "", "", "" },
 
@@ -139,6 +143,7 @@ return {
 				grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 				qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 				buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result

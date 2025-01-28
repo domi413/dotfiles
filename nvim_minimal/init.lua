@@ -38,7 +38,6 @@ require("lazy").setup({
 		{ import = "plugins.treesitter" },
 		{ import = "plugins" },
 		{ import = "plugins.git" },
-		{ import = "plugins.telescope" },
 	},
 	-- Configure any other settings here.
 	-- colorscheme that will be used when installing plugins.

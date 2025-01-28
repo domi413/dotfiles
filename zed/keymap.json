@@ -14,6 +14,12 @@
     }
   },
   {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-k": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
     "context": "BufferSearchBar",
     "bindings": {
       "ctrl-r": "search::ToggleReplace"
@@ -56,10 +62,6 @@
   {
     "context": "Editor && vim_mode == normal || ProjectPanel",
     "bindings": {
-      // Toggle docks
-      // "space e": "workspace::ToggleLeftDock",
-      // "space E": "workspace::ToggleRightDock",
-
       // Disable cutting (Blackhole register)
       "x": ["workspace::SendKeystrokes", "\" _ x"],
       "shift-x": ["workspace::SendKeystrokes", "\" _ shift-x"],
@@ -100,6 +102,11 @@
       // Toggle line wrapping
       "space $": "editor::ToggleSoftWrap",
 
+      // Toggle docks
+      "space t h": "workspace::ToggleLeftDock",
+      "space t l": "workspace::ToggleRightDock",
+      "space t j": "workspace::ToggleBottomDock",
+
       // Toggle Zen-Mode
       "space t z": "workspace::ToggleCenteredLayout",
 
@@ -109,6 +116,9 @@
       // Toggle Assistant
       "space t a": "assistant::ToggleFocus",
 
+      // Toggle inline git diff
+      "space g h ": "editor::ToggleHunkDiff",
+
       // Rename
       "space r n": "editor::Rename",
 
@@ -117,6 +127,7 @@
       "space d p": "editor::GoToPrevDiagnostic",
       "space D": "diagnostics::Deploy",
       // Line diagnostics missing
+      // "space d l": "",
 
       // Telescope (or It would be nice if it would be like telescope...)
       // "space f c": "fuzzy find content" // TODO:
@@ -130,6 +141,8 @@
         "task::Spawn",
         { "task_name": "LazyGit", "reveal_target": "center" }
       ],
+
+      // Yazi
       "space e": [
         "task::Spawn",
         { "task_name": "Yazi", "reveal_target": "center" }

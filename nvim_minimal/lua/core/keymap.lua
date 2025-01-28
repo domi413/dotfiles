@@ -9,40 +9,41 @@ local keymap = vim.keymap
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Window tiling and buffer management                      │
 -- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<leader>sr", "<C-w>=", { desc = "Reset splitted window width / height" })
-keymap.set("n", "<leader>x", ":bd!<cr>", { desc = "Close buffer" })
-keymap.set("n", "<leader>cs", ":close<cr>", { desc = "Close split" })
+keymap.set("n", "<leader>sk", "<cmd>topleft split<cr>", { desc = "Split window up" })
+keymap.set("n", "<leader>sj", "<cmd>split<cr>", { desc = "Split window down" })
+keymap.set("n", "<leader>sl", "<cmd>vsplit<cr>", { desc = "Split window right" })
+keymap.set("n", "<leader>sh", "<cmd>topleft vsplit<cr>", { desc = "Split window left" })
+keymap.set("n", "<leader>sr", "<cmd>wincmd =<cr>", { desc = "Reset splitted window width / height" })
+keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "Close split/tab" })
 
 -- Resize splitted windows
-keymap.set("n", "<leader>v+", ":vertical resize +10<CR>", { desc = "Increase width of splitted window" })
-keymap.set("n", "<leader>v-", ":vertical resize -10<CR>", { desc = "Decrease width of splitted window" })
-keymap.set("n", "<leader>h+", ":resize +5<CR>", { desc = "Increase height of splitted window" })
-keymap.set("n", "<leader>h-", ":resize -5<CR>", { desc = "Decrease height of splitted window" })
+keymap.set("n", "<leader>va", "<cmd>vertical resize +10<cr>", { desc = "Increase width of splitted window" })
+keymap.set("n", "<leader>vx", "<cmd>vertical resize -10<cr>", { desc = "Decrease width of splitted window" })
+keymap.set("n", "<leader>ha", "<cmd>resize +5<cr>", { desc = "Increase height of splitted window" })
+keymap.set("n", "<leader>hx", "<cmd>resize -5<cr>", { desc = "Decrease height of splitted window" })
 
 -- Move buffer
-vim.keymap.set("n", "<Leader>>", ":BufferLineMoveNext<CR>", { desc = "Move tab to right" })
-vim.keymap.set("n", "<Leader><", ":BufferLineMovePrev<CR>", { desc = "Move tab to left" })
+vim.keymap.set("n", "<Leader>>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move tab to right" })
+vim.keymap.set("n", "<Leader><", "<cmd>BufferLineMovePrev<cr>", { desc = "Move tab to left" })
+--
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Tabs                                                     │
+-- ╰──────────────────────────────────────────────────────────╯
+keymap.set("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 
--- Toggle pin buffer
-keymap.set("n", "<leader>pt", ":BufferLineTogglePin<CR>", { desc = "Toggle pin buffer" })
-
-keymap.set("n", "<leader>nt", ":enew<CR>", { desc = "Open new buffer" })
+-- Move Tabs
+vim.keymap.set("n", "<Leader>>", "<cmd>tabmove +1<cr>", { desc = "Move tab to right" })
+vim.keymap.set("n", "<Leader><", "<cmd>tabmove -1<cr>", { desc = "Move tab to left" })
 
 -- Tab navigation
-keymap.set("n", "<C-p>", ":BufferLineCycleNext<CR>")
-keymap.set("n", "<C-n>", ":BufferLineCyclePrev<CR>")
+keymap.set("n", "<C-p>", "<cmd>tabn<CR>") -- Go to next tab
+keymap.set("n", "<C-n>", "<cmd>tabp<CR>") -- To go previous tab
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Editing / Editor                                         │
 -- ╰──────────────────────────────────────────────────────────╯
 -- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
-
--- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
+keymap.set("n", "<leader>nh", "<cmd>nohl<cr>", { desc = "Clear search highlights" })
 
 -- New Line (normal mode)
 -- Insert a new line above/below without entering into insert-mode
@@ -55,34 +56,27 @@ keymap.set("v", "<leader>i", "~", { desc = "Toggle case" })
 keymap.set("s", "<leader>i", "~", { desc = "Toggle case" })
 keymap.set("x", "<leader>i", "~", { desc = "Toggle case" })
 
--- NOTE:: Remap 'gx' to open links in the browser
--- This option should work per default with netrw but kinda doesn't work,
--- therefore I remapped it as a workaround
--- INFO: IT actually works now
-
--- keymap.set("n", "gx", ":sil !open <C-r><C-a><CR>", { desc = "Open URL under cursor" })
-
 -- Toggle line wrapping
-keymap.set("n", "<leader>$", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
+keymap.set("n", "<leader>$", "<cmd>set wrap!<cr>", { desc = "Toggle line wrapping" })
 
 -- Toggle outline
-keymap.set("n", "<leader>co", "<cmd>Outline<CR>", { desc = "Toggle outline" })
+keymap.set("n", "<leader>to", "<cmd>Outline<cr>", { desc = "Toggle outline" })
 
 -- Save file
-keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
+keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
 
 -- Repeat last macro
-keymap.set("n", ",", "@@", { desc = "Repeat last macro" })
+keymap.set("n", "#", "@@", { desc = "Repeat last macro" })
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Zen-Mode                                                 │
+-- ╰──────────────────────────────────────────────────────────╯
+keymap.set("n", "<leader>tz", "<cmd>ZenMode<cr>", { desc = "Toggle ZenMode" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ UndoTree                                                 │
 -- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>zt", ":ZenMode<CR>", { desc = "Toggle ZenMode" })
-
--- ╭──────────────────────────────────────────────────────────╮
--- │ UndoTree                                                 │
--- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>", { desc = "Toggle undoTree" })
+keymap.set("n", "<leader>tu", "<cmd>UndotreeToggle<cr>", { desc = "Toggle undoTree" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Telescope                                                │
@@ -107,23 +101,23 @@ vim.keymap.set("n", "<leader>st", function()
 	require("telescope").extensions["telescope-tabs"].list_tabs()
 end, { desc = "Switch tabs" })
 
--- Other Telescope keybindings are defined in lua/plugins/telescope.lua and
--- lua/plugins/telescope-file-browser.lua
-
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Vimtex                                                   │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Start compilation
-keymap.set("n", "<leader>lc", ":VimtexCompile<cr><cr>", { desc = "Start compilation" })
+keymap.set("n", "<leader>lc", "<cmd>w | VimtexCompile<cr><cr>", { desc = "Start compilation" })
 
 -- Jump in PDF to the current position in tex file
-keymap.set("n", "<leader>lp", ":VimtexView<cr><cr>", { desc = "Jump in PDF to current position" })
+keymap.set("n", "<leader>lp", "<cmd>VimtexView<cr><cr>", { desc = "Jump in PDF to current position" })
 
 -- Cleanup files
-keymap.set("n", "<leader>lC", ":VimtexClean<cr><cr>", { desc = "Cleanup files" })
+keymap.set("n", "<leader>lC", "<cmd>VimtexClean<cr><cr>", { desc = "Cleanup files" })
 
 -- Toggle TOC
-keymap.set("n", "<leader>lt", ":VimtexTocToggle<cr>", { desc = "Toggle TOC" })
+vim.keymap.set("n", "<leader>lt", function()
+	vim.cmd("VimtexTocToggle")
+	vim.cmd("wincmd h")
+end, { desc = "Toggle TOC" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Toggle spellchecker                                      │

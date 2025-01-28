@@ -16,6 +16,15 @@ return {
 			return lines .. "Ln:" .. chars .. "C"
 		end
 
+		-- Check if Codeium plugin is loaded, fallback if not
+		local function codeiumStatus()
+			local ok, codeium = pcall(require, "codeium.virtual_text")
+			if ok and codeium.status_string then
+				return codeium.status_string()
+			end
+			return ""
+		end
+
 		require("lualine").setup({
 			options = {
 				theme = "auto",
@@ -29,6 +38,7 @@ return {
 				lualine_c = { "%=" },
 				lualine_x = {},
 				lualine_y = {
+					codeiumStatus,
 					"filetype",
 					"progress",
 				},
