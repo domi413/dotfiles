@@ -59,13 +59,18 @@
       "ctrl-shift-enter": "editor::ShowCompletions"
     }
   },
+
   {
-    "context": "Editor && vim_mode == normal || ProjectPanel",
+    "context": "Editor && vim_mode == normal",
     "bindings": {
       // Disable cutting (Blackhole register)
       "x": ["workspace::SendKeystrokes", "\" _ x"],
-      "shift-x": ["workspace::SendKeystrokes", "\" _ shift-x"],
-
+      "shift-x": ["workspace::SendKeystrokes", "\" _ shift-x"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal || ProjectPanel",
+    "bindings": {
       // Move to next/previous window
       "ctrl-p": "pane::ActivateNextItem",
       "ctrl-n": "pane::ActivatePrevItem",
