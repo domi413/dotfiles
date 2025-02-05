@@ -14,6 +14,14 @@
     }
   },
   {
+    "context": "Editor",
+    "bindings": {
+      // Move to next/previous window
+      "ctrl-p": "pane::ActivateNextItem",
+      "ctrl-n": "pane::ActivatePrevItem"
+    }
+  },
+  {
     "context": "Terminal",
     "bindings": {
       "ctrl-k": "terminal_panel::ToggleFocus"
@@ -71,10 +79,6 @@
   {
     "context": "Editor && vim_mode == normal || ProjectPanel",
     "bindings": {
-      // Move to next/previous window
-      "ctrl-p": "pane::ActivateNextItem",
-      "ctrl-n": "pane::ActivatePrevItem",
-
       // Create new/close window
       "space n t": "workspace::NewFile",
       "space x": "pane::CloseActiveItem",
