@@ -16,13 +16,16 @@ copy() {
         src="$HOME/$1"
     fi
 
+    # Remove destination if it exists
+    rm -rf "$dest"
+
     # Check if the source is a directory
     if [ -d "$src" ]; then
-        mkdir -p "$dest"
-        rsync -a "$src/" "$dest/"
+        mkdir -p "$(dirname "$dest")"
+        cp -r "$src" "$dest"
     elif [ -f "$src" ]; then
         mkdir -p "$(dirname "$dest")"
-        rsync -a "$src" "$dest"
+        cp "$src" "$dest"
     fi
 }
 
