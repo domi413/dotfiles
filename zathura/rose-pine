@@ -1,5 +1,5 @@
 # Default Colors
-set default-bg              rgba(31,29,46,1) # If you want the same color as background as the page background
+# set default-bg              rgba(31,29,46,1) # If you want the same color as background as the page background
 set default-bg              rgba(26,26,36,1)
 set default-fg              rgba(224,222,244,1)
 

@@ -24,13 +24,12 @@
 //   - Which-key like window
 //   - Register-overview
 // - Editor:
-//   - Icon pack
 //   - Ligatures buggy
 //   - Debugger support
 //   - Icons in auto completion
 //   - Icons in outline
 //   - Cursor animation
-//   - Latex % navigation
+//   - Latex % navigation (bash only)
 //   - Inline git changes
 //   - Change editor size with ctrl+scroll
 //   - Obsidian alternative
@@ -57,6 +56,19 @@
 {
   // Doesn't make sense since it's installed through package manager
   "auto_update": false,
+
+  // Auto-install extensions
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "html": true,
+    "java": true,
+    "latex": true,
+    "ltex": true,
+    "lua": true,
+    "toml": true,
+    "zed_bash": true
+  },
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ Telemetry                                                │
@@ -160,6 +172,11 @@
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha"
   },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha"
+  },
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ Vim                                                      │
@@ -180,8 +197,8 @@
   // ╰──────────────────────────────────────────────────────────╯
   "assistant": {
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "provider": "copilot_chat",
+      "model": "claude-3-5-sonnet"
     },
     "version": "2"
   },
@@ -238,6 +255,9 @@
     }
   },
   "languages": {
+    "JSONC": {
+      "show_edit_predictions": true
+    },
     "C": {
       "formatter": {
         "external": {

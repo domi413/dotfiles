@@ -2,15 +2,15 @@
 [manager]
 prepend_keymap = [
     # Relative motions
-    { on = ["1"], run = "plugin relative-motions --args=1", desc = "Move in relative steps" },
-    { on = ["2"], run = "plugin relative-motions --args=2", desc = "Move in relative steps" },
-    { on = ["3"], run = "plugin relative-motions --args=3", desc = "Move in relative steps" },
-    { on = ["4"], run = "plugin relative-motions --args=4", desc = "Move in relative steps" },
-    { on = ["5"], run = "plugin relative-motions --args=5", desc = "Move in relative steps" },
-    { on = ["6"], run = "plugin relative-motions --args=6", desc = "Move in relative steps" },
-    { on = ["7"], run = "plugin relative-motions --args=7", desc = "Move in relative steps" },
-    { on = ["8"], run = "plugin relative-motions --args=8", desc = "Move in relative steps" },
-    { on = ["9"], run = "plugin relative-motions --args=9", desc = "Move in relative steps" },
+    { on = ["1"], run = "plugin relative-motions 1", desc = "Move in relative steps" },
+    { on = ["2"], run = "plugin relative-motions 2", desc = "Move in relative steps" },
+    { on = ["3"], run = "plugin relative-motions 3", desc = "Move in relative steps" },
+    { on = ["4"], run = "plugin relative-motions 4", desc = "Move in relative steps" },
+    { on = ["5"], run = "plugin relative-motions 5", desc = "Move in relative steps" },
+    { on = ["6"], run = "plugin relative-motions 6", desc = "Move in relative steps" },
+    { on = ["7"], run = "plugin relative-motions 7", desc = "Move in relative steps" },
+    { on = ["8"], run = "plugin relative-motions 8", desc = "Move in relative steps" },
+    { on = ["9"], run = "plugin relative-motions 9", desc = "Move in relative steps" },
 
     # Compress files with ouch
     { on = ["C"], run = "plugin compress", desc = "Compress" },
@@ -18,10 +18,12 @@ prepend_keymap = [
     # Lazygit
     { on = ["L"], run = "plugin lazygit", desc = "Run LazyGit" },
 
-
     # Toggle preview
     { on = ["T"], run = "plugin hide-preview", desc = "Toggle Preview" },
 
     # Restore deleted files
     { on = "u", run = "plugin restore", desc = "Restore last deleted files/folders" },
+
+    # Jump to char
+    {on   = "f", run  = "plugin jump-to-char", desc = "Jump to char"}
 ]

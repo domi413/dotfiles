@@ -20,7 +20,7 @@ font-size=11.5
 # font-feature = ss03
 # font-feature = ss05
 
-# CaskaydiaCove 
+# CaskaydiaCove
 font-family = "CaskaydiaCove Nerd Font"
 font-style = "Light italic"
 font-style-italic = "Light italic"
@@ -47,47 +47,45 @@ adw-toolbar-style = flat
 auto-update = off
 
 ### Keybinds
-keybind = unconsumed:ctrl+shift+r=reload_config
-keybind = unconsumed:ctrl+l=clear_screen
-keybind = unconsumed:f12=toggle_window_decorations
+keybind = ctrl+shift+r=reload_config
+keybind = ctrl+shift+f2=open_config
+keybind = ctrl+l=clear_screen
+keybind = f12=toggle_window_decorations
+keybind = ctrl+shift+w=close_surface
 
 # Font size
-keybind = unconsumed:ctrl+shift+a=increase_font_size:0.5
-keybind = unconsumed:ctrl+shift+x=decrease_font_size:0.5
-keybind = unconsumed:ctrl+shift+0=reset_font_size
+keybind = ctrl+shift+a=increase_font_size:0.5
+keybind = ctrl+shift+x=decrease_font_size:0.5
 
 # Tab
-keybind = unconsumed:ctrl+shift+p=next_tab
-keybind = unconsumed:ctrl+shift+n=previous_tab
+keybind = ctrl+shift+p=next_tab
+keybind = ctrl+shift+n=previous_tab
 
-keybind = unconsumed:ctrl+shift+enter=toggle_tab_overview
+keybind = ctrl+shift+enter=toggle_tab_overview
 
 # Window (splits)
-keybind = unconsumed:ctrl+shift+k=goto_split:top
-keybind = unconsumed:ctrl+shift+j=goto_split:bottom
-keybind = unconsumed:ctrl+shift+h=goto_split:left
-keybind = unconsumed:ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+j=goto_split:bottom
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
 
-keybind = unconsumed:ctrl+shift+o=new_window
+keybind = ctrl+shift+o=new_window
 
-keybind = unconsumed:shift+alt+k=new_split:up
-keybind = unconsumed:shift+alt+j=new_split:down
-keybind = unconsumed:shift+alt+h=new_split:left
-keybind = unconsumed:shift+alt+l=new_split:right
-
-keybind = unconsumed:ctrl+shift+.=resize_split:up,20
-keybind = unconsumed:ctrl+shift+,=resize_split:down,20
-keybind = unconsumed:ctrl+shift+m=resize_split:left,20
-keybind = unconsumed:ctrl+shift+-=resize_split:right,20
+keybind = shift+alt+k=new_split:up
+keybind = shift+alt+j=new_split:down
+keybind = shift+alt+h=new_split:left
+keybind = shift+alt+l=new_split:right
 
 # Buffer (scrolling)
-keybind = unconsumed:ctrl+shift+$=jump_to_prompt:1
-keybind = unconsumed:ctrl+shift+^=scroll_to_top
+keybind = ctrl+shift+$=scroll_to_bottom
+keybind = ctrl+shift+^=scroll_to_top
 
-keybind = unconsumed:ctrl+shift+u=scroll_page_lines:-1
-keybind = unconsumed:ctrl+shift+d=scroll_page_lines:1
+keybind = ctrl+shift+u=scroll_page_lines:-1
+keybind = ctrl+shift+d=scroll_page_lines:1
 
-keybind = unconsumed:ctrl+shift+b=scroll_page_up
-keybind = unconsumed:ctrl+shift+f=scroll_page_down
+keybind = ctrl+shift+b=scroll_page_up
+keybind = ctrl+shift+f=scroll_page_down
 
-# TODO: unbined other keybinds
+# Unbined other keybinds
+keybind = ctrl+,=unbind
+keybind = ctrl+enter=unbind

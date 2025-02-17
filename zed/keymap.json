@@ -14,7 +14,7 @@
     }
   },
   {
-    "context": "Editor",
+    "context": "Editor || Terminal || ExtensionManager",
     "bindings": {
       // Move to next/previous window
       "ctrl-p": "pane::ActivateNextItem",
@@ -24,7 +24,9 @@
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-k": "terminal_panel::ToggleFocus"
+      // "ctrl-k": "terminal_panel::ToggleFocus", // Commented because this prevents to navigate with ctrl-k/j in the fuzzy finder
+      "ctrl-w k": "terminal_panel::ToggleFocus", // Use this aslong there is no proper fuzzy finder
+      "ctrl-j": null
     }
   },
   {
@@ -41,13 +43,18 @@
     }
   },
   {
-    "context": "vim_mode == insert || (showing_code_actions || showing_completions)",
+    "context": "vim_mode == insert || vim_mode == replace || (showing_code_actions || showing_completions)",
     "bindings": {
       // Leave insert mode with jk
-      "j k": "vim::NormalBefore",
-
+      "j k": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "vim_mode == insert || (showing_code_actions || showing_completions)",
+    "bindings": {
       // Go to next/previous selection (in auto-completion)
       "ctrl-k": "editor::ContextMenuPrev",
+      "ctrl-k": "terminal_panel::ToggleFocus",
       "ctrl-j": "editor::ContextMenuNext",
 
       // Navigate within snippet placeholders
@@ -126,7 +133,7 @@
       "space t a": "assistant::ToggleFocus",
 
       // Toggle inline git diff
-      "space g h ": "editor::ToggleHunkDiff",
+      "space g h ": "editor::ToggleSelectedDiffHunks",
 
       // Rename
       "space r n": "editor::Rename",
@@ -138,9 +145,6 @@
       // Line diagnostics missing
       // "space d l": "",
 
-      // Telescope (or It would be nice if it would be like telescope...)
-      // "space f c": "fuzzy find content" // TODO:
-      // "space f f": "file_finder::Toggle", // TODO: Not really what I am looking for
       "space f t": "theme_selector::Toggle",
       "space s t": "tab_switcher::Toggle",
 
@@ -155,6 +159,16 @@
       "space e": [
         "task::Spawn",
         { "task_name": "Yazi", "reveal_target": "center" }
+      ],
+
+      // Fuzzy finder
+      "space f f": [
+        "task::Spawn",
+        { "task_name": "File finder", "reveal_target": "center" }
+      ],
+      "space f c": [
+        "task::Spawn",
+        { "task_name": "Find in files", "reveal_target": "center" }
       ],
 
       // Run/Compile Code

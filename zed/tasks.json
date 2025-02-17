@@ -31,5 +31,24 @@
     "hide": "always",
     "use_new_terminal": true,
     "allow_concurrent_runs": false
+  },
+
+  // Fuzzy Finder
+  {
+    "label": "File finder",
+    "command": "zeditor \"$(tv files)\"",
+    "hide": "always",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "Find in files",
+    "command": "zeditor \"$(tv text)\"",
+    "hide": "always",
+    "allow_concurrent_runs": false,
+    "use_new_terminal": true,
+    "shell": {
+      "program": "/bin/bash"
+    }
   }
 ]
