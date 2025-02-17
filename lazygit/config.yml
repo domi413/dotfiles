@@ -1,5 +1,6 @@
 notARepository: "skip"
 disableStartupPopups: true
+promptToReturnFromSubprocess: false
 os:
     editPreset: "nvim"
 gui:
