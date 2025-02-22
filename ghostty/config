@@ -33,6 +33,7 @@ cursor-invert-fg-bg
 shell-integration-features = no-cursor
 
 # Window
+unfocused-split-opacity = 1
 window-inherit-working-directory
 window-height = 29
 window-width = 83
