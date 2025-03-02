@@ -227,12 +227,21 @@
     "texlab": {
       "settings": {
         "texlab": {
+          // Formatter
+          "latexFormatter": "latexindent",
+          "latexindent": {
+            "modifyLineBreaks": true
+          },
+
+          // Compile
           "build": {
             "onSave": true,
             "forwardSearchAfter": true,
             "executable": "tectonic",
             "args": ["-X", "compile", "%f"]
           },
+
+          // PDF
           "forwardSearch": {
             "executable": "zathura",
             "args": ["--synctex-forward", "%l:1:%f", "%p"]

@@ -24,6 +24,23 @@
     "reveal": "no_focus"
   },
 
+  // LaTeX
+  // TOOD: The following options aren't working yet
+  // {
+  //   "label": "LaTeX compile",
+  //   "command": "tectonic",
+  //   "args": ["-X", "compile", "%f", "$ZED_FILENAME"],
+  //   "cwd": "$ZED_DIRNAME",
+  //   "tags": ["latex-build"]
+  // },
+  // {
+  //   "label": "Forward Search",
+  //   "command": "zathura",
+  //   "args": ["--synctex-forward", "%l:1:%f", "%p"],
+  //   "allow_concurrent_runs": false,
+  //   "reveal": "never"
+  // },
+
   // Yazi
   {
     "label": "Yazi",

@@ -68,6 +68,10 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
     },
+    "[latex]": {
+        "editor.defaultFormatter": "James-Yu.latex-workshop",
+        "editor.formatOnSave": true
+    },
     "[lua]": {
         "editor.defaultFormatter": "sumneko.lua"
     },
@@ -123,13 +127,23 @@
     "python.analysis.typeCheckingMode": "standard",
 
     // *** LATEX ***
-    // Latex in vscode isn't really a good idea, but here you go
-    "latex-workshop.view.pdf.invert": 1,
     "latex-workshop.intellisense.unimathsymbols.enabled": true,
-    "latex-workshop.latex.recipe.default": "lastUsed",
-    "latex-workshop.latex.rootFile.indicator": "\\begin{document}",
-    "latex-workshop.latex.clean.subfolder.enabled": true,
     "latex-workshop.latex.clean.method": "glob",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.formatting.latexindent.path": "latexindent",
+    "latex-workshop.formatting.latexindent.args":[
+        "-m",
+        "-c",
+        "%DIR%/",
+        "%TMPFILE%",
+        "-y=defaultIndent: '    '"
+    ],
+    "latex-workshop.latex.recipe.default": "tectonic",
+    "latex-workshop.latex.rootFile.indicator": "\\begin{document}",
+    "latex-workshop.view.pdf.invert": 1,
+    "latex-workshop.view.pdf.internal.synctex.keybinding":"double-click",
+    "latex-workshop.synctex.afterBuild.enabled":true,
 
     // *** C/CPP ***
     // Ensure that gdb & gcc are installed
