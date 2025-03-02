@@ -1,5 +1,9 @@
 #!/bin/bash
 
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'
+
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <action>"
     exit 1
@@ -15,7 +19,7 @@ filetype="${file##*.}"
 
 cd "$full_file_dir" || exit
 
-echo "[running $file]"
+echo -e "${GREEN}[running $file]${NC}"
 
 case $filetype in
 c)
@@ -70,12 +74,11 @@ py)
     ;;
 sh)
     if [ "$action" == "run" ]; then
-        chmod +x "$file"
         "bash $file"
     fi
     ;;
 *)
-    echo "Action not supported for this filetype"
+    echo -e "${RED}Action not supported for this filetype${NC}"
     exit 1
     ;;
 esac

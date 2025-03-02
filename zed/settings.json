@@ -5,32 +5,30 @@
 //   - platformio missing
 //   - LaTeX:
 //    - No TOC
-//    - In-Editor PDF-Viewer
+//    - In-Editor PDF-Viewer (needed?)
 // - VIM:
 //   - Block comments with gbc not available
-//   - 1 -> ctrl+g not working
-//   - Jump to any match with leap not available
-//   - Move VIM current mode to left bottom
+//   - flash.nvim
+//   - Move VIM current mode to bottom left
 //   - Scroll percentage missing
 //   - Disable lsp diagnostics in insert mode
-//   - In the docs and everywhere g is getting represented as G (e.g. in the bottom right after pressing "g")
 //   - Do not need to press enter to accept completion
 //   - Toggle block comments
 //   - Better escape
 //   - Show live changes when changing regex with %s
 //   - scrolling shouldn't exceed last line, only with zz e.g.
-//   - Vim navigation in file tree (like nvim-tree)
-//   - Smooth-scoll missing
+//   - Vim navigation in file tree (like nvim-tree) (yazi is not a bad choice)
 //   - Which-key like window
 //   - Register-overview
 // - Editor:
 //   - Ligatures buggy
+//   - Smooth-scoll missing
 //   - Debugger support
 //   - Icons in auto completion
 //   - Icons in outline
 //   - Cursor animation
 //   - Latex % navigation (bash only)
-//   - Inline git changes
+//   - Inline git changes (toggle all)
 //   - Change editor size with ctrl+scroll
 //   - Obsidian alternative
 //   - Git commit window (maybe like layzgit)
@@ -38,6 +36,7 @@
 //   - HTML in Editor preview
 //   - Python notebook
 //   - PDF Viewer
+//   - Buggy matching text (if only whitespace)
 //   - Better outline
 //   - Undotree
 //   - Codeium support
@@ -51,22 +50,24 @@
 //   - Telescope like window
 //   - TODO-comments
 //   - Spellchecker
-//   - Go to next placeholder in snippet not configurable
 
 {
-  // Doesn't make sense since it's installed through package manager
+  // Doesn't make sense since zed is installed through package manager
+  "show_edit_predictions": true,
   "auto_update": false,
 
   // Auto-install extensions
   "auto_install_extensions": {
     "catppuccin": true,
     "catppuccin-icons": true,
+    "codebook": true,
     "html": true,
     "java": true,
     "latex": true,
-    "ltex": true,
+    // "ltex": true,
     "lua": true,
     "toml": true,
+    "xml": true,
     "zed_bash": true
   },
 
@@ -135,6 +136,7 @@
   "inlay_hints": {
     "enabled": false
   },
+  "always_treat_brackets_as_autoclosed": true,
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ Font                                                     │
@@ -144,24 +146,24 @@
   "buffer_line_height": "standard",
   "buffer_font_weight": 340,
 
-  // "buffer_font_family": "FiraCode Nerd Font",
-  "buffer_font_family": "CaskaydiaCove Nerd Font",
+  "buffer_font_family": "FiraCode Nerd Font",
+  // "buffer_font_family": "CaskaydiaCove Nerd Font",
   "buffer_font_features": {
     // Font features not working!!?? -> Bug in cosmic font
     // Firacode
-    "cv01": true,
-    "cv02": true,
-    "cv15": true,
-    "cv19": true,
-    "cv23": true,
-    "cv29": true,
-    "cv31": true,
-    "ss01": true,
-    "ss03": true,
-    "ss05": true
+    // "cv01": true,
+    // "cv02": true,
+    // "cv15": true,
+    // "cv19": true,
+    // "cv23": true,
+    // "cv29": true,
+    // "cv31": true,
+    // "ss01": true,
+    // "ss03": true,
+    // "ss05": true
 
     // CaskaydiaCove
-    // "ss19": true
+    "ss19": true
   },
 
   // ╭──────────────────────────────────────────────────────────╮
@@ -187,9 +189,7 @@
   // "scroll_beyond_last_line": "off",
   "scrollbar": { "show": "never" },
   "vim": {
-    "highlight_on_yank_duration": 0,
-    "use_multiline_find": true,
-    "use_smartcase_find": true
+    "highlight_on_yank_duration": 0
   },
 
   // ╭──────────────────────────────────────────────────────────╮

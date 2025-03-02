@@ -24,8 +24,7 @@
   {
     "context": "Terminal",
     "bindings": {
-      // "ctrl-k": "terminal_panel::ToggleFocus", // Commented because this prevents to navigate with ctrl-k/j in the fuzzy finder
-      "ctrl-w k": "terminal_panel::ToggleFocus", // Use this aslong there is no proper fuzzy finder
+      "ctrl-k": "terminal_panel::ToggleFocus", // Commented because this prevents to navigate with ctrl-k/j in the fuzzy finder
       "ctrl-j": null
     }
   },
@@ -54,7 +53,6 @@
     "bindings": {
       // Go to next/previous selection (in auto-completion)
       "ctrl-k": "editor::ContextMenuPrev",
-      "ctrl-k": "terminal_panel::ToggleFocus",
       "ctrl-j": "editor::ContextMenuNext",
 
       // Navigate within snippet placeholders
@@ -62,10 +60,10 @@
       "ctrl-h": "editor::TabPrev",
 
       // Assistant inline completion
-      "ctrl-.": "editor::NextInlineCompletion",
-      "ctrl-,": "editor::PreviousInlineCompletion",
-      "ctrl-space": "editor::AcceptPartialInlineCompletion",
-      "ctrl-f": "editor::AcceptInlineCompletion",
+      "ctrl-.": "editor::NextEditPrediction",
+      "ctrl-,": "editor::PreviousEditPrediction",
+      "ctrl-space": "editor::AcceptPartialEditPrediction",
+      "ctrl-f": "editor::AcceptEditPrediction",
 
       // Prevent tab from accepting suggestion
       "tab": "editor::Tab",
@@ -97,10 +95,10 @@
       "space s l": "pane::SplitRight",
 
       // tmux like navigation
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-h": "workspace::ActivatePaneLeft",
 
       // Remap Y to Neovim-like behavior
       "shift-y": ["workspace::SendKeystrokes", "y $"],
@@ -172,8 +170,12 @@
       ],
 
       // Run/Compile Code
-      "space space r": ["task::Spawn", { "task_name": "Run file" }],
-      "space space c": ["task::Spawn", { "task_name": "Compile file" }]
+      // "space space r": ["task::Spawn", { "task_name": "Run file" }],
+      // "space space c": ["task::Spawn", { "task_name": "Compile file" }]
+      "space space a": ["task::Spawn", { "task_name": "Compile file" }], // The following four lines are a workaround
+      "space space b": ["task::Spawn", { "task_name": "Run file" }],
+      "space space r": ["workspace::SendKeystrokes", "space w space space b"],
+      "space space c": ["workspace::SendKeystrokes", "space w space space a"]
     }
   }
 ]

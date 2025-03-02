@@ -45,17 +45,17 @@ return {
 						}
 					end,
 				},
-				prettier = {
-					prepend_args = function()
-						return { "--tab-width", "4" }
-					end,
-				},
+				-- prettier = {
+				-- 	prepend_args = function()
+				-- 		return { "--tab-width", "4" }
+				-- 	end,
+				-- },
 				latexindent = {
 					-- install latexindent from package manager:
 					-- texlive-binextra perl-yaml-tiny perl-file-homedir
 					command = "latexindent",
-					args = { "-m" },
-					-- args = { "-m", '-y=defaultIndent:"    "' }, -- indent with 4 spaces
+					-- args = { "-m" },
+					args = { "-m", '-y=defaultIndent:"    "' }, -- indent with 4 spaces
 				},
 			},
 			format_after_save = {
