@@ -20,11 +20,30 @@
     "editor.bracketPairColorization.enabled": true, // Disable rainbow brackets
     "editor.cursorBlinking": "solid",
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.fontFamily": "FiraCode Nerd Font",
-    "editor.fontLigatures": "'cv01', 'cv02', 'cv15', 'cv19', 'cv23', 'cv29', 'cv31', 'ss01', 'ss03', 'ss05'",
-    "[vhdl]": {
-        "editor.fontLigatures": "'cv01', 'cv02', 'cv15', 'cv20', 'cv23', 'cv29', 'cv31', 'ss01', 'ss03', 'ss05'"
+    "editor.fontFamily": "CaskaydiaCove Nerd Font",
+    "editor.fontLigatures": "'ss19'",
+    "editor.fontWeight": "300",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [{
+            "scope": [
+                "comment",
+                "entity.name.type.class", //class names
+                "constant", //String, Number, Boolean…, this, super
+                "storage.modifier", //static keyword
+                "storage.type.class.js", //class keyword
+                "keyword", //import, export, return…
+                "text" // text
+            ],
+            "settings": {
+                "fontStyle": "italic"
+            }
+        }],
     },
+    // "editor.fontFamily": "FiraCode Nerd Font",
+    // "editor.fontLigatures": "'cv01', 'cv02', 'cv15', 'cv19', 'cv23', 'cv29', 'cv31', 'ss01', 'ss03', 'ss05'",
+    // "[vhdl]": {
+    //     "editor.fontLigatures": "'cv01', 'cv02', 'cv15', 'cv20', 'cv23', 'cv29', 'cv31', 'ss01', 'ss03', 'ss05'"
+    // },
     "editor.inlayHints.enabled": "off",
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
