@@ -240,7 +240,3 @@ end
 function __zoxide_forget_zr
     command zoxide remove -- (__zoxide_pwd)
 end
-
-
-# Created by `pipx` on 2024-12-30 18:42:41
-set PATH $PATH /home/domi/.local/bin
