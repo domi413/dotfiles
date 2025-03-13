@@ -8,9 +8,6 @@ return {
 		},
 		label = {
 			upperase = false,
-			format = function(opts)
-				return { { string.lower(opts.match.label), opts.hl_group } }
-			end,
 		},
 		highlight = {
 			-- Keep normal highlighting

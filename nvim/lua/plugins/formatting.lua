@@ -6,8 +6,8 @@ return {
 				bash = { "shfmt" },
 				c = { "clang_format" },
 				cpp = { "clang_format" },
-				-- cs = { "clang_format" },
 				css = { "prettier" },
+				go = { "golines" },
 				graphql = { "prettier" },
 				html = { "prettier" },
 				javascript = { "prettier" },
@@ -24,11 +24,6 @@ return {
 				yaml = { "prettier" },
 			},
 			formatters = {
-				black = {
-					prepend_args = function()
-						return { "--fast" }
-					end,
-				},
 				clang_format = {
 					command = "clang-format",
 					append_args = function()
@@ -45,11 +40,6 @@ return {
 						}
 					end,
 				},
-				-- prettier = {
-				-- 	prepend_args = function()
-				-- 		return { "--tab-width", "4" }
-				-- 	end,
-				-- },
 				latexindent = {
 					-- install latexindent from package manager:
 					-- texlive-binextra perl-yaml-tiny perl-file-homedir
@@ -57,15 +47,21 @@ return {
 					-- args = { "-m" },
 					args = { "-m", '-y=defaultIndent:"    "' }, -- indent with 4 spaces
 				},
+				-- prettier = {
+				-- 	prepend_args = function()
+				-- 		return { "--tab-width", "4" }
+				-- 	end,
+				-- },
+				ruff = {
+					args = {
+						"-c",
+						"ruff check --select=I --fix --stdin-filename {buffer_path} | ruff format --stdin-filename {buffer_path}",
+					},
+				},
 			},
 			format_after_save = {
 				lsp_fallback = true,
 			},
-			-- format_on_save = {
-			-- 	lsp_fallback = true,
-			-- 	async = false,
-			-- 	timeout_ms = 1000, -- Bigger timeout because black is slow af
-			-- },
 		})
 	end,
 }
