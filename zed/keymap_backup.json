@@ -3,7 +3,7 @@
     "context": "vim_mode != insert",
     "bindings": {
       // Go to next/previous selection
-      "ctrl-k": "menu::SelectPrevious",
+      "ctrl-k": "menu::SelectPrev",
       "ctrl-j": "menu::SelectNext"
     }
   },
@@ -18,7 +18,7 @@
     "bindings": {
       // Move to next/previous window
       "ctrl-p": "pane::ActivateNextItem",
-      "ctrl-n": "pane::ActivatePreviousItem"
+      "ctrl-n": "pane::ActivatePrevItem"
     }
   },
   {
@@ -52,12 +52,12 @@
     "context": "vim_mode == insert || (showing_code_actions || showing_completions)",
     "bindings": {
       // Go to next/previous selection (in auto-completion)
-      "ctrl-k": "editor::ContextMenuPrevious",
+      "ctrl-k": "editor::ContextMenuPrev",
       "ctrl-j": "editor::ContextMenuNext",
 
       // Navigate within snippet placeholders
       "ctrl-l": "editor::Tab",
-      "ctrl-h": "editor::Backtab",
+      "ctrl-h": "editor::TabPrev",
 
       // Assistant inline completion
       "ctrl-.": "editor::NextEditPrediction",
@@ -84,9 +84,6 @@
   {
     "context": "Editor && vim_mode == normal || ProjectPanel",
     "bindings": {
-      "s": "vim::PushSneak",
-      "shift-s": "vim::PushSneakBackward",
-
       // Create new/close window
       "space n t": "workspace::NewFile",
       "space x": "pane::CloseActiveItem",
@@ -119,9 +116,6 @@
       // Toggle line wrapping
       "space $": "editor::ToggleSoftWrap",
 
-      // Reopen last closed tab
-      "space u": "pane::ReopenClosedItem",
-
       // Toggle docks
       "space t h": "workspace::ToggleLeftDock",
       "space t l": "workspace::ToggleRightDock",
@@ -144,7 +138,7 @@
 
       // Diagnostic
       "space d n": "editor::GoToDiagnostic",
-      "space d p": "editor::GoToPreviousDiagnostic",
+      "space d p": "editor::GoToPrevDiagnostic",
       "space D": "diagnostics::Deploy",
       // Line diagnostics missing
       // "space d l": "",

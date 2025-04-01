@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-path", -- source for file system paths
-		-- "hrsh7th/cmp-nvim-lsp-signature-help", -- Doens't work well
+		"hrsh7th/cmp-nvim-lsp-signature-help", -- Doens't work well
 		"L3MON4D3/LuaSnip", -- snippet engine
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 	},
@@ -96,7 +96,7 @@ return {
 				{ name = "luasnip" }, -- snippets
 				-- { name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
-				-- { name = "nvim_lsp_signature_help" },
+				{ name = "nvim_lsp_signature_help" },
 			},
 		})
 	end,

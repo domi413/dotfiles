@@ -7,20 +7,16 @@ return {
 				c = { "clang_format" },
 				cpp = { "clang_format" },
 				css = { "prettier" },
-				go = { "golines" },
-				graphql = { "prettier" },
+				go = { "gopls" },
 				html = { "prettier" },
 				javascript = { "prettier" },
-				javascriptreact = { "prettier" },
 				json = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				python = { "ruff_format", "ruff_organize_imports" },
 				-- rust = { "rustfmt" },
-				svelte = { "prettier" },
 				tex = { "latexindent" },
 				typescript = { "prettier" },
-				typescriptreact = { "prettier" },
 				yaml = { "prettier" },
 			},
 			formatters = {
@@ -55,7 +51,15 @@ return {
 				ruff = {
 					args = {
 						"-c",
-						"ruff check --select=I --fix --stdin-filename {buffer_path} | ruff format --stdin-filename {buffer_path}",
+						"ruff\
+						check\
+						--select=I\
+						--fix\
+						--stdin-filename\
+						{buffer_path}\
+						| ruff format\
+						--stdin-filename\
+						{buffer_path}",
 					},
 				},
 			},

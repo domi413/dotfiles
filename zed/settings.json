@@ -27,7 +27,7 @@
 //   - Icons in auto completion
 //   - Icons in outline
 //   - Cursor animation
-//   - Latex % navigation (bash only)
+//   - % navigation (bash only)
 //   - Inline git changes (toggle all)
 //   - Change editor size with ctrl+scroll
 //   - Obsidian alternative
@@ -44,27 +44,27 @@
 //   - Zen-mode disable border
 //   - Inverted cursor color
 //   - Ligatures under cursor not rendred correctly
-//   - autocompletion pop up buggy for not default languages (like c/cpp/go)
+//   - autocompletion not as great as in nvim
 //   - Inline error message (like in nvim)
+//   - snippets for extensions not working
+//   - Java go to definition not working
+//   - Java treesitter selection not working
 //   - Better rename pop-up
 //   - Telescope like window
 //   - TODO-comments
-//   - Spellchecker
 
 {
   // Doesn't make sense since zed is installed through package manager
-  "show_edit_predictions": true,
   "auto_update": false,
 
   // Auto-install extensions
   "auto_install_extensions": {
     "catppuccin": true,
     "catppuccin-icons": true,
-    "codebook": true,
+    "cspell": true,
+    // "harper": true,
     "html": true,
-    "java": true,
     "latex": true,
-    // "ltex": true,
     "lua": true,
     "toml": true,
     "xml": true,
@@ -91,15 +91,16 @@
   "gutter": {
     "code_actions": false,
     "folds": false
+    // "runnables": false
   },
   "outline_panel": {
     "dock": "right"
   },
   "collaboration_panel": {
-    "button": false
+    "button": true
   },
   "chat_panel": {
-    "button": "never"
+    "button": "when_in_call"
   },
   "notification_panel": {
     "button": false
@@ -136,18 +137,28 @@
   "inlay_hints": {
     "enabled": false
   },
+  "auto_signature_help": true,
   "always_treat_brackets_as_autoclosed": true,
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "padding": 2,
+      "max_severity": "warning"
+    }
+  },
+  "vertical_scroll_margin": 0,
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ Font                                                     │
   // ╰──────────────────────────────────────────────────────────╯
-  "ui_font_size": 16,
-  "buffer_font_size": 14.5,
+  "ui_font_size": 17,
+  "buffer_font_size": 15,
   "buffer_line_height": "standard",
   "buffer_font_weight": 340,
 
-  "buffer_font_family": "FiraCode Nerd Font",
-  // "buffer_font_family": "CaskaydiaCove Nerd Font",
+  // "buffer_font_family": "FiraCode Nerd Font",
+  "buffer_font_family": "CaskaydiaCove Nerd Font",
   "buffer_font_features": {
     // Font features not working!!?? -> Bug in cosmic font
     // Firacode
@@ -197,8 +208,8 @@
   // ╰──────────────────────────────────────────────────────────╯
   "assistant": {
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-3-5-sonnet"
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
     },
     "version": "2"
   },
@@ -216,53 +227,44 @@
   // ╭──────────────────────────────────────────────────────────╮
   // │ LSP                                                      │
   // ╰──────────────────────────────────────────────────────────╯
-  // TODO: Configure language specific settings like formatting...
   "lsp": {
-    "clangd": {
-      "binary": {
-        "path": "/usr/bin/clangd",
-        "arguments": ["--clang-tidy"] // FIMXME: Doesn't work?
+    "gopls": {
+      "initialization_options": {
+        "analyses": {
+          "unusedparams": true
+        },
+        "gofumpt": true,
+        "staticcheck": true,
+        "usePlaceholders": true
       }
     },
     "texlab": {
       "settings": {
         "texlab": {
-          // Formatter
-          "latexFormatter": "latexindent",
-          "latexindent": {
-            "modifyLineBreaks": true
-          },
-
-          // Compile
           "build": {
             "onSave": true,
             "forwardSearchAfter": true,
             "executable": "tectonic",
             "args": ["-X", "compile", "%f"]
           },
-
-          // PDF
           "forwardSearch": {
             "executable": "zathura",
             "args": ["--synctex-forward", "%l:1:%f", "%p"]
           }
         }
       }
-    },
-    "ltex": {
-      "settings": {
-        "ltex": {
-          // "language": "de-CH"
-          "language": "en-US"
-        }
-      }
     }
   },
   "languages": {
-    "JSONC": {
-      "show_edit_predictions": true
+    "CSharp": {
+      "show_edit_predictions": false
+    },
+    "Blueprint": {
+      "format_on_save": "off"
     },
     "C": {
+      "show_edit_predictions": false,
+      "format_on_save": "on",
       "formatter": {
         "external": {
           "command": "clang-format",
@@ -272,10 +274,10 @@
             "--assume-filename={buffer_path}"
           ]
         }
-      },
-      "format_on_save": "on"
+      }
     },
     "C++": {
+      "format_on_save": "on",
       "formatter": {
         "external": {
           "command": "clang-format",
@@ -285,8 +287,25 @@
             "--assume-filename={buffer_path}"
           ]
         }
-      },
+      }
+    },
+    "JSONC": {
       "format_on_save": "on"
+    },
+    "Markdown": {
+      "format_on_save": "on"
+    },
+    "Python": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "bash",
+          "arguments": [
+            "-c",
+            "ruff check --select=I --fix --stdin-filename {buffer_path} | ruff format --stdin-filename {buffer_path}"
+          ]
+        }
+      }
     }
   },
 
