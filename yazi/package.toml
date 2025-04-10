@@ -2,7 +2,6 @@
 deps = [
     { use = "dedukun/relative-motions", rev = "0d9c8cf" },
     { use = "yazi-rs/plugins:full-border", rev = "02d18be" },
-    { use = "yazi-rs/plugins:toggle-pane", rev = "02d18be" },
     { use = "yazi-rs/plugins:jump-to-char", rev = "c82794f" },
     { use = "yazi-rs/plugins:git", rev = "02d18be" },
     { use = "boydaihungst/restore", rev = "ffc209e" },
@@ -12,7 +11,6 @@ deps = [
 
 [flavor]
 deps = [
-    { use = "dangooddd/kanagawa", rev = "d98f0c3" },
     { use = "yazi-rs/flavors:catppuccin-mocha", rev = "fd85060" },
     { use = "yazi-rs/flavors:catppuccin-latte", rev = "fd85060" }
 ]

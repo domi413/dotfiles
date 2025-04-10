@@ -18,9 +18,6 @@ prepend_keymap = [
     # Lazygit
     { on = ["L"], run = "plugin lazygit", desc = "Run LazyGit" },
 
-    # Toggle preview
-    { on = ["T"], run = "plugin toggle-pane min-preview", desc = "Toggle Preview" },
-
     # Restore deleted files
     { on = "u", run = "plugin restore", desc = "Restore last deleted files/folders" },
 
