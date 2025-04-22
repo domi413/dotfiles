@@ -35,7 +35,6 @@ return {
 			ensure_installed = {
 				"clang-format",
 				"css-lsp",
-				"cspell",
 				"html-lsp",
 				"prettier",
 				"ruff",

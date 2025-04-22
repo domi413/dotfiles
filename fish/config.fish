@@ -39,6 +39,7 @@ export FZF_DEFAULT_OPTS=" \
 # │ Fish shell                                               │
 # ╰──────────────────────────────────────────────────────────╯
 set fish_greeting
+set -U fish_color_command blue
 
 # Enable vim keybindings (without changing some useful default shortcuts)
 fish_hybrid_key_bindings

@@ -40,8 +40,14 @@ return {
 					-- install latexindent from package manager:
 					-- texlive-binextra perl-yaml-tiny perl-file-homedir
 					command = "latexindent",
-					-- args = { "-m" },
-					args = { "-m", '-y=defaultIndent:"    "' }, -- indent with 4 spaces
+					args = function()
+						local yaml_file = vim.fn.getcwd() .. "/.latexindent.yaml"
+						if vim.fn.filereadable(yaml_file) == 1 then
+							return { "-m", "-rv", "-l" }
+						else
+							return { "-m", '-y=defaultIndent:"    ",noAdditionalIndent:multicols:1' }
+						end
+					end,
 				},
 				-- prettier = {
 				-- 	prepend_args = function()

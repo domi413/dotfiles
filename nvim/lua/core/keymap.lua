@@ -7,14 +7,15 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Window tiling and buffer management                      │
+-- │ Window tiling                                            │
 -- ╰──────────────────────────────────────────────────────────╯
 keymap.set("n", "<leader>sk", "<cmd>topleft split<cr>", { desc = "Split window up" })
 keymap.set("n", "<leader>sj", "<cmd>split<cr>", { desc = "Split window down" })
 keymap.set("n", "<leader>sl", "<cmd>vsplit<cr>", { desc = "Split window right" })
 keymap.set("n", "<leader>sh", "<cmd>topleft vsplit<cr>", { desc = "Split window left" })
 keymap.set("n", "<leader>sr", "<cmd>wincmd =<cr>", { desc = "Reset splitted window width / height" })
-keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "Close split/tab" })
+keymap.set("n", "<leader>x", "<cmd>bdelete!<CR>", { desc = "Close split/tab" })
+-- keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "Close split/tab" })
 
 -- Resize splitted windows
 keymap.set("n", "<leader>va", "<cmd>vertical resize +10<cr>", { desc = "Increase width of splitted window" })
@@ -22,22 +23,32 @@ keymap.set("n", "<leader>vx", "<cmd>vertical resize -10<cr>", { desc = "Decrease
 keymap.set("n", "<leader>ha", "<cmd>resize +5<cr>", { desc = "Increase height of splitted window" })
 keymap.set("n", "<leader>hx", "<cmd>resize -5<cr>", { desc = "Decrease height of splitted window" })
 
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Buffer                                                   │
+-- ╰──────────────────────────────────────────────────────────╯
 -- Move buffer
-vim.keymap.set("n", "<Leader>>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move tab to right" })
-vim.keymap.set("n", "<Leader><", "<cmd>BufferLineMovePrev<cr>", { desc = "Move tab to left" })
---
+vim.keymap.set("n", "<Leader>>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
+vim.keymap.set("n", "<Leader><", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
+
+-- Buffer navigation
+keymap.set("n", "<C-p>", "<cmd>BufferLineCycleNext<CR>")
+keymap.set("n", "<C-n>", "<cmd>BufferLineCyclePrev<CR>")
+
+-- New empty buffer
+keymap.set("n", "<leader>nt", "<cmd>enew<CR>", { desc = "Open new tab with empty buffer" })
+
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Tabs                                                     │
 -- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+-- keymap.set("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 
 -- Move Tabs
-vim.keymap.set("n", "<Leader>>", "<cmd>tabmove +1<cr>", { desc = "Move tab to right" })
-vim.keymap.set("n", "<Leader><", "<cmd>tabmove -1<cr>", { desc = "Move tab to left" })
+-- vim.keymap.set("n", "<Leader>>", "<cmd>tabmove +1<cr>", { desc = "Move tab to right" })
+-- vim.keymap.set("n", "<Leader><", "<cmd>tabmove -1<cr>", { desc = "Move tab to left" })
 
 -- Tab navigation
-keymap.set("n", "<C-p>", "<cmd>tabn<CR>") -- Go to next tab
-keymap.set("n", "<C-n>", "<cmd>tabp<CR>") -- To go previous tab
+-- keymap.set("n", "<C-p>", "<cmd>tabn<CR>") -- Go to next tab
+-- keymap.set("n", "<C-n>", "<cmd>tabp<CR>") -- To go previous tab
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Editing / Editor                                         │
@@ -67,6 +78,15 @@ keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
 
 -- Repeat last macro
 keymap.set("n", "#", "@@", { desc = "Repeat last macro" })
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Sessions                                                 │
+-- ╰──────────────────────────────────────────────────────────╯
+-- Search session
+keymap.set("n", "<leader>fs", "<cmd>Telescope session-lens<cr>", { desc = "Search sessions" })
+
+-- Save session
+keymap.set("n", "<leader>ss", "<cmd>SessionSave<cr>", { desc = "Search sessions" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Zen-Mode                                                 │
@@ -133,6 +153,13 @@ keymap.set("n", "<leader>ts", "<cmd>set spell!<cr>", { desc = "Toggle spellcheck
 -- │ LSP                                                      │
 -- ╰──────────────────────────────────────────────────────────╯
 -- lsp configs are defined in lua/plugins/lsp/lspconfig.lua
+
+-- Toggle inlay hints
+if vim.lsp.inlay_hint then
+	keymap.set("n", "<leader>th", function()
+		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+	end, { desc = "Toggle inlay hints" })
+end
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Treesitter                                               │
