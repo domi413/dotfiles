@@ -175,6 +175,18 @@
         { "task_name": "Find in files", "reveal_target": "center" }
       ],
 
+      // LaTeX
+      // Compile LaTeX
+      "space l c": [
+        "task::Spawn",
+        { "task_name": "Compile LaTeX", "reveal_target": "center" }
+      ],
+      // Forward search
+      "space l p": [
+        "task::Spawn",
+        { "task_name": "Forward Search", "reveal_target": "center" }
+      ],
+
       // Run/Compile Code
       // "space space r": ["task::Spawn", { "task_name": "Run file" }],
       // "space space c": ["task::Spawn", { "task_name": "Compile file" }]

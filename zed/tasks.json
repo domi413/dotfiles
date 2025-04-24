@@ -50,5 +50,23 @@
     "shell": {
       "program": "/bin/bash"
     }
+  },
+
+  // LaTeX
+  // Compile LaTeX
+  {
+    "label": "Compile LaTeX",
+    "command": "tectonic",
+    "args": ["-X", "compile", "$ZED_FILENAME"],
+    "cwd": "$ZED_DIRNAME",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "Forward Search",
+    "command": "/usr/bin/zathura \"$ZED_DIRNAME/$ZED_STEM.pdf\" --synctex-forward \"$ZED_ROW:1:$ZED_DIRNAME/$ZED_STEM.tex\"",
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+    "hide": "always"
   }
 ]
