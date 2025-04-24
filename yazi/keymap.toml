@@ -26,5 +26,8 @@ prepend_keymap = [
     { on = "u", run = "plugin restore", desc = "Restore last deleted files/folders" },
 
     # Jump to char
-    {on   = "f", run  = "plugin jump-to-char", desc = "Jump to char"}
+    {on   = "f", run  = "plugin jump-to-char", desc = "Jump to char"},
+
+    # Custom linemode
+	{ on = [ "m", "r" ], run = "linemode rtime", desc = "Linemode: rtime" },
 ]

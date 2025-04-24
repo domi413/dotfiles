@@ -1,10 +1,13 @@
 notARepository: "skip"
 disableStartupPopups: true
 promptToReturnFromSubprocess: false
+
 os:
   editPreset: "nvim"
+
 gui:
   nerdFontsVersion: "3"
+  statusPanelView: allBranchesLog
 
   # Catppuccin-mocha
   theme:
