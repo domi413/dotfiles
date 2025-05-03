@@ -1,6 +1,9 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"linrongbin16/lsp-progress.nvim",
+	},
 
 	config = function()
 		-- Count selected lines and characters in visual mode
@@ -25,6 +28,16 @@ return {
 			return ""
 		end
 
+		-- Set up Codeium statusbar refresh
+		local ok, codeium = pcall(require, "codeium.virtual_text")
+		if ok and codeium.set_statusbar_refresh then
+			codeium.set_statusbar_refresh(function()
+				require("lualine").refresh()
+			end)
+		end
+
+		require("lsp-progress").setup()
+
 		require("lualine").setup({
 			options = {
 				theme = "auto",
@@ -35,7 +48,11 @@ return {
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
 				lualine_b = { "filename", "branch", "diagnostics" },
-				lualine_c = { "%=" },
+				lualine_c = {
+					function()
+						return require("lsp-progress").progress()
+					end,
+				},
 				lualine_x = {},
 				lualine_y = {
 					codeiumStatus,

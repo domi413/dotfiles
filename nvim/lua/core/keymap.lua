@@ -117,9 +117,7 @@ keymap.set("n", "<leader>fr", "<cmd>Telescope registers<cr>", { desc = "Open reg
 keymap.set("n", "<leader>fg", "<cmd>TodoTelescope<cr>", { desc = "Browse TODO comments" })
 
 -- Switch tabs
-vim.keymap.set("n", "<leader>st", function()
-	require("telescope").extensions["telescope-tabs"].list_tabs()
-end, { desc = "Switch tabs" })
+vim.keymap.set("n", "<leader>st", "<cmd>Telescope buffers<cr>", { desc = "Switch buffer" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Vimtex                                                   │
@@ -145,6 +143,15 @@ end, { desc = "Toggle TOC" })
 keymap.set("n", "<leader>ts", "<cmd>set spell!<cr>", { desc = "Toggle spellchecker" })
 
 -- ╭──────────────────────────────────────────────────────────╮
+-- │ CodeCompanion (AI assistant)                             │
+-- ╰──────────────────────────────────────────────────────────╯
+-- Toggle assistant panel
+-- TODO: add keymap
+
+-- Call inline assistant
+-- TODO: add keymap
+
+-- ╭──────────────────────────────────────────────────────────╮
 -- │ NVIM Tree (File Explorer)                                │
 -- ╰──────────────────────────────────────────────────────────╯
 -- keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
@@ -164,7 +171,7 @@ end
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Treesitter                                               │
 -- ╰──────────────────────────────────────────────────────────╯
--- treesitter configs are defined in
+-- treesitter motions are defined in
 -- lua/plugins/treesitter/nvim-treesitter-text-objects.lua
 
 -- ╭──────────────────────────────────────────────────────────╮
@@ -188,11 +195,3 @@ end, { desc = "Toggle show changes" })
 -- │ Codeium                                                  │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Codeium keybindings are defined in lua/plugins/codeium.lua
-
--- ╭──────────────────────────────────────────────────────────╮
--- │ Command line                                             │
--- ╰──────────────────────────────────────────────────────────╯
-vim.keymap.set("c", "<C-h>", "<Left>", { desc = "Move cursor left" })
-vim.keymap.set("c", "<C-l>", "<Right>", { desc = "Move cursor right" })
-vim.keymap.set("c", "<C-0>", "<Home>", { desc = "Move cursor to beginning of line" })
-vim.keymap.set("c", "<C-$>", "<End>", { desc = "Move cursor to end of line" })

@@ -51,7 +51,6 @@ end
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
-		"LukasPietzschmann/telescope-tabs",
 		"nvim-lua/plenary.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",

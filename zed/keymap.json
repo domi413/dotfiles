@@ -24,7 +24,7 @@
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-k": "terminal_panel::ToggleFocus", // Commented because this prevents to navigate with ctrl-k/j in the fuzzy finder
+      "ctrl-k": "terminal_panel::ToggleFocus",
       "ctrl-j": null
     }
   },
@@ -76,7 +76,7 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      // Disable cutting (Blackhole register)
+      // Disable cutting (Black-hole register)
       "x": ["workspace::SendKeystrokes", "\" _ x"],
       "shift-x": ["workspace::SendKeystrokes", "\" _ shift-x"]
     }
@@ -139,18 +139,14 @@
       // Toggle inline git diff
       "space g h ": "editor::ToggleSelectedDiffHunks",
 
-      // Rename
-      "space r n": "editor::Rename",
-
       // Diagnostic
       "space d n": "editor::GoToDiagnostic",
       "space d p": "editor::GoToPreviousDiagnostic",
       "space D": "diagnostics::Deploy",
-      // Line diagnostics missing
-      // "space d l": "",
+      "space d l": "diagnostics::Deploy",
 
       "space f t": "theme_selector::Toggle",
-      "space s t": "tab_switcher::Toggle",
+      "space s t": "tab_switcher::ToggleAll",
 
       // Tasks
       // Lazygit
@@ -175,17 +171,17 @@
         { "task_name": "Find in files", "reveal_target": "center" }
       ],
 
-      // LaTeX
-      // Compile LaTeX
-      "space l c": [
-        "task::Spawn",
-        { "task_name": "Compile LaTeX", "reveal_target": "center" }
-      ],
-      // Forward search
-      "space l p": [
-        "task::Spawn",
-        { "task_name": "Forward Search", "reveal_target": "center" }
-      ],
+      // // LaTeX
+      // // Compile LaTeX
+      // "space l c": [
+      //   "task::Spawn",
+      //   { "task_name": "Compile LaTeX", "reveal_target": "center" }
+      // ],
+      // // Forward search
+      // "space l p": [
+      //   "task::Spawn",
+      //   { "task_name": "Forward Search", "reveal_target": "center" }
+      // ],
 
       // Run/Compile Code
       // "space space r": ["task::Spawn", { "task_name": "Run file" }],

@@ -4,7 +4,8 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-path", -- source for file system paths
-		"hrsh7th/cmp-nvim-lsp-signature-help", -- Doens't work well
+		"hrsh7th/cmp-cmdline", -- source for cmdline completions
+		-- "hrsh7th/cmp-nvim-lsp-signature-help", -- Doens't work well
 		"L3MON4D3/LuaSnip", -- snippet engine
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 	},
@@ -18,6 +19,7 @@ return {
 		-- Set amount of completion items to show
 		vim.opt.pumheight = 10
 
+		-- Insert mode completion
 		cmp.setup({
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
@@ -48,7 +50,7 @@ return {
 					ellipsis_char = "...", -- Show dots when abbreviations are too long
 				}),
 			},
-			snippet = { -- configure how nvim-cmp interacts with snippet engine
+			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
 				end,
@@ -68,8 +70,6 @@ return {
 						fallback()
 					end
 				end, { "i", "s" }),
-
-				-- go to next snippet
 				["<C-l>"] = cmp.mapping(function(fallback)
 					if luasnip.jumpable(1) then
 						luasnip.jump(1)
@@ -77,8 +77,6 @@ return {
 						fallback()
 					end
 				end, { "i", "s" }),
-
-				-- go to previous snippet
 				["<C-h>"] = cmp.mapping(function(fallback)
 					if luasnip.jumpable(-1) then
 						luasnip.jump(-1)
@@ -86,18 +84,74 @@ return {
 						fallback()
 					end
 				end, { "i", "s" }),
-
-				["<CR>"] = cmp.mapping.confirm({ select = false }), -- Enter to confirm the selection
+				["<CR>"] = cmp.mapping.confirm({ select = false }),
 			}),
 
-			-- Sources for the autocompletion
-			sources = {
+			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- snippets
-				-- { name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
 				{ name = "nvim_lsp_signature_help" },
+			}, {
+				-- You can still add buffer source here for insert mode if needed
+				{ name = "buffer", keyword_length = 3 },
+			}),
+		})
+
+		-- Command-line setup here
+		cmp.setup.cmdline("/", {
+			mapping = cmp.mapping.preset.cmdline({
+				["<C-j>"] = { c = cmp.mapping.select_next_item() },
+				["<C-k>"] = { c = cmp.mapping.select_prev_item() },
+			}),
+			sources = {
+				{ name = "buffer" },
 			},
+		})
+		cmp.setup.cmdline(":", {
+			mapping = cmp.mapping.preset.cmdline({
+				["<C-j>"] = {
+					c = function(fallback)
+						if vim.fn.getcmdline() == "" then
+							cmp.mapping.select_prev_item()(fallback)
+						else
+							cmp.mapping.select_next_item()(fallback)
+						end
+					end,
+				},
+				["<C-k>"] = {
+					c = function(fallback)
+						if vim.fn.getcmdline() == "" then
+							cmp.mapping.select_next_item()(fallback)
+						else
+							cmp.mapping.select_prev_item()(fallback)
+						end
+					end,
+				},
+				["<C-p>"] = {
+					c = function(fallback)
+						if vim.fn.getcmdline() == "" then
+							cmp.mapping.select_prev_item()(fallback)
+						else
+							fallback()
+						end
+					end,
+				},
+				["<C-n>"] = {
+					c = function(fallback)
+						if vim.fn.getcmdline() == "" then
+							cmp.mapping.select_next_item()(fallback)
+						else
+							fallback()
+						end
+					end,
+				},
+			}),
+			sources = cmp.config.sources({
+				{ name = "path" },
+			}, {
+				{ name = "cmdline" },
+			}),
 		})
 	end,
 }

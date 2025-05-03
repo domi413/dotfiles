@@ -7,16 +7,7 @@ font-size=11.5
 # FiraCode
 # font-family = "FiraCode Nerd Font"
 #
-# font-feature = cv01
-# font-feature = cv02
-# font-feature = cv15
-# font-feature = cv19
-# font-feature = cv23
-# font-feature = cv29
-# font-feature = cv31
-# font-feature = ss01
-# font-feature = ss03
-# font-feature = ss05
+# font-feature = cv01, cv02, cv15, cv19, cv23, cv29, cv31, ss01, ss03, ss05
 
 # CaskaydiaCove
 font-family = "CaskaydiaCove Nerd Font"
@@ -43,7 +34,6 @@ confirm-close-surface = false
 # Miscellaneous
 mouse-hide-while-typing
 adw-toolbar-style = flat
-auto-update = off
 
 ### Keybinds
 keybind = ctrl+shift+r=reload_config

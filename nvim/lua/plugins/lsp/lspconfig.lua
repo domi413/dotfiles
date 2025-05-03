@@ -1,11 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/lazydev.nvim", opts = {} },
-	},
+	dependencies = { "hrsh7th/cmp-nvim-lsp" },
 
 	config = function()
 		-- import lspconfig plugin
@@ -95,13 +91,13 @@ return {
 							analyses = { unusedparams = true },
 							gofumpt = true,
 							hints = {
-								-- 	assignVariableType = true,
-								-- 	compositeLiteralFields = true,
-								-- 	compositeLiteralTypes = true,
+								assignVariableType = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
 								constantValues = true,
-								-- 	functionTypeParameters = true,
-								-- 	parameterNames = true,
-								-- 	rangeVariableTypes = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
 							},
 							staticcheck = true,
 							usePlaceholders = true,

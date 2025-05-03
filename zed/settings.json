@@ -2,12 +2,9 @@
 //
 // ISSUES TO CREATE:
 //
-// - #gt -> gt should take count
-// - :r!... -> reads the output of the command into the buffer
-// - :tabmove {num} -> Should move the tab to the {num} position
+// - :r!... -> writes the output of the command into the buffer
 //
 // - Plugins:
-//   - shellcheck -> Needs to be installed manually through package manager
 //   - platformio missing
 //   - tinygo
 //   - LaTeX:
@@ -24,7 +21,6 @@
 //   - Better escape
 //   - Show live changes when changing regex with %s  https://github.com/zed-industries/zed/issues/4411
 //   - scrolling shouldn't exceed last line, only with zz e.g.
-//   - Vim navigation in file tree (like nvim-tree) (yazi is not a bad choice)
 //   - Which-key like window
 //   - Insert from Register-overview when pressing "
 // - Editor:
@@ -35,15 +31,16 @@
 //   - Icons in outline
 //   - Cursor animation
 //   - % navigation (bash only)
-//   - Inline git changes (toggle all)
+//   - Inline git changes (toggle all diff hunks)
 //   - Change editor size with ctrl+scroll
+//   - Show amount of copilot options e.g. 2/7
 //   - Obsidian alternative
+//   - Render markdown in assistant (ideally like obisidan does)
 //   - Git commit window (maybe like lazygit)
 //   - Proper CMake implementation (for nice c++ development)
 //   - HTML in Editor preview
 //   - Python notebook
 //   - PDF Viewer
-//   - Buggy matching text (if only whitespace)
 //   - Better outline
 //   - Undotree
 //   - Codeium support
@@ -51,7 +48,7 @@
 //   - Zen-mode disable border
 //   - Inverted cursor color
 //   - Ligatures under cursor not rendered correctly
-//   - autocompletion not as great as in nvim
+//   - autocompletion: Better UI
 //   - snippets for extensions not working
 //   - Java go to definition not working
 //   - Java treesitter selection not working
@@ -102,7 +99,7 @@
     "dock": "right"
   },
   "collaboration_panel": {
-    "button": false
+    "button": true
   },
   "chat_panel": {
     "button": "when_in_call"
@@ -219,7 +216,7 @@
   "assistant": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-3-7-sonnet"
+      "model": "gemini-2.0-flash-001"
     },
     "version": "2"
   },
@@ -261,7 +258,7 @@
       "settings": {
         "texlab": {
           "build": {
-            "onSave": false,
+            "onSave": true,
             "forwardSearchAfter": true,
             "executable": "tectonic",
             "args": ["-X", "compile", "%f"]
@@ -270,8 +267,11 @@
             "executable": "zathura",
             "args": ["--synctex-forward", "%l:1:%f", "%p"]
           },
+          "latexFormatter": "latexindent",
           "latexindent": {
-            "local": ".latexindent"
+            "local": "/home/domi/Documents/TypeTrace-docs/.latexindent.yaml",
+            "modifyLineBreaks": true,
+            "replacement": "-rv"
           }
         }
       }
@@ -285,14 +285,14 @@
       "format_on_save": "off"
     },
     "C": {
-      "show_edit_predictions": false,
+      "show_edit_predictions": true,
       "format_on_save": "on",
       "formatter": {
         "external": {
           "command": "clang-format",
           "arguments": [
             // "--style=file", // Use this for .clang-format file
-            "--style={BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 80, ReflowComments: false, AlignArrayOfStructures: Left, AlignConsecutiveMacros: Consecutive, RemoveParentheses: ReturnStatement}",
+            "--style={BasedOnStyle: Microsoft, AlignArrayOfStructures: Right, AlignEscapedNewlines: Left, AlignOperands: AlignAfterOperator, ColumnLimit: 80, AllowShortLoopsOnASingleLine: true}",
             "--assume-filename={buffer_path}"
           ]
         }
@@ -305,7 +305,7 @@
           "command": "clang-format",
           "arguments": [
             // "--style=file", // Use this for .clang-format file
-            "--style={BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 80, ReflowComments: false, AlignArrayOfStructures: Left, AlignConsecutiveMacros: Consecutive, RemoveParentheses: ReturnStatement}",
+            "--style={BasedOnStyle: Microsoft, AlignArrayOfStructures: Right, AlignEscapedNewlines: Left, AlignOperands: AlignAfterOperator, ColumnLimit: 80, AllowShortLoopsOnASingleLine: true}",
             "--assume-filename={buffer_path}"
           ]
         }

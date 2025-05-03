@@ -33,7 +33,8 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --color=selected-bg:#45475a \
---multi"
+--multi \
+--bind 'enter:execute-silent(readlink -f {} | wl-copy)+accept'"
 
 # ╭──────────────────────────────────────────────────────────╮
 # │ Fish shell                                               │
@@ -96,7 +97,7 @@ alias zr=__zoxide_forget_zr
 alias ls="eza --oneline --group-directories-first --icons --hyperlink"
 
 # Use eza instead of tree
-alias tree="eza --tree --group-directories-first --icons"
+alias tree="eza --tree --group-directories-first --icons --hyperlink"
 
 ### fzf (fuzzy finder)
 alias f="fzf --height 40% --layout reverse --border"
@@ -166,6 +167,27 @@ function yazi_zed
     zed -- "$opened_file"
     rm -f -- "$tmp"
 end
+
+# function yazi_zed
+#     set -l tmp (mktemp -t "yazi-chooser.XXXXXX")
+#     yazi $argv --chooser-file="$tmp"
+#
+#     if test -s "$tmp"
+#         set -l opened_file (head -n 1 "$tmp")
+#
+#         if test -n "$opened_file"
+#             set -l mime_type (file --mime-type -b -- "$opened_file" 2>/dev/null)
+#
+#             if test "$mime_type" = "application/pdf"
+#                 xdg-open -- "$opened_file"
+#             else
+#                 zed -- "$opened_file"
+#             end
+#         end
+#     end
+#
+#     rm -f -- "$tmp"
+# end
 
 # ╭──────────────────────────────────────────────────────────╮
 # │ Zoxide                                                   │
