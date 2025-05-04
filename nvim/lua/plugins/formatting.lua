@@ -25,13 +25,12 @@ return {
 					append_args = function()
 						return {
 							"--style={\
-								BasedOnStyle: llvm,\
-								IndentWidth: 4,\
+								BasedOnStyle: Microsoft,\
+								AlignArrayOfStructures: Right,\
+								AlignEscapedNewlines: Left,\
+								AlignOperands: AlignAfterOperator,\
+								AllowShortLoopsOnASingleLine: true,\
 								ColumnLimit: 80,\
-								ReflowComments: false,\
-								AlignArrayOfStructures: Left,\
-								AlignConsecutiveMacros: Consecutive,\
-								RemoveParentheses: ReturnStatement,\
 							}",
 						}
 					end,

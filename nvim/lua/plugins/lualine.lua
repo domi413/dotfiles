@@ -37,6 +37,7 @@ return {
 		end
 
 		require("lsp-progress").setup()
+		require("screenkey").setup({})
 
 		require("lualine").setup({
 			options = {
@@ -53,7 +54,11 @@ return {
 						return require("lsp-progress").progress()
 					end,
 				},
-				lualine_x = {},
+				lualine_x = {
+					function()
+						return require("screenkey").get_keys() .. " "
+					end,
+				},
 				lualine_y = {
 					codeiumStatus,
 					"filetype",
