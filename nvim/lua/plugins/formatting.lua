@@ -25,12 +25,15 @@ return {
 					append_args = function()
 						return {
 							"--style={\
-								BasedOnStyle: Microsoft,\
+								BasedOnStyle: Mozilla,\
 								AlignArrayOfStructures: Right,\
-								AlignEscapedNewlines: Left,\
-								AlignOperands: AlignAfterOperator,\
 								AllowShortLoopsOnASingleLine: true,\
+								PointerAlignment: Right,\
+								TabWidth: 4,\
+								IndentWidth: 4,\
 								ColumnLimit: 80,\
+								AlwaysBreakAfterDefinitionReturnType: None,\
+								BreakAfterReturnType: None\
 							}",
 						}
 					end,
@@ -44,7 +47,7 @@ return {
 						if vim.fn.filereadable(yaml_file) == 1 then
 							return { "-m", "-rv", "-l" }
 						else
-							return { "-m", '-y=defaultIndent:"    ",noAdditionalIndent:multicols:1' }
+							return { "-m", '-y=defaultIndent:"\t",noAdditionalIndent:multicols:1' }
 						end
 					end,
 				},

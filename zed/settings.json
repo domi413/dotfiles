@@ -156,8 +156,8 @@
   // ╭──────────────────────────────────────────────────────────╮
   // │ Font                                                     │
   // ╰──────────────────────────────────────────────────────────╯
-  "ui_font_size": 16,
-  "buffer_font_size": 15,
+  "ui_font_size": 15.5,
+  "buffer_font_size": 14.5,
   "buffer_line_height": "standard",
   "buffer_font_weight": 340, // Dark theme
   // "buffer_font_weight": 390, // Light theme
@@ -234,6 +234,7 @@
     },
     "font_size": 14
   },
+  "bottom_dock_layout": "right_aligned",
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ LSP                                                      │
@@ -269,7 +270,7 @@
           },
           "latexFormatter": "latexindent",
           "latexindent": {
-            "local": "/home/domi/Documents/TypeTrace-docs/.latexindent.yaml",
+            "local": "/home/dominator/Documents/typetrace-docs/.latexindent.yaml",
             "modifyLineBreaks": true,
             "replacement": "-rv"
           }
@@ -285,14 +286,15 @@
       "format_on_save": "off"
     },
     "C": {
-      "show_edit_predictions": true,
+      "show_edit_predictions": false,
       "format_on_save": "on",
       "formatter": {
         "external": {
           "command": "clang-format",
           "arguments": [
             // "--style=file", // Use this for .clang-format file
-            "--style={BasedOnStyle: Microsoft, AlignArrayOfStructures: Right, AlignEscapedNewlines: Left, AlignOperands: AlignAfterOperator, ColumnLimit: 80, AllowShortLoopsOnASingleLine: true}",
+            // BreakBeforeBraces: Allman -> move "{" in conditionals to new line
+            "--style={BasedOnStyle: Mozilla, AlignArrayOfStructures: Right, AllowShortLoopsOnASingleLine: true, PointerAlignment: Right, TabWidth: 4, IndentWidth: 4, ColumnLimit: 80, AlwaysBreakAfterDefinitionReturnType: None, BreakAfterReturnType: None}",
             "--assume-filename={buffer_path}"
           ]
         }
@@ -305,7 +307,7 @@
           "command": "clang-format",
           "arguments": [
             // "--style=file", // Use this for .clang-format file
-            "--style={BasedOnStyle: Microsoft, AlignArrayOfStructures: Right, AlignEscapedNewlines: Left, AlignOperands: AlignAfterOperator, ColumnLimit: 80, AllowShortLoopsOnASingleLine: true}",
+            "--style={BasedOnStyle: Mozilla, AlignArrayOfStructures: Right, AllowShortLoopsOnASingleLine: true, PointerAlignment: Right, TabWidth: 4, IndentWidth: 4, ColumnLimit: 80, AlwaysBreakAfterDefinitionReturnType: None, BreakAfterReturnType: None}",
             "--assume-filename={buffer_path}"
           ]
         }

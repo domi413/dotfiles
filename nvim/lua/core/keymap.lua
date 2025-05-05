@@ -62,10 +62,7 @@ keymap.set("n", "<leader>o", "o<Esc>", { desc = "Insert line above" })
 keymap.set("n", "<leader>O", "O<Esc>", { desc = "Insert line below" })
 
 -- Toggle case
-keymap.set("n", "<leader>i", "~", { desc = "Toggle case" })
-keymap.set("v", "<leader>i", "~", { desc = "Toggle case" })
-keymap.set("s", "<leader>i", "~", { desc = "Toggle case" })
-keymap.set("x", "<leader>i", "~", { desc = "Toggle case" })
+keymap.set({ "n", "v", "s", "x" }, "<leader>i", "~", { desc = "Toggle case" })
 
 -- Toggle line wrapping
 keymap.set("n", "<leader>$", "<cmd>set wrap!<cr>", { desc = "Toggle line wrapping" })
@@ -146,10 +143,15 @@ keymap.set("n", "<leader>ts", "<cmd>set spell!<cr>", { desc = "Toggle spellcheck
 -- │ CodeCompanion (AI assistant)                             │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Toggle assistant panel
--- TODO: add keymap
+keymap.set(
+	{ "n", "v", "s", "x" },
+	"<leader>cc",
+	":<C-u>'<,'>CodeCompanionChat<cr>",
+	{ desc = "Toggle assistant panel" }
+)
 
 -- Call inline assistant
--- TODO: add keymap
+keymap.set({ "n", "v", "s", "x" }, "<leader>ca", ":<C-u>'<,'>CodeCompanion<cr>", { desc = "Toggle inline assistant" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ NVIM Tree (File Explorer)                                │
