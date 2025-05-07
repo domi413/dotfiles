@@ -13,11 +13,6 @@ return {
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-		-- Enable inlay hints
-		-- if vim.lsp.inlay_hint then
-		-- 	vim.lsp.inlay_hint.enable(true, { 0 })
-		-- end
-
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(args)
@@ -64,7 +59,7 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
+		mason_lspconfig.setup({
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,

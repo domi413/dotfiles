@@ -165,7 +165,7 @@ keymap.set({ "n", "v", "s", "x" }, "<leader>ca", ":<C-u>'<,'>CodeCompanion<cr>",
 
 -- Toggle inlay hints
 if vim.lsp.inlay_hint then
-	keymap.set("n", "<leader>th", function()
+	keymap.set("n", "<leader>tt", function()
 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
 	end, { desc = "Toggle inlay hints" })
 end
