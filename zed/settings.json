@@ -1,9 +1,5 @@
 // ISSUES:
 //
-// ISSUES TO CREATE:
-//
-// - :r!... -> writes the output of the command into the buffer
-//
 // - Plugins:
 //   - platformio missing
 //   - tinygo
@@ -27,15 +23,16 @@
 //   - Ligatures buggy
 //   - Smooth-scroll missing
 //   - Debugger support
+//   - Strikethrough text
 //   - Icons in auto completion
 //   - Icons in outline
 //   - Cursor animation
-//   - % navigation (bash only)
+//   - % navigation (bash, lua, etc.)
 //   - Inline git changes (toggle all diff hunks)
 //   - Change editor size with ctrl+scroll
 //   - Show amount of copilot options e.g. 2/7
 //   - Obsidian alternative
-//   - Render markdown in assistant (ideally like obisidan does)
+//   - Render markdown in assistant (ideally like obsidian does)
 //   - Git commit window (maybe like lazygit)
 //   - Proper CMake implementation (for nice c++ development)
 //   - HTML in Editor preview
@@ -69,9 +66,10 @@
     "html": true,
     "latex": true,
     "lua": true,
+    "ruff": true,
     "toml": true,
     "xml": true,
-    "zed_bash": true
+    "basher": true
   },
 
   // ╭──────────────────────────────────────────────────────────╮
@@ -165,7 +163,7 @@
   // "buffer_font_family": "FiraCode Nerd Font",
   "buffer_font_family": "CaskaydiaCove Nerd Font",
   "buffer_font_features": {
-    // Font features not working!!?? -> Bug in cosmic font
+    // Font features not working -> Bug in cosmic font
     // FiraCode
     // "cv01": true,
     // "cv02": true,
@@ -213,7 +211,7 @@
   // ╭──────────────────────────────────────────────────────────╮
   // │ Assistant                                                │
   // ╰──────────────────────────────────────────────────────────╯
-  "assistant": {
+  "agent": {
     "default_model": {
       "provider": "copilot_chat",
       "model": "gemini-2.0-flash-001"
@@ -247,7 +245,16 @@
         },
         "gofumpt": true,
         "staticcheck": true,
-        "usePlaceholders": true
+        "usePlaceholders": true,
+        "hints": {
+          "assignVariableTypes": false,
+          "compositeLiteralFields": false,
+          "compositeLiteralTypes": false,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true
+        }
       }
     },
     "taplo": {
@@ -278,10 +285,11 @@
       }
     }
   },
+
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ Language config                                          │
+  // ╰──────────────────────────────────────────────────────────╯
   "languages": {
-    "CSharp": {
-      "show_edit_predictions": false
-    },
     "Blueprint": {
       "format_on_save": "off"
     },
@@ -313,8 +321,22 @@
         }
       }
     },
+    "CSharp": {
+      "show_edit_predictions": false
+    },
     "JSONC": {
       "format_on_save": "on"
+    },
+    "Lua": {
+      // Not working?
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "inlay_hints": {
+        "enabled": true,
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true
+      }
     },
     "Markdown": {
       "format_on_save": "on"

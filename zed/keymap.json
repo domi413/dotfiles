@@ -139,6 +139,9 @@
       // Toggle inline git diff
       "space g h ": "editor::ToggleSelectedDiffHunks",
 
+      // Toggle inlay hints
+      "space t t": "editor::ToggleInlayHints",
+
       // Diagnostic
       "space d n": "editor::GoToDiagnostic",
       "space d p": "editor::GoToPreviousDiagnostic",
