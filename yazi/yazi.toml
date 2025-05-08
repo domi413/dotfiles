@@ -12,3 +12,7 @@ prepend_previewers = [
 
 [manager]
 linemode = "rtime"
+
+[preview]
+max_width = 10000
+max_height = 2000
