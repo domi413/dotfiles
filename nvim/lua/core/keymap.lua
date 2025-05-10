@@ -27,8 +27,8 @@ keymap.set("n", "<leader>hx", "<cmd>resize -5<cr>", { desc = "Decrease height of
 -- │ Buffer                                                   │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Move buffer
-vim.keymap.set("n", "<Leader>>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
-vim.keymap.set("n", "<Leader><", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
+keymap.set("n", "<Leader>>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
+keymap.set("n", "<Leader><", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
 
 -- Buffer navigation
 keymap.set("n", "<C-p>", "<cmd>BufferLineCycleNext<CR>")
@@ -110,11 +110,14 @@ keymap.set("n", "<leader>ft", "<cmd>Telescope colorscheme enable_preview=true<cr
 -- Open registers
 keymap.set("n", "<leader>fr", "<cmd>Telescope registers<cr>", { desc = "Open registers" })
 
+-- Open marks
+keymap.set("n", "<leader>fm", "<cmd>Telescope marks<cr>", { desc = "Open marks" })
+
 -- Browse TODO comments
 keymap.set("n", "<leader>fg", "<cmd>TodoTelescope<cr>", { desc = "Browse TODO comments" })
 
 -- Switch tabs
-vim.keymap.set("n", "<leader>st", "<cmd>Telescope buffers<cr>", { desc = "Switch buffer" })
+keymap.set("n", "<leader>st", "<cmd>Telescope buffers<cr>", { desc = "Switch buffer" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Vimtex                                                   │
@@ -129,7 +132,7 @@ keymap.set("n", "<leader>lp", "<cmd>VimtexView<cr><cr>", { desc = "Jump in PDF t
 keymap.set("n", "<leader>lC", "<cmd>VimtexClean<cr><cr>", { desc = "Cleanup files" })
 
 -- Toggle TOC
-vim.keymap.set("n", "<leader>lt", function()
+keymap.set("n", "<leader>lt", function()
 	vim.cmd("VimtexTocToggle")
 	vim.cmd("wincmd h")
 end, { desc = "Toggle TOC" })

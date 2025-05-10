@@ -27,8 +27,8 @@ keymap.set("n", "<leader>hx", "<cmd>resize -5<cr>", { desc = "Decrease height of
 -- │ Buffer                                                   │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Move buffer
-vim.keymap.set("n", "<Leader>>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
-vim.keymap.set("n", "<Leader><", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
+keymap.set("n", "<Leader>>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
+keymap.set("n", "<Leader><", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
 
 -- Buffer navigation
 keymap.set("n", "<C-p>", "<cmd>BufferLineCycleNext<CR>")
@@ -91,11 +91,14 @@ keymap.set("n", "<leader>ft", "<cmd>Telescope colorscheme enable_preview=true<cr
 -- Open registers
 keymap.set("n", "<leader>fr", "<cmd>Telescope registers<cr>", { desc = "Open registers" })
 
+-- Open marks
+keymap.set("n", "<leader>fm", "<cmd>Telescope marks<cr>", { desc = "Open marks" })
+
 -- Browse TODO comments
 keymap.set("n", "<leader>fg", "<cmd>TodoTelescope<cr>", { desc = "Browse TODO comments" })
 
 -- Switch tabs
-vim.keymap.set("n", "<leader>st", "<cmd>Telescope buffers<cr>", { desc = "Switch buffer" })
+keymap.set("n", "<leader>st", "<cmd>Telescope buffers<cr>", { desc = "Switch buffer" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Toggle spellchecker                                      │
@@ -115,7 +118,7 @@ keymap.set("n", "<leader>ts", "<cmd>set spell!<cr>", { desc = "Toggle spellcheck
 keymap.set("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Open lazy git" })
 
 -- Gitsigns
-vim.keymap.set("n", "<leader>gh", function()
+keymap.set("n", "<leader>gh", function()
 	vim.cmd("Gitsigns toggle_deleted")
 	vim.cmd("Gitsigns toggle_linehl")
 end, { desc = "Toggle show changes" })
@@ -124,4 +127,3 @@ end, { desc = "Toggle show changes" })
 -- │ Disable cutting                                          │
 -- ╰──────────────────────────────────────────────────────────╯
 keymap.set("n", "x", '"_x')
-
