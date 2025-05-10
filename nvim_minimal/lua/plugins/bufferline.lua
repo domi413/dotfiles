@@ -2,25 +2,14 @@ return {
 	"akinsho/bufferline.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		-- Function to detect amount of tabs
-		function close_tab_if_multiple()
-			-- Get the number of open tabs
-			local tab_count = vim.fn.tabpagenr("$")
-			if tab_count > 1 then
-				vim.cmd("tabclose")
-			else
-				vim.api.nvim_echo({ { "Cannot close the last tab", "ErrorMsg" } }, false, {})
-			end
-		end
-
 		local bufferline = require("bufferline")
 		bufferline.setup({
 			options = {
-				mode = "tabs",
+				mode = "buffers",
 
 				-- numbers: none, ordinal(1, 2, 3), buffer_id, both, ...
 				numbers = "none",
-				close_command = "lua close_tab_if_multiple()",
+				close_command = "bdelete! %d",
 				diagnostics = false,
 				style_preset = bufferline.style_preset.no_italic,
 				show_close_icon = false,

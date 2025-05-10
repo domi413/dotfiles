@@ -7,14 +7,15 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Window tiling and buffer management                      │
+-- │ Window tiling                                            │
 -- ╰──────────────────────────────────────────────────────────╯
 keymap.set("n", "<leader>sk", "<cmd>topleft split<cr>", { desc = "Split window up" })
 keymap.set("n", "<leader>sj", "<cmd>split<cr>", { desc = "Split window down" })
 keymap.set("n", "<leader>sl", "<cmd>vsplit<cr>", { desc = "Split window right" })
 keymap.set("n", "<leader>sh", "<cmd>topleft vsplit<cr>", { desc = "Split window left" })
 keymap.set("n", "<leader>sr", "<cmd>wincmd =<cr>", { desc = "Reset splitted window width / height" })
-keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "Close split/tab" })
+keymap.set("n", "<leader>x", "<cmd>bdelete!<CR>", { desc = "Close split/tab" })
+-- keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "Close split/tab" })
 
 -- Resize splitted windows
 keymap.set("n", "<leader>va", "<cmd>vertical resize +10<cr>", { desc = "Increase width of splitted window" })
@@ -22,22 +23,32 @@ keymap.set("n", "<leader>vx", "<cmd>vertical resize -10<cr>", { desc = "Decrease
 keymap.set("n", "<leader>ha", "<cmd>resize +5<cr>", { desc = "Increase height of splitted window" })
 keymap.set("n", "<leader>hx", "<cmd>resize -5<cr>", { desc = "Decrease height of splitted window" })
 
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Buffer                                                   │
+-- ╰──────────────────────────────────────────────────────────╯
 -- Move buffer
-vim.keymap.set("n", "<Leader>>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move tab to right" })
-vim.keymap.set("n", "<Leader><", "<cmd>BufferLineMovePrev<cr>", { desc = "Move tab to left" })
---
+vim.keymap.set("n", "<Leader>>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
+vim.keymap.set("n", "<Leader><", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
+
+-- Buffer navigation
+keymap.set("n", "<C-p>", "<cmd>BufferLineCycleNext<CR>")
+keymap.set("n", "<C-n>", "<cmd>BufferLineCyclePrev<CR>")
+
+-- New empty buffer
+keymap.set("n", "<leader>nt", "<cmd>enew<CR>", { desc = "Open new tab with empty buffer" })
+
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Tabs                                                     │
 -- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+-- keymap.set("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 
 -- Move Tabs
-vim.keymap.set("n", "<Leader>>", "<cmd>tabmove +1<cr>", { desc = "Move tab to right" })
-vim.keymap.set("n", "<Leader><", "<cmd>tabmove -1<cr>", { desc = "Move tab to left" })
+-- vim.keymap.set("n", "<Leader>>", "<cmd>tabmove +1<cr>", { desc = "Move tab to right" })
+-- vim.keymap.set("n", "<Leader><", "<cmd>tabmove -1<cr>", { desc = "Move tab to left" })
 
 -- Tab navigation
-keymap.set("n", "<C-p>", "<cmd>tabn<CR>") -- Go to next tab
-keymap.set("n", "<C-n>", "<cmd>tabp<CR>") -- To go previous tab
+-- keymap.set("n", "<C-p>", "<cmd>tabn<CR>") -- Go to next tab
+-- keymap.set("n", "<C-n>", "<cmd>tabp<CR>") -- To go previous tab
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Editing / Editor                                         │
@@ -51,10 +62,7 @@ keymap.set("n", "<leader>o", "o<Esc>", { desc = "Insert line above" })
 keymap.set("n", "<leader>O", "O<Esc>", { desc = "Insert line below" })
 
 -- Toggle case
-keymap.set("n", "<leader>i", "~", { desc = "Toggle case" })
-keymap.set("v", "<leader>i", "~", { desc = "Toggle case" })
-keymap.set("s", "<leader>i", "~", { desc = "Toggle case" })
-keymap.set("x", "<leader>i", "~", { desc = "Toggle case" })
+keymap.set({ "n", "v", "s", "x" }, "<leader>i", "~", { desc = "Toggle case" })
 
 -- Toggle line wrapping
 keymap.set("n", "<leader>$", "<cmd>set wrap!<cr>", { desc = "Toggle line wrapping" })
@@ -67,16 +75,6 @@ keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
 
 -- Repeat last macro
 keymap.set("n", "#", "@@", { desc = "Repeat last macro" })
-
--- ╭──────────────────────────────────────────────────────────╮
--- │ Zen-Mode                                                 │
--- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>tz", "<cmd>ZenMode<cr>", { desc = "Toggle ZenMode" })
-
--- ╭──────────────────────────────────────────────────────────╮
--- │ UndoTree                                                 │
--- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>tu", "<cmd>UndotreeToggle<cr>", { desc = "Toggle undoTree" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Telescope                                                │
@@ -97,27 +95,7 @@ keymap.set("n", "<leader>fr", "<cmd>Telescope registers<cr>", { desc = "Open reg
 keymap.set("n", "<leader>fg", "<cmd>TodoTelescope<cr>", { desc = "Browse TODO comments" })
 
 -- Switch tabs
-vim.keymap.set("n", "<leader>st", function()
-	require("telescope").extensions["telescope-tabs"].list_tabs()
-end, { desc = "Switch tabs" })
-
--- ╭──────────────────────────────────────────────────────────╮
--- │ Vimtex                                                   │
--- ╰──────────────────────────────────────────────────────────╯
--- Start compilation
-keymap.set("n", "<leader>lc", "<cmd>w | VimtexCompile<cr><cr>", { desc = "Start compilation" })
-
--- Jump in PDF to the current position in tex file
-keymap.set("n", "<leader>lp", "<cmd>VimtexView<cr><cr>", { desc = "Jump in PDF to current position" })
-
--- Cleanup files
-keymap.set("n", "<leader>lC", "<cmd>VimtexClean<cr><cr>", { desc = "Cleanup files" })
-
--- Toggle TOC
-vim.keymap.set("n", "<leader>lt", function()
-	vim.cmd("VimtexTocToggle")
-	vim.cmd("wincmd h")
-end, { desc = "Toggle TOC" })
+vim.keymap.set("n", "<leader>st", "<cmd>Telescope buffers<cr>", { desc = "Switch buffer" })
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Toggle spellchecker                                      │
@@ -125,25 +103,10 @@ end, { desc = "Toggle TOC" })
 keymap.set("n", "<leader>ts", "<cmd>set spell!<cr>", { desc = "Toggle spellchecker" })
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ NVIM Tree (File Explorer)                                │
--- ╰──────────────────────────────────────────────────────────╯
--- keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
-
--- ╭──────────────────────────────────────────────────────────╮
--- │ LSP                                                      │
--- ╰──────────────────────────────────────────────────────────╯
--- lsp configs are defined in lua/plugins/lsp/lspconfig.lua
-
--- ╭──────────────────────────────────────────────────────────╮
 -- │ Treesitter                                               │
 -- ╰──────────────────────────────────────────────────────────╯
--- treesitter configs are defined in
+-- treesitter motions are defined in
 -- lua/plugins/treesitter/nvim-treesitter-text-objects.lua
-
--- ╭──────────────────────────────────────────────────────────╮
--- │ Debugger                                                 │
--- ╰──────────────────────────────────────────────────────────╯
--- debugger configs are defined in lua/plugins/debugger/nvim-dap.lua
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Git                                                      │
@@ -158,14 +121,7 @@ vim.keymap.set("n", "<leader>gh", function()
 end, { desc = "Toggle show changes" })
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Codeium                                                  │
+-- │ Disable cutting                                          │
 -- ╰──────────────────────────────────────────────────────────╯
--- Codeium keybindings are defined in lua/plugins/codeium.lua
+keymap.set("n", "x", '"_x')
 
--- ╭──────────────────────────────────────────────────────────╮
--- │ Command line                                             │
--- ╰──────────────────────────────────────────────────────────╯
-vim.keymap.set("c", "<C-h>", "<Left>", { desc = "Move cursor left" })
-vim.keymap.set("c", "<C-l>", "<Right>", { desc = "Move cursor right" })
-vim.keymap.set("c", "<C-0>", "<Home>", { desc = "Move cursor to beginning of line" })
-vim.keymap.set("c", "<C-$>", "<End>", { desc = "Move cursor to end of line" })

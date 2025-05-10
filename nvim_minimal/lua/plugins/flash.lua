@@ -2,15 +2,13 @@ return {
 	"folke/flash.nvim",
 	event = "VeryLazy",
 	opts = {
-
 		jump = {
 			autojump = false,
 		},
 		label = {
-			upperase = false,
+			uppercase = false,
 		},
 		highlight = {
-			-- Keep normal highlighting
 			backdrop = false,
 		},
 		modes = {
@@ -43,4 +41,8 @@ return {
 			desc = "Flash Treesitter",
 		},
 	},
+	config = function(_, opts)
+		require("flash").setup(opts)
+		vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#e24efc" })
+	end,
 }

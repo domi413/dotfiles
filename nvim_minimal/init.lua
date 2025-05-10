@@ -1,7 +1,3 @@
--- Recommended settings from nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -24,10 +20,8 @@ vim.opt.rtp:prepend(lazypath)
 -- ╰──────────────────────────────────────────────────────────╯
 -- Setup vim.opt, keymaps, ... before loading lazy.nvim
 -- so that mappings are correct.
-require("core.disable_cutting")
 require("core.options")
 require("core.keymap")
-require("core.run_code")
 
 -- Setup lazy.nvim
 require("lazy").setup({

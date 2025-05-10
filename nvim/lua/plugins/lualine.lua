@@ -9,13 +9,13 @@ return {
 		-- Count selected lines and characters in visual mode
 		local function selectionCount()
 			local mode = vim.api.nvim_get_mode().mode
-			if not mode:find("[Vv\22]") then
+			if not mode:match("[Vv\22]") then
 				return ""
 			end
 			local start_line = vim.fn.line("v")
 			local end_line = vim.fn.line(".")
 			local lines = math.abs(end_line - start_line) + 1
-			local chars = vim.fn.wordcount().visual_chars or 0
+			local chars = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { mode = mode })[1]:len()
 			return lines .. "Ln:" .. chars .. "C"
 		end
 

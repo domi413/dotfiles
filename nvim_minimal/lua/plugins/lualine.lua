@@ -6,23 +6,14 @@ return {
 		-- Count selected lines and characters in visual mode
 		local function selectionCount()
 			local mode = vim.api.nvim_get_mode().mode
-			if not mode:find("[Vv\22]") then
+			if not mode:match("[Vv\22]") then
 				return ""
 			end
 			local start_line = vim.fn.line("v")
 			local end_line = vim.fn.line(".")
 			local lines = math.abs(end_line - start_line) + 1
-			local chars = vim.fn.wordcount().visual_chars or 0
+			local chars = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { mode = mode })[1]:len()
 			return lines .. "Ln:" .. chars .. "C"
-		end
-
-		-- Check if Codeium plugin is loaded, fallback if not
-		local function codeiumStatus()
-			local ok, codeium = pcall(require, "codeium.virtual_text")
-			if ok and codeium.status_string then
-				return codeium.status_string()
-			end
-			return ""
 		end
 
 		require("lualine").setup({
@@ -38,12 +29,11 @@ return {
 				lualine_c = { "%=" },
 				lualine_x = {},
 				lualine_y = {
-					codeiumStatus,
 					"filetype",
 					"progress",
 				},
 				lualine_z = {
-					{ selectionCount },
+					selectionCount,
 					{ "location", separator = { right = "" }, left_padding = 2 },
 				},
 			},
