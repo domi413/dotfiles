@@ -14,7 +14,7 @@
     }
   },
   {
-    "context": "Editor || Terminal || ExtensionManager",
+    "context": "Editor && vim_mode == normal || Terminal || ExtensionManager",
     "bindings": {
       // Move to next/previous window
       "ctrl-p": "pane::ActivateNextItem",
@@ -66,10 +66,7 @@
       "ctrl-f": "editor::AcceptEditPrediction",
 
       // Prevent tab from accepting suggestion
-      "tab": "editor::Tab",
-
-      // Trigger auto-completion
-      "ctrl-shift-enter": "editor::ShowCompletions"
+      "tab": "editor::Tab"
     }
   },
 
