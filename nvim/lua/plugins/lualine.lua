@@ -8,15 +8,36 @@ return {
 	config = function()
 		-- Count selected lines and characters in visual mode
 		local function selectionCount()
-			local mode = vim.api.nvim_get_mode().mode
-			if not mode:match("[Vv\22]") then
-				return ""
+			local MAX_CHAR_COUNT = 2e+6
+
+			local current_mode_char = vim.api.nvim_get_mode().mode
+
+			local v_start_pos = vim.fn.getpos("v")
+			local v_end_pos = vim.fn.getpos(".")
+
+			local lines_selected_count = math.abs(v_start_pos[2] - v_end_pos[2]) + 1
+
+			-- Assume 30 characters per line and set count limit to limit performance throttle
+			if lines_selected_count * 30 > MAX_CHAR_COUNT then
+				return tostring(lines_selected_count) .. " Ln : >" .. "nil".. " C"
 			end
-			local start_line = vim.fn.line("v")
-			local end_line = vim.fn.line(".")
-			local lines = math.abs(end_line - start_line) + 1
-			local chars = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { mode = mode })[1]:len()
-			return lines .. "Ln:" .. chars .. "C"
+
+			local region_lines = vim.fn.getregion(v_start_pos, v_end_pos, { type = current_mode_char })
+			local char_count = 0
+
+			for i, line in ipairs(region_lines) do
+				if char_count <= MAX_CHAR_COUNT then
+					char_count = char_count + vim.fn.strchars(line)
+					if (current_mode_char == 'v' or current_mode_char == 'V') and i < #region_lines then
+						char_count = char_count + 1
+					end
+				else
+					char_count = ">" .. tostring(MAX_CHAR_COUNT)
+					break
+				end
+			end
+
+			return tostring(lines_selected_count) .. " Ln : " .. char_count .. " C"
 		end
 
 		-- Check if Codeium plugin is loaded, fallback if not
