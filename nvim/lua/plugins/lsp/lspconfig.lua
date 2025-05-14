@@ -25,23 +25,17 @@ return {
 				opts.desc = "Go definition"
 				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
-				opts.desc = "Go definition in new tab"
-				keymap.set("n", "gD", "<cmd>tab split | Telescope lsp_definitions<CR>", opts)
-
 				opts.desc = "Show diagnostics"
 				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
-				opts.desc = "Open floating diagnostic message"
-				keymap.set("n", "<leader>dl", vim.diagnostic.open_float, opts)
-
 				opts.desc = "Go to previous diagnostic"
 				keymap.set("n", "<leader>dp", function()
-					vim.diagnostic.jump({ count = -1, float = true })
+					vim.diagnostic.jump({ count = -1, float = false })
 				end, opts)
 
 				opts.desc = "Go to next diagnostic"
 				keymap.set("n", "<leader>dn", function()
-					vim.diagnostic.jump({ count = 1, float = true })
+					vim.diagnostic.jump({ count = 1, float = false })
 				end, opts)
 
 				opts.desc = "Show documentation"
@@ -86,9 +80,9 @@ return {
 							analyses = { unusedparams = true },
 							gofumpt = true,
 							hints = {
-								assignVariableType = true,
-								compositeLiteralFields = true,
-								compositeLiteralTypes = true,
+								assignVariableType = false,
+								compositeLiteralFields = false,
+								compositeLiteralTypes = false,
 								constantValues = true,
 								functionTypeParameters = true,
 								parameterNames = true,
