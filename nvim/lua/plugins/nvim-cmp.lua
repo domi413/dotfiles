@@ -88,12 +88,16 @@ return {
 			}),
 
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
+				{
+					name = "nvim_lsp",
+					entry_filter = function(entry)
+						return entry:get_kind() ~= require("cmp.types").lsp.CompletionItemKind.Text
+					end,
+				},
 				{ name = "luasnip" }, -- snippets
 				{ name = "path" }, -- file system paths
 				{ name = "nvim_lsp_signature_help" },
 			}, {
-				-- You can still add buffer source here for insert mode if needed
 				{ name = "buffer", keyword_length = 3 },
 			}),
 		})
