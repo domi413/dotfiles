@@ -53,6 +53,13 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		vim.diagnostic.config({
+			virtual_text = {
+				prefix = "●",
+				spacing = 4,
+			},
+		})
+
 		mason_lspconfig.setup({
 			function(server_name)
 				lspconfig[server_name].setup({
