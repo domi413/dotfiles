@@ -1,6 +1,4 @@
 include catppuccin-mocha
-# include kanagawa
-# include rose-pine
 
 set selection-clipboard clipboard
 
