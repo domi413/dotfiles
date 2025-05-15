@@ -5,9 +5,7 @@ require("relative-motions"):setup({
 })
 require("full-border"):setup({ type = ui.Border.ROUNDED })
 require("git"):setup()
-require("starship"):setup({
-	config_file = "",
-})
+require("starship"):setup({})
 
 Linemode = Linemode or {}
 
