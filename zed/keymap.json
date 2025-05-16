@@ -25,7 +25,16 @@
     "context": "Terminal",
     "bindings": {
       "ctrl-k": "terminal_panel::ToggleFocus",
-      "ctrl-j": null
+      "ctrl-j": null,
+
+      // Create new terminal
+      "ctrl-shift-n": "workspace::NewTerminal",
+
+      // Split terminal
+      "shift-alt-h": "pane::SplitLeft",
+      "shift-alt-j": "pane::SplitDown",
+      "shift-alt-k": "pane::SplitUp",
+      "shift-alt-l": "pane::SplitRight"
     }
   },
   {
@@ -131,7 +140,7 @@
       "space t o": "outline::Toggle",
 
       // Toggle Assistant
-      "space t a": "assistant::ToggleFocus",
+      "space t a": "agent::ToggleFocus",
 
       // Toggle inline git diff
       "space g h ": "editor::ToggleSelectedDiffHunks",
@@ -143,7 +152,7 @@
       "space d n": "editor::GoToDiagnostic",
       "space d p": "editor::GoToPreviousDiagnostic",
       "space D": "diagnostics::Deploy",
-      "space d l": "diagnostics::Deploy",
+      // "space d l": "diagnostics::Deploy",
 
       // Change theme
       "space f t": "theme_selector::Toggle",

@@ -2,7 +2,7 @@
 //
 // - Plugins:
 //   - platformio missing
-//   - tinygo
+//   - TinyGo
 //   - LaTeX:
 //    - No TOC
 //    - In-Editor PDF-Viewer (needed?)
@@ -157,8 +157,7 @@
   "ui_font_size": 15.5,
   "buffer_font_size": 14.5,
   "buffer_line_height": "standard",
-  "buffer_font_weight": 340, // Dark theme
-  // "buffer_font_weight": 390, // Light theme
+  "buffer_font_weight": 300,
 
   // "buffer_font_family": "FiraCode Nerd Font",
   "buffer_font_family": "CaskaydiaCove Nerd Font",
@@ -212,6 +211,10 @@
   // │ Assistant                                                │
   // ╰──────────────────────────────────────────────────────────╯
   "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-3.7-sonnet"
+    },
     "default_model": {
       "provider": "copilot_chat",
       "model": "gemini-2.0-flash-001"
@@ -230,9 +233,10 @@
     "toolbar": {
       "breadcrumbs": false
     },
-    "font_size": 14
+    "font_size": 14,
+    "font_weight": 360
   },
-  "bottom_dock_layout": "right_aligned",
+  // "bottom_dock_layout": "right_aligned",
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ LSP                                                      │
@@ -301,7 +305,7 @@
           "command": "clang-format",
           "arguments": [
             // "--style=file", // Use this for .clang-format file
-            // BreakBeforeBraces: Allman -> move "{" in conditionals to new line
+            // BreakBeforeBraces: Allman ->  "{" of conditionals to new line
             "--style={BasedOnStyle: Mozilla, AlignArrayOfStructures: Right, AllowShortLoopsOnASingleLine: true, PointerAlignment: Right, TabWidth: 4, IndentWidth: 4, ColumnLimit: 80, AlwaysBreakAfterDefinitionReturnType: None, BreakAfterReturnType: None}",
             "--assume-filename={buffer_path}"
           ]
