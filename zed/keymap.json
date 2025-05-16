@@ -157,6 +157,15 @@
       // Change theme
       "space f t": "theme_selector::Toggle",
 
+      // Open marks
+      "space f m": "vim::ToggleMarksView",
+
+      // Open registers
+      "space f r": "vim::ToggleRegistersView",
+
+      // Open projects
+      "space f p": "projects::OpenRecent",
+
       // Switch tabs
       "space s t": "tab_switcher::ToggleAll",
 
