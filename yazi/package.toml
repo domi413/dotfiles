@@ -1,18 +1,21 @@
 [plugin]
 deps = [
-  { use = "boydaihungst/restore",         rev = "539aad5" },
-  { use = "dedukun/relative-motions",     rev = "ce2e890" },
-  { use = "Lil-Dank/lazygit",             rev = "7a08a09" },
-  { use = "ndtoan96/ouch",                rev = "2496cd9" },
-  { use = "Rolv-Apneseth/starship",       rev = "6fde3b2" },
-  { use = "yazi-rs/plugins:full-border",  rev = "4b027c7" },
-  { use = "yazi-rs/plugins:git",          rev = "4b027c7" },
-  { use = "yazi-rs/plugins:jump-to-char", rev = "4b027c7" },
-  { use = "yazi-rs/plugins:toggle-pane",  rev = "4b027c7" },
+  { use = "dedukun/bookmarks" },
+  { use = "yazi-rs/plugins:full-border" },
+  { use = "yazi-rs/plugins:git" },
+  { use = "yazi-rs/plugins:jump-to-char" },
+  { use = "Lil-Dank/lazygit" },
+  { use = "yazi-rs/plugins:mount" },
+  { use = "dedukun/relative-motions" },
+  { use = "boydaihungst/restore" },
+  { use = "DreamMaoMao/searchjump" },
+  { use = "Rolv-Apneseth/starship" },
+  { use = "yazi-rs/plugins:toggle-pane" },
+  { use = "ndtoan96/ouch" },
 ]
 
 [flavor]
 deps = [
-  { use = "yazi-rs/flavors:catppuccin-mocha", rev = "fd85060" },
-  { use = "yazi-rs/flavors:catppuccin-latte", rev = "fd85060" },
+  { use = "yazi-rs/flavors:catppuccin-mocha" },
+  { use = "yazi-rs/flavors:catppuccin-latte" },
 ]

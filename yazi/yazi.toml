@@ -14,5 +14,18 @@ prepend_previewers = [
 linemode = "rtime"
 
 [preview]
-max_width = 10000
+max_width = 1000
 max_height = 2000
+
+[tasks]
+image_bound = [0,0]
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"

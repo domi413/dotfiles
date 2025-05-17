@@ -25,9 +25,25 @@ prepend_keymap = [
     # Restore deleted files
     { on = "u", run = "plugin restore", desc = "Restore last deleted files/folders" },
 
-    # Jump to char
-    {on   = "f", run  = "plugin jump-to-char", desc = "Jump to char"},
+    # Disks
+    { on  = "M", run = "plugin mount" },
 
-    # Custom linemode
-	{ on = [ "m", "r" ], run = "linemode rtime", desc = "Linemode: rtime" },
+    # Flash
+    {on   = [ "s" ], run = "plugin searchjump", desc = "searchjump mode"},
+
+    # Marks
+    { on = [ "m" ], run = "plugin bookmarks save", desc = "Save current position as a bookmark" },
+    { on = [ "'" ], run = "plugin bookmarks jump", desc = "Jump to a bookmark" },
+    { on = [ "b", "d" ], run = "plugin bookmarks delete", desc = "Delete a bookmark" },
+    { on = [ "b", "D" ], run = "plugin bookmarks delete_all", desc = "Delete all bookmarks" },
+
+	# Linemode
+	{ on = [ "F", "s" ], run = "linemode size",        desc = "Linemode: size" },
+	{ on = [ "F", "p" ], run = "linemode permissions", desc = "Linemode: permissions" },
+	{ on = [ "F", "b" ], run = "linemode btime",       desc = "Linemode: btime" },
+	{ on = [ "F", "m" ], run = "linemode mtime",       desc = "Linemode: mtime" },
+	{ on = [ "F", "o" ], run = "linemode owner",       desc = "Linemode: owner" },
+	{ on = [ "F", "n" ], run = "linemode none",        desc = "Linemode: none" },
+	{ on = [ "F", "r" ], run = "linemode rtime", desc = "Linemode: rtime" },
 ]
+

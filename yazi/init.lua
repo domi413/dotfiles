@@ -6,6 +6,36 @@ require("relative-motions"):setup({
 require("full-border"):setup({ type = ui.Border.ROUNDED })
 require("git"):setup()
 require("starship"):setup({})
+require("searchjump"):setup({
+	unmatch_fg = "#cdd6f4",
+	match_str_fg = "#cdd6f4",
+	match_str_bg = "#1e1e2e",
+	first_match_str_fg = "#89b4fa",
+	first_match_str_bg = "#1e1e2e",
+	label_fg = "#f38ba8",
+	label_bg = "#1e1e2e",
+	only_current = false,
+	show_search_in_statusbar = false,
+	auto_exit_when_unmatch = true,
+	enable_capital_label = false,
+	search_patterns = { "hell[dk]d", "%d+.1080p", "第%d+集", "第%d+话", "%.E%d+", "S%d+E%d+" },
+})
+require("bookmarks"):setup({
+	last_directory = { enable = false, persist = false, mode = "dir" },
+	persist = "vim",
+	desc_format = "full",
+	file_pick_mode = "hover",
+	custom_desc_input = false,
+	notify = {
+		enable = false,
+		timeout = 1,
+		message = {
+			new = "New bookmark '<key>' -> '<folder>'",
+			delete = "Deleted bookmark in '<key>'",
+			delete_all = "Deleted all bookmarks",
+		},
+	},
+})
 
 Linemode = Linemode or {}
 
