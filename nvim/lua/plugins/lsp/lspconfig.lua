@@ -4,13 +4,8 @@ return {
 	dependencies = { "hrsh7th/cmp-nvim-lsp" },
 
 	config = function()
-		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-
-		-- import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
-
-		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -90,31 +85,6 @@ return {
 							},
 							staticcheck = true,
 							usePlaceholders = true,
-						},
-					},
-				})
-			end,
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							runtime = {
-								version = "LuaJIT",
-							},
-							diagnostics = {
-								globals = { "vim" },
-								disable = { "missing-fields" },
-							},
-							workspace = {
-								library = vim.api.nvim_get_runtime_file("", true),
-							},
-							telemetry = {
-								enable = false,
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
 						},
 					},
 				})

@@ -8,9 +8,6 @@ zoxide init fish | source
 # ╭──────────────────────────────────────────────────────────╮
 # │ Env variables                                            │
 # ╰──────────────────────────────────────────────────────────╯
-# Spicetify
-fish_add_path "$HOME/.spicetify"
-
 # PNPM
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 fish_add_path $PNPM_HOME
@@ -18,6 +15,9 @@ fish_add_path $PNPM_HOME
 # GO
 set -gx GOPATH "$HOME/.go"
 fish_add_path "$GOPATH/bin"
+
+# Disable `ctrl+shift+u` unicode input
+set -gx GTK_IM_MODULE none
 
 # ╭──────────────────────────────────────────────────────────╮
 # │ Themes                                                   │

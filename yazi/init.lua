@@ -1,3 +1,11 @@
+-- Custom Git signs
+th.git = th.git or {}
+th.git.deleted = ui.Style():fg("red"):bold()
+
+th.git = th.git or {}
+th.git.modified_sign = "M"
+th.git.deleted_sign = "D"
+
 -- Plugins
 require("relative-motions"):setup({
 	show_numbers = "relative",
@@ -25,7 +33,7 @@ require("bookmarks"):setup({
 	persist = "vim",
 	desc_format = "full",
 	file_pick_mode = "hover",
-	custom_desc_input = false,
+	custom_desc_input = true,
 	notify = {
 		enable = false,
 		timeout = 1,

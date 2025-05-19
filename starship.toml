@@ -209,12 +209,6 @@ format = '[ $symbol( $environment) ]($style)'
 style = "fg:prev_fg bg:prev_bg"
 format = "[  $duration ]($style)"
 
-[memory_usage]
-symbol = "󰍛"
-style = "fg:bold color_red bg:prev_bg"
-format = "[$symbol ${ram}]($style) "
-disabled = false
-
 [character]
 format = """
 [╰─$symbol](fg:current_line) """

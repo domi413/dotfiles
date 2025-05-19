@@ -217,7 +217,7 @@
     },
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gemini-2.0-flash-001"
+      "model": "claude-3.7-sonnet"
     },
     "version": "2"
   },

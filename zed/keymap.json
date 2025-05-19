@@ -14,7 +14,7 @@
     }
   },
   {
-    "context": "Editor && vim_mode == normal || Terminal || ExtensionManager",
+    "context": "Workspace",
     "bindings": {
       // Move to next/previous window
       "ctrl-p": "pane::ActivateNextItem",
@@ -26,15 +26,32 @@
     "bindings": {
       "ctrl-k": "terminal_panel::ToggleFocus",
       "ctrl-j": null,
-
       // Create new terminal
-      "ctrl-shift-n": "workspace::NewTerminal",
+      "ctrl-shift-t": "workspace::NewTerminal",
 
       // Split terminal
-      "shift-alt-h": "pane::SplitLeft",
-      "shift-alt-j": "pane::SplitDown",
       "shift-alt-k": "pane::SplitUp",
-      "shift-alt-l": "pane::SplitRight"
+      "shift-alt-j": "pane::SplitDown",
+      "shift-alt-h": "pane::SplitLeft",
+      "shift-alt-l": "pane::SplitRight",
+
+      // BUG: terminal::Clear also clears starship prompt
+
+      // Navigation
+      "ctrl-shift-u": "terminal::ScrollLineUp",
+      "ctrl-shift-d": "terminal::ScrollLineDown",
+      "ctrl-shift-b": "terminal::ScrollPageUp",
+      "ctrl-shift-f": "terminal::ScrollPageDown",
+      "ctrl-shift-^": "terminal::ScrollToTop", // Not working
+      "ctrl-shift-$": "terminal::ScrollToBottom", // Not working
+
+      "ctrl-shift-p": "pane::ActivateNextItem",
+      "ctrl-shift-n": "pane::ActivatePreviousItem",
+
+      "ctrl-shift-k": "workspace::ActivatePaneUp",
+      "ctrl-shift-j": "workspace::ActivatePaneDown",
+      "ctrl-shift-h": "workspace::ActivatePaneLeft",
+      "ctrl-shift-l": "workspace::ActivatePaneRight"
     }
   },
   {
@@ -60,7 +77,7 @@
   {
     "context": "vim_mode == insert || (showing_code_actions || showing_completions)",
     "bindings": {
-      // Go to next/previous selection (in auto-completion)
+      // Go to next/previous selection (in auto-completion and code actions)
       "ctrl-k": "editor::ContextMenuPrevious",
       "ctrl-j": "editor::ContextMenuNext",
 
@@ -78,7 +95,6 @@
       "tab": "editor::Tab"
     }
   },
-
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
@@ -88,7 +104,7 @@
     }
   },
   {
-    "context": "Editor && vim_mode == normal || ProjectPanel",
+    "context": "(Editor && vim_mode == normal || ProjectPanel) && !showing_code_actions",
     "bindings": {
       "s": "vim::PushSneak",
       "shift-s": "vim::PushSneakBackward",
@@ -106,8 +122,8 @@
       // tmux like navigation
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
 
       // Remap Y to Neovim-like behavior
       "shift-y": ["workspace::SendKeystrokes", "y $"],
@@ -129,9 +145,9 @@
       "space u": "pane::ReopenClosedItem",
 
       // Toggle docks
+      "space t j": "workspace::ToggleBottomDock",
       "space t h": "workspace::ToggleLeftDock",
       "space t l": "workspace::ToggleRightDock",
-      "space t j": "workspace::ToggleBottomDock",
 
       // Toggle Zen-Mode
       "space t z": "workspace::ToggleCenteredLayout",
@@ -154,6 +170,9 @@
       "space D": "diagnostics::Deploy",
       // "space d l": "diagnostics::Deploy",
 
+      // Dismiss notification
+      "space n d": "workspace::SuppressNotification",
+
       // Change theme
       "space f t": "theme_selector::Toggle",
 
@@ -169,22 +188,17 @@
       // Switch tabs
       "space s t": "tab_switcher::ToggleAll",
 
-      // Insert from assistant
-      "space a i": "assistant::InsertIntoEditor",
-
       // Tasks
       // Lazygit
       "space l g": [
         "task::Spawn",
         { "task_name": "LazyGit", "reveal_target": "center" }
       ],
-
       // Yazi
       "space e": [
         "task::Spawn",
         { "task_name": "Yazi", "reveal_target": "center" }
       ],
-
       // Fuzzy finder
       "space f f": [
         "task::Spawn",
@@ -194,7 +208,6 @@
         "task::Spawn",
         { "task_name": "Find in files", "reveal_target": "center" }
       ],
-
       // // LaTeX
       // // Compile LaTeX
       // "space l c": [
@@ -206,7 +219,6 @@
       //   "task::Spawn",
       //   { "task_name": "Forward Search", "reveal_target": "center" }
       // ],
-
       // Run/Compile Code
       // "space space r": ["task::Spawn", { "task_name": "Run file" }],
       // "space space c": ["task::Spawn", { "task_name": "Compile file" }]
@@ -220,7 +232,11 @@
     // Copy code from assistant
     "context": "AssistantPanel || vim_mode == normal",
     "bindings": {
-      "space a c": "assistant::CopyCode"
+      // Copy code from assistant
+      "space a c": "assistant::CopyCode",
+
+      // Insert from assistant
+      "space a i": "assistant::InsertIntoEditor"
     }
   }
 ]
