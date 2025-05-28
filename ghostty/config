@@ -32,6 +32,7 @@ clipboard-paste-protection = false
 confirm-close-surface = false
 
 # Miscellaneous
+mouse-scroll-multiplier = 0.3
 mouse-hide-while-typing
 adw-toolbar-style = flat
 

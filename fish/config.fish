@@ -8,10 +8,6 @@ zoxide init fish | source
 # ╭──────────────────────────────────────────────────────────╮
 # │ Env variables                                            │
 # ╰──────────────────────────────────────────────────────────╯
-# PNPM
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-fish_add_path $PNPM_HOME
-
 # GO
 set -gx GOPATH "$HOME/.go"
 fish_add_path "$GOPATH/bin"
@@ -79,17 +75,12 @@ alias lg="lazygit"
 alias man="batman"
 
 ### Zoxide
-alias cd="z"
-
-abbr --erase z &>/dev/null
 alias z=__zoxide_z
 alias cd=__zoxide_z
 
-abbr --erase zi &>/dev/null
 # Query matching directories
 alias zz=__zoxide_zi
 
-abbr --erase zr &>/dev/null
 # Remove current directory from the database
 alias zr=__zoxide_forget_zr
 
@@ -151,14 +142,6 @@ function y
     rm -f -- "$tmp"
 end
 
-function fyi --description "Searching for AUR-/Pacman-packages"
-    yay -Slq | fzf -q "$argv" -m --preview 'yay -Si {1}' | xargs -ro yay -S
-end
-
-function fyr --description "Removing installed package"
-    yay -Qq | fzf -q "$argv" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
-end
-
 function yazi_zed
     set -l tmp (mktemp -t "yazi-chooser.XXXXX")
     yazi $argv --chooser-file="$tmp"
@@ -168,33 +151,12 @@ function yazi_zed
     rm -f -- "$tmp"
 end
 
-# function yazi_zed
-#     set -l tmp (mktemp -t "yazi-chooser.XXXXXX")
-#     yazi $argv --chooser-file="$tmp"
-#
-#     if test -s "$tmp"
-#         set -l opened_file (head -n 1 "$tmp")
-#
-#         if test -n "$opened_file"
-#             set -l mime_type (file --mime-type -b -- "$opened_file" 2>/dev/null)
-#
-#             if test "$mime_type" = "application/pdf"
-#                 xdg-open -- "$opened_file"
-#             else
-#                 zed -- "$opened_file"
-#             end
-#         end
-#     end
-#
-#     rm -f -- "$tmp"
-# end
+function fyi --description "Searching for AUR-/Pacman-packages"
+    yay -Slq | fzf -q "$argv" -m --preview 'yay -Si {1}' | xargs -ro yay -S
+end
 
-# ╭──────────────────────────────────────────────────────────╮
-# │ Zoxide                                                   │
-# ╰──────────────────────────────────────────────────────────╯
-# pwd based on the value of _ZO_RESOLVE_SYMLINKS.
-function __zoxide_pwd
-    builtin pwd -L
+function fyr --description "Removing installed package"
+    yay -Qq | fzf -q "$argv" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 end
 
 # Jump to a directory using only keywords.
@@ -214,31 +176,3 @@ function __zoxide_z
     end
 end
 
-# Completions.
-function __zoxide_z_complete
-    set -l tokens (builtin commandline --current-process --tokenize)
-    set -l curr_tokens (builtin commandline --cut-at-cursor --current-process --tokenize)
-
-    if test (builtin count $tokens) -le 2 -a (builtin count $curr_tokens) -eq 1
-        # If there are < 2 arguments, use `cd` completions.
-        complete --do-complete "'' "(builtin commandline --cut-at-cursor --current-token) | string match --regex -- '.*/$'
-    else if test (builtin count $tokens) -eq (builtin count $curr_tokens)
-        # If the last argument is empty, use interactive selection.
-        set -l query $tokens[2..-1]
-        set -l result (command zoxide query --exclude (__zoxide_pwd) --interactive -- $query)
-        and __zoxide_cd $result
-        and builtin commandline --function cancel-commandline repaint
-    end
-end
-complete --command __zoxide_z --no-files --arguments '(__zoxide_z_complete)'
-
-# Jump to a directory using interactive search.
-function __zoxide_zi
-    set -l result (command zoxide query --interactive -- $argv)
-    and __zoxide_cd $result
-end
-
-# Function to forget the current directory in zoxide.
-function __zoxide_forget_zr
-    command zoxide remove -- (__zoxide_pwd)
-end

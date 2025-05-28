@@ -1,6 +1,14 @@
 include catppuccin-mocha
 
+set font "Fira Sans 12"
+set guioptions none
 set selection-clipboard clipboard
+set scroll-step 150
+set window-title-basename true
+set window-title-page true
 
-map j feedkeys "<C-Down>"
 map k feedkeys "<C-Up>"
+map j feedkeys "<C-Down>"
+map h feedkeys "<C-Left>"
+map l feedkeys "<C-Right>"
+

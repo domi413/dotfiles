@@ -85,8 +85,7 @@
   // ╰──────────────────────────────────────────────────────────╯
   "toolbar": {
     "breadcrumbs": false,
-    "quick_actions": false,
-    "selections_menu": true
+    "quick_actions": false
   },
   "gutter": {
     "code_actions": false,
@@ -148,6 +147,7 @@
   "inlay_hints": {
     "enabled": false
   },
+  "inline_code_actions": false,
   "middle_click_paste": false,
   "vertical_scroll_margin": 0,
 
@@ -211,13 +211,15 @@
   // │ Assistant                                                │
   // ╰──────────────────────────────────────────────────────────╯
   "agent": {
+    "always_allow_tool_actions": true,
+    "default_profile": "write",
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "claude-3.7-sonnet"
+      "model": "claude-sonnet-4"
     },
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-3.7-sonnet"
+      "model": "claude-sonnet-4"
     },
     "version": "2"
   },
@@ -278,7 +280,7 @@
           "forwardSearch": {
             "executable": "zathura",
             "args": ["--synctex-forward", "%l:1:%f", "%p"]
-          },
+          }
           "latexFormatter": "latexindent",
           "latexindent": {
             "local": "/home/dominator/Documents/typetrace-docs/.latexindent.yaml",
@@ -298,7 +300,6 @@
       "format_on_save": "off"
     },
     "C": {
-      "show_edit_predictions": false,
       "format_on_save": "on",
       "formatter": {
         "external": {
@@ -306,7 +307,7 @@
           "arguments": [
             // "--style=file", // Use this for .clang-format file
             // BreakBeforeBraces: Allman ->  "{" of conditionals to new line
-            "--style={BasedOnStyle: Mozilla, AlignArrayOfStructures: Right, AllowShortLoopsOnASingleLine: true, PointerAlignment: Right, TabWidth: 4, IndentWidth: 4, ColumnLimit: 80, AlwaysBreakAfterDefinitionReturnType: None, BreakAfterReturnType: None}",
+            "--style={BasedOnStyle: Mozilla, AlignArrayOfStructures: Right, AllowShortLoopsOnASingleLine: true, PointerAlignment: Right, TabWidth: 4, IndentWidth: 4, ColumnLimit: 80, AlwaysBreakAfterDefinitionReturnType: None, BreakAfterReturnType: None, IndentPPDirectives: BeforeHash}",
             "--assume-filename={buffer_path}"
           ]
         }
@@ -319,14 +320,11 @@
           "command": "clang-format",
           "arguments": [
             // "--style=file", // Use this for .clang-format file
-            "--style={BasedOnStyle: Mozilla, AlignArrayOfStructures: Right, AllowShortLoopsOnASingleLine: true, PointerAlignment: Right, TabWidth: 4, IndentWidth: 4, ColumnLimit: 80, AlwaysBreakAfterDefinitionReturnType: None, BreakAfterReturnType: None}",
+            "--style={BasedOnStyle: Mozilla, AlignArrayOfStructures: Right, AllowShortLoopsOnASingleLine: true, PointerAlignment: Right, TabWidth: 4, IndentWidth: 4, ColumnLimit: 80, AlwaysBreakAfterDefinitionReturnType: None, BreakAfterReturnType: None, IndentPPDirectives: BeforeHash}",
             "--assume-filename={buffer_path}"
           ]
         }
       }
-    },
-    "CSharp": {
-      "show_edit_predictions": false
     },
     "JSONC": {
       "format_on_save": "on"

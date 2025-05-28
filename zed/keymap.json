@@ -104,6 +104,16 @@
     }
   },
   {
+    "context": "(Editor && vim_mode == normal || ProjectPanel) && !showing_code_actions || AgentPanel",
+    "bindings": {
+      // tmux like navigation
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight"
+    }
+  },
+  {
     "context": "(Editor && vim_mode == normal || ProjectPanel) && !showing_code_actions",
     "bindings": {
       "s": "vim::PushSneak",
@@ -118,12 +128,6 @@
       "space s j": "pane::SplitDown",
       "space s h": "pane::SplitLeft",
       "space s l": "pane::SplitRight",
-
-      // tmux like navigation
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
 
       // Remap Y to Neovim-like behavior
       "shift-y": ["workspace::SendKeystrokes", "y $"],
@@ -188,6 +192,9 @@
       // Switch tabs
       "space s t": "tab_switcher::ToggleAll",
 
+      // Search files
+      "space f f": "file_finder::Toggle",
+
       // Tasks
       // Lazygit
       "space l g": [
@@ -200,10 +207,6 @@
         { "task_name": "Yazi", "reveal_target": "center" }
       ],
       // Fuzzy finder
-      "space f f": [
-        "task::Spawn",
-        { "task_name": "File finder", "reveal_target": "center" }
-      ],
       "space f c": [
         "task::Spawn",
         { "task_name": "Find in files", "reveal_target": "center" }
@@ -237,6 +240,24 @@
 
       // Insert from assistant
       "space a i": "assistant::InsertIntoEditor"
+    }
+  },
+  {
+    // Make configuration more nvim-tree like
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "c": "project_panel::Copy",
+      "x": "project_panel::Cut",
+      "o": "project_panel::Open",
+      "d": "project_panel::Delete",
+      "r": "project_panel::Rename",
+      "y": "workspace::CopyRelativePath",
+      "shift-y": "workspace::CopyPath",
+      "p": "project_panel::Paste",
+      "shift-o": "project_panel::RevealInFileManager",
+      "s": "project_panel::OpenWithSystem"
     }
   }
 ]
