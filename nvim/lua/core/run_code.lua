@@ -2,7 +2,7 @@
 -- │ Code action                                              │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Every code execute shorcut works like this:
--- <leader> + <leader> + ([r]un / [b]build)
+-- <leader> + <leader> + ([r]un / [c]ompile)
 
 -- Function to execute a command in current file dir
 local function current_file_dir(term_command)
@@ -34,7 +34,6 @@ local function action_by_filetype(action)
 
 	-- Bash
 	if filetype == "sh" and action == "run" then
-		vim.cmd("silent !chmod +x " .. file)
 		current_file_dir("bash " .. file)
 
 	-- C
@@ -77,8 +76,8 @@ local function action_by_filetype(action)
 			current_file_dir("javac " .. file_title)
 		end
 
-	-- JavaScript / TypeScript
-	elseif (filetype == "javascript" or filetype == "typescript") and action == "run" then
+	-- JavaScript
+	elseif filetype == "javascript" and action == "run" then
 		current_file_dir("node " .. file)
 
 	-- Lua
@@ -88,6 +87,9 @@ local function action_by_filetype(action)
 	-- Python
 	elseif filetype == "python" and action == "run" then
 		current_file_dir("python3 " .. file)
+
+	-- TypeScript
+	-- TODO:
 
 	-- ...
 	else

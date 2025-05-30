@@ -33,7 +33,8 @@ return {
 								IndentWidth: 4,\
 								ColumnLimit: 80,\
 								AlwaysBreakAfterDefinitionReturnType: None,\
-								BreakAfterReturnType: None\
+								BreakAfterReturnType: None,\
+								ReflowComments: false\
 							}",
 						}
 					end,
