@@ -73,8 +73,8 @@ keybind = ctrl+shift+^=scroll_to_top
 keybind = ctrl+shift+u=scroll_page_lines:-1
 keybind = ctrl+shift+d=scroll_page_lines:1
 
-keybind = ctrl+shift+b=scroll_page_up
-keybind = ctrl+shift+f=scroll_page_down
+keybind = ctrl+shift+b=scroll_page_fractional:-0.5
+keybind = ctrl+shift+f=scroll_page_fractional:0.5
 
 # Unbined other keybinds
 keybind = ctrl+,=unbind

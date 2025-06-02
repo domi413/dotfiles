@@ -22,6 +22,7 @@
 // - Editor:
 //   - Ligatures buggy
 //   - Smooth-scroll missing
+//   - Installing new (icon-)theme results in buggy pop up
 //   - Debugger support
 //   - Strikethrough text
 //   - Icons in auto completion
@@ -55,9 +56,6 @@
 //   - TODO-comments
 
 {
-  // Doesn't make sense since zed is installed through package manager
-  "auto_update": false,
-
   // Auto-install extensions
   "auto_install_extensions": {
     "catppuccin": true,
@@ -93,30 +91,24 @@
     // "runnables": false
   },
   "outline_panel": {
+    "button": false,
     "dock": "right"
   },
   "collaboration_panel": {
     "button": true
   },
-  "chat_panel": {
-    "button": "when_in_call"
-  },
   "notification_panel": {
     "button": false
   },
   "tab_bar": {
-    "show": true,
     "show_nav_history_buttons": false
   },
   "tabs": {
     "git_status": true,
-    "file_icons": true,
-    "activate_on_close": "history"
+    "file_icons": true
   },
   "project_panel": {
-    "default_width": 240,
     "folder_icons": false,
-    "git_status": true,
     "indent_size": 25
   },
   "centered_layout": {
@@ -144,9 +136,6 @@
     }
   },
   "hide_mouse": "on_typing_and_movement",
-  "inlay_hints": {
-    "enabled": false
-  },
   "inline_code_actions": false,
   "middle_click_paste": false,
   "vertical_scroll_margin": 0,
@@ -159,23 +148,8 @@
   "buffer_line_height": "standard",
   "buffer_font_weight": 300,
 
-  // "buffer_font_family": "FiraCode Nerd Font",
   "buffer_font_family": "CaskaydiaCove Nerd Font",
   "buffer_font_features": {
-    // Font features not working -> Bug in cosmic font
-    // FiraCode
-    // "cv01": true,
-    // "cv02": true,
-    // "cv15": true,
-    // "cv19": true,
-    // "cv23": true,
-    // "cv29": true,
-    // "cv31": true,
-    // "ss01": true,
-    // "ss03": true,
-    // "ss05": true
-
-    // CaskaydiaCove
     "ss19": true
   },
 
@@ -224,13 +198,14 @@
     "version": "2"
   },
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "supermaven"
   },
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ Terminal                                                 │
   // ╰──────────────────────────────────────────────────────────╯
   "terminal": {
+    "dock": "bottom",
     "line_height": "standard",
     "toolbar": {
       "breadcrumbs": false
@@ -238,7 +213,6 @@
     "font_size": 14,
     "font_weight": 360
   },
-  // "bottom_dock_layout": "right_aligned",
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ LSP                                                      │
@@ -263,11 +237,6 @@
         }
       }
     },
-    "taplo": {
-      "settings": {
-        "array_auto_collapse": false
-      }
-    },
     "texlab": {
       "settings": {
         "texlab": {
@@ -280,7 +249,7 @@
           "forwardSearch": {
             "executable": "zathura",
             "args": ["--synctex-forward", "%l:1:%f", "%p"]
-          }
+          },
           "latexFormatter": "latexindent",
           "latexindent": {
             "local": "/home/dominator/Documents/typetrace-docs/.latexindent.yaml",
@@ -296,48 +265,22 @@
   // │ Language config                                          │
   // ╰──────────────────────────────────────────────────────────╯
   "languages": {
-    "Blueprint": {
-      "format_on_save": "off"
-    },
     "C": {
-      "format_on_save": "on",
-      "formatter": {
-        "external": {
-          "command": "clang-format",
-          "arguments": [
-            // "--style=file", // Use this for .clang-format file
-            // BreakBeforeBraces: Allman ->  "{" of conditionals to new line
-            "--style={BasedOnStyle: Mozilla, AlignArrayOfStructures: Right, AllowShortLoopsOnASingleLine: true, PointerAlignment: Right, TabWidth: 4, IndentWidth: 4, ColumnLimit: 80, AlwaysBreakAfterDefinitionReturnType: None, BreakAfterReturnType: None, IndentPPDirectives: BeforeHash}",
-            "--assume-filename={buffer_path}"
-          ]
-        }
-      }
+      "format_on_save": "on"
     },
     "C++": {
-      "format_on_save": "on",
-      "formatter": {
-        "external": {
-          "command": "clang-format",
-          "arguments": [
-            // "--style=file", // Use this for .clang-format file
-            "--style={BasedOnStyle: Mozilla, AlignArrayOfStructures: Right, AllowShortLoopsOnASingleLine: true, PointerAlignment: Right, TabWidth: 4, IndentWidth: 4, ColumnLimit: 80, AlwaysBreakAfterDefinitionReturnType: None, BreakAfterReturnType: None, IndentPPDirectives: BeforeHash}",
-            "--assume-filename={buffer_path}"
-          ]
-        }
-      }
+      "format_on_save": "on"
     },
     "JSONC": {
       "format_on_save": "on"
     },
     "Lua": {
-      // Not working?
       "format_on_save": "on",
-      "formatter": "language_server",
-      "inlay_hints": {
-        "enabled": true,
-        "show_type_hints": true,
-        "show_parameter_hints": true,
-        "show_other_hints": true
+      "formatter": {
+        "external": {
+          "command": "stylua",
+          "arguments": ["--stdin-filepath", "{buffer_path}", "-"]
+        }
       }
     },
     "Markdown": {
@@ -346,23 +289,25 @@
     "Python": {
       "language_servers": ["pyright", "ruff"],
       "format_on_save": "on",
-      "formatter": {
-        "external": {
-          "command": "bash",
-          "arguments": [
-            "-c",
-            "ruff check --select=I --fix --stdin-filename {buffer_path} | ruff format --stdin-filename {buffer_path}"
-          ]
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
         }
-      }
-    },
-    "TOML": {
-      "format_on_save": "on"
+      ]
     }
   },
 
   // Italic fix
   "experimental.theme_overrides": {
+    "border.variant": "#00000000",
     "syntax": {
       "attribute": {
         "font_style": "italic"

@@ -26,6 +26,8 @@
     "bindings": {
       "ctrl-k": "terminal_panel::ToggleFocus",
       "ctrl-j": null,
+      "ctrl-p": null,
+      "ctrl-n": null,
       // Create new terminal
       "ctrl-shift-t": "workspace::NewTerminal",
 
@@ -80,6 +82,10 @@
       // Go to next/previous selection (in auto-completion and code actions)
       "ctrl-k": "editor::ContextMenuPrevious",
       "ctrl-j": "editor::ContextMenuNext",
+
+      // Show completion (map behavior to neovim)
+      "ctrl-p": "editor::ShowCompletions",
+      "ctrl-n": "editor::ShowCompletions",
 
       // Navigate within snippet placeholders
       "ctrl-l": "editor::Tab",
@@ -155,6 +161,9 @@
 
       // Toggle Zen-Mode
       "space t z": "workspace::ToggleCenteredLayout",
+
+      // Toggle pinned tab
+      "space t p": "pane::TogglePinTab",
 
       // Toggle outline
       "space t o": "outline::Toggle",
