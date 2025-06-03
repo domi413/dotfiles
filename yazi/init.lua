@@ -7,6 +7,7 @@ th.git.modified_sign = "M"
 th.git.deleted_sign = "D"
 
 -- Plugins
+require("zoxide"):setup({ update_db = true })
 require("relative-motions"):setup({
 	show_numbers = "relative",
 	show_motion = true,

@@ -7,8 +7,8 @@
 
   // WORKBENCH
   "workbench.activityBar.location": "top",
-  "workbench.editor.labelFormat": "default", // Use "short" to hide the path
-  "workbench.iconTheme": "catppuccin-latte",
+  "workbench.editor.labelFormat": "default",
+  "workbench.iconTheme": "catppuccin-mocha",
   "workbench.list.smoothScrolling": true,
   "workbench.navigationControl.enabled": false,
   "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
@@ -18,7 +18,7 @@
 
   // EDITOR
   "editor.autoClosingOvertype": "always", // "Jumping" over the bracket when typing ")"
-  "editor.bracketPairColorization.enabled": true, // Disable rainbow brackets
+  "editor.bracketPairColorization.enabled": false,
   "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.fontFamily": "CaskaydiaCove Nerd Font",
@@ -42,15 +42,9 @@
       }
     ]
   },
-  // "editor.fontFamily": "FiraCode Nerd Font",
-  // "editor.fontLigatures": "'cv01', 'cv02', 'cv15', 'cv19', 'cv23', 'cv29', 'cv31', 'ss01', 'ss03', 'ss05'",
-  // "[vhdl]": {
-  //     "editor.fontLigatures": "'cv01', 'cv02', 'cv15', 'cv20', 'cv23', 'cv29', 'cv31', 'ss01', 'ss03', 'ss05'"
-  // },
   "editor.inlayHints.enabled": "off",
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
-  "editor.minimap.scale": 1,
   "editor.mouseWheelZoom": true, // Use ctrl + mouse wheel to zoom
   "editor.scrollbar.horizontalScrollbarSize": 0,
   "editor.scrollbar.verticalScrollbarSize": 0,
@@ -65,7 +59,7 @@
   "git.blame.editorDecoration.template": "${authorName} - ${hashShort}",
   "git.enableSmartCommit": true,
   "security.workspace.trust.untrustedFiles": "open",
-  "terminal.integrated.enableMultiLinePasteWarning": "never", // Disables paste warning in terminal
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
   "window.autoDetectColorScheme": true,
   "window.customTitleBarVisibility": "auto",
   "window.titleBarStyle": "custom", // Use the default VS Code title bar
@@ -73,7 +67,6 @@
   // Formatter
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "prettier.tabWidth": 4,
   "[c]": {
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     // "editor.defaultFormatter": "ms-vscode.cpptools"
@@ -98,9 +91,6 @@
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
   },
-  "[nix]": {
-    "editor.defaultFormatter": "jnoortheen.nix-ide"
-  },
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
@@ -115,7 +105,6 @@
     "workbench.action.tasks.configureTaskRunner",
     "workbench.action.tasks.runTask"
   ],
-  "cmake.showOptionsMovedNotification": false,
   "cmake.showConfigureWithDebuggerNotification": false,
 
   // *** Scroll percentage ***
@@ -156,11 +145,13 @@
   "latex-workshop.formatting.latex": "latexindent",
   "latex-workshop.formatting.latexindent.path": "latexindent",
   "latex-workshop.formatting.latexindent.args": [
-    "-m",
     "-c",
     "%DIR%/",
     "%TMPFILE%",
-    "-y=defaultIndent: '    '"
+    // "-l=/path/to/file",
+    "-l",
+    "-m",
+    "-rv"
   ],
   "latex-workshop.latex.recipe.default": "tectonic",
   "latex-workshop.latex.rootFile.indicator": "\\begin{document}",
@@ -187,46 +178,30 @@
     "cpp": false
   },
 
-  // *** STATSBAR ***
-  "statsBar.modules": ["cpuLoad", "networkSpeed", "memoUsage"],
-
-  // *** VIM CONFIGURATION ***
+  // ╭──────────────────────────────────────────────────────────╮
+  // │ ***** VIM KEYBINDINGS *****                              │
+  // ╰──────────────────────────────────────────────────────────╯
   "flash-vscode.caseSensitive": false,
   "vim.leader": "space", // Set space as leader
   "vim.useSystemClipboard": true, // Enables copy to system clipboard
   "vim.useCtrlKeys": true, // Override default behavior of ctrl keys
   "vim.hlsearch": true, // Highlight search results
-  // "vim.highlightedyank.enable": true,  // Highlight yanked text
   "extensions.experimental.affinity": {
     // To improve performance
     "vscodevim.vim": 1
   },
-  // You can use the following command to trace keyboard shortcuts:
-  // Developer: Toggle Keyboard Shortcuts Troubleshooting
-
-  // ╭──────────────────────────────────────────────────────────╮
-  // │ ***** VIM KEYBINDINGS *****                              │
-  // ╰──────────────────────────────────────────────────────────╯
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ Editor/Editing                                           │
   // ╰──────────────────────────────────────────────────────────╯
-  "vim.insertModeKeyBindings": [
-    // Use jk to exit insert mode
-    { "before": ["j", "k"], "after": ["<Esc>"] }
-  ],
-  "vim.visualModeKeyBindings": [
-    // Toggle case
-    { "before": ["leader", "i"], "after": ["~"] }
-  ],
+  "vim.insertModeKeyBindings": [{ "before": ["j", "k"], "after": ["<Esc>"] }], // Use jk to exit insert mode
+  "vim.visualModeKeyBindings": [{ "before": ["leader", "i"], "after": ["~"] }], // Toggle case
   "vim.normalModeKeyBindingsNonRecursive": [
     // Flash.nvim
     { "before": ["s"], "commands": ["flash-vscode.start"] },
-    { "before": ["S"], "commands": ["flash-vscode.startSelection"] },
     { "before": ["<BS>"], "commands": ["flash-vscode.backspace"] },
 
-    // Show definition
-    { "before": ["K"], "after": ["g", "h"] },
+    { "before": ["K"], "after": ["g", "h"] }, // Show definition
 
     // The following two options override the default behavior of the VSCode
     // VIMs'u' and 'C-r' keys. But because of the fact that they are not
@@ -245,69 +220,39 @@
       "before": ["leader", "O"],
       "commands": ["editor.action.insertLineBefore"]
     },
-    {
-      // Toggle case
-      "before": ["leader", "i"],
-      "after": ["~"]
-    },
-    {
-      // Reset highlighting
-      "before": ["leader", "n", "h"],
-      "commands": [":nohl"]
-    },
-    {
-      // Save file
-      "before": ["leader", "w"],
-      "commands": ["workbench.action.files.save"]
-    },
-    {
-      // Toggle line wrap
-      "before": ["leader", "$"],
-      "commands": ["editor.action.toggleWordWrap"]
-    },
+    { "before": ["leader", "i"], "after": ["~"] }, // Toggle case
+    { "before": ["leader", "n", "h"], "commands": [":nohl"] }, // Reset highlighting
+    { "before": ["leader", "w"], "commands": ["workbench.action.files.save"] }, // Save file
+    { "before": ["leader", "$"], "commands": ["editor.action.toggleWordWrap"] }, // Toggle line wrap
     {
       // Toggle breakpoint
       "before": ["leader", "d"],
       "commands": ["editor.debug.action.toggleBreakpoint"]
     },
+    { "before": ["#"], "after": ["@", "@"] }, // Repat last macro
     {
-      "before": ["leader", "f", "v"],
-      "commands": ["editor.action.formatDocument"]
-    }, // Format document
-    { "before": [","], "after": ["@", "@"] }, // Repat last macro
+      // Toggle File Explorer
+      "before": ["leader", "e"],
+      "commands": ["yazi-vscode.toggle"]
+    },
+    {
+      // Toggle lazygit
+      "before": ["leader", "l", "g"],
+      "commands": ["lazygit-vscode.toggle"]
+    },
 
     // ╭──────────────────────────────────────────────────────────╮
     // │ LSP shorcuts                                             │
     // ╰──────────────────────────────────────────────────────────╯
-    {
-      // Rename variable
-      "before": ["g", "r", "n"],
-      "commands": ["editor.action.rename"]
-    },
-    {
-      // Code action / Quick fix
-      "before": ["g", "r", "a"],
-      "commands": ["editor.action.quickFix"]
-    },
-    {
-      // Go to references
-      "before": ["g", "r", "r"],
-      "commands": ["editor.action.goToReferences"]
-    },
+    { "before": ["g", "r", "n"], "commands": ["editor.action.rename"] }, // Rename variable
+    { "before": ["g", "r", "a"], "commands": ["editor.action.quickFix"] }, // Code action / Quick fix
+    { "before": ["g", "r", "r"], "commands": ["editor.action.goToReferences"] }, // Go to references
 
     // ╭──────────────────────────────────────────────────────────╮
     // │ Tab management                                           │
     // ╰──────────────────────────────────────────────────────────╯
-    {
-      // Go to next tab
-      "before": ["C-p"],
-      "commands": ["workbench.action.nextEditor"]
-    },
-    {
-      // Go to previous tab
-      "before": ["C-n"],
-      "commands": ["workbench.action.previousEditor"]
-    },
+    { "before": ["C-p"], "commands": ["workbench.action.nextEditor"] }, // Go to next tab
+    { "before": ["C-n"], "commands": ["workbench.action.previousEditor"] }, // Go to previous tab
     {
       // Open new tab
       "before": ["leader", "n", "t"],
@@ -317,6 +262,11 @@
       // Close active tab
       "before": ["leader", "x"],
       "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      // Reopen closed tab
+      "before": ["leader", "u"],
+      "commands": ["workbench.action.reopenClosedEditor"]
     },
 
     // ╭──────────────────────────────────────────────────────────╮
@@ -355,26 +305,26 @@
     // │ Toggle panels                                            │
     // ╰──────────────────────────────────────────────────────────╯
     {
-      // Toggle terminal
-      "before": ["leader", "j"],
-      "commands": ["workbench.action.terminal.toggleTerminal"]
+      // Toggle bottom panel
+      "before": ["leader", "t", "j"],
+      "commands": ["workbench.action.togglePanel"]
     },
     {
-      // Toggle File Explorer
-      "before": ["leader", "e"],
+      // Toggle left sidebar
+      "before": ["leader", "t", "h"],
       "commands": ["workbench.action.toggleSidebarVisibility"]
     },
     {
       // Toggle right sidebar
-      "before": ["leader", "E"],
+      "before": ["leader", "t", "l"],
       "commands": ["workbench.action.toggleAuxiliaryBar"]
     },
 
     // ╭──────────────────────────────────────────────────────────╮
     // │ Compile & Run & Debug                                    │
     // ╰──────────────────────────────────────────────────────────╯
-    // The commands are always like this:
-    // leader + leader + *([c]ompile/[r]un/[d]ebug)* + *first letter of language*
+    // The commands are normally like this:
+    // leader + leader + ([c]ompile/[r]un/[d]ebug) + *first letter of language*
     // For example:
     // leader + leader + r + c   -> Will run a c file
     // Legend for what language which shortcut:
@@ -395,16 +345,6 @@
       "commands": ["C_Cpp.BuildAndRunFile"]
     },
 
-    // Python
-    {
-      "before": ["leader", "leader", "d", "p"],
-      "commands": ["debugpy.debugInTerminal"]
-    },
-    {
-      "before": ["leader", "leader", "r", "p"],
-      "commands": ["python.execInTerminal-icon"]
-    },
-
     // CMake
     {
       "before": ["leader", "leader", "s", "m"],
@@ -413,6 +353,27 @@
     {
       "before": ["leader", "leader", "r", "m"],
       "commands": ["cmake.launchTarget"]
+    },
+
+    // LaTeX
+    {
+      "before": ["leader", "l", "c"],
+      "commands": ["latex-workshop.build"]
+    },
+    {
+      // Go to PDF location
+      "before": ["leader", "l", "p"],
+      "commands": ["latex-workshop.synctex"]
+    },
+
+    // Python
+    {
+      "before": ["leader", "leader", "d", "p"],
+      "commands": ["debugpy.debugInTerminal"]
+    },
+    {
+      "before": ["leader", "leader", "r", "p"],
+      "commands": ["python.execInTerminal-icon"]
     },
 
     // ╭──────────────────────────────────────────────────────────╮
@@ -442,6 +403,11 @@
       // Open register
       "before": ["leader", "f", "r"],
       "after": [":", "r", "e", "g", "enter"]
+    },
+    {
+      // Open marks
+      "before": ["leader", "f", "m"],
+      "after": [":", "m", "a", "r", "k", "s", "enter"]
     },
     {
       // Switch tabs
