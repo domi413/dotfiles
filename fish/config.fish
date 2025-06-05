@@ -71,8 +71,10 @@ alias svim="sudo -s -E nvim"
 ### Lazygit
 alias lg="lazygit"
 
-### Man
+### Bat
+alias grep="batgrep"
 alias man="batman"
+alias diff="batdiff"
 
 ### Zoxide
 alias z=__zoxide_z

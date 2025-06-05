@@ -4,11 +4,6 @@ theme = dark:catppuccin-mocha,light:catppuccin-latte
 ### Font
 font-size=11.5
 
-# FiraCode
-# font-family = "FiraCode Nerd Font"
-#
-# font-feature = cv01, cv02, cv15, cv19, cv23, cv29, cv31, ss01, ss03, ss05
-
 # CaskaydiaCove
 font-family = "CaskaydiaCove Nerd Font"
 font-style = "Light italic"
