@@ -18,17 +18,15 @@ set -gx GTK_IM_MODULE none
 # ╭──────────────────────────────────────────────────────────╮
 # │ Themes                                                   │
 # ╰──────────────────────────────────────────────────────────╯
-# INFO: You may have to update the bat cache with: bat cache --build
-
 ### Bat
-export BAT_THEME="Catppuccin Mocha"
+set -gx BAT_THEME "ansi"
 
 ### Fuzzy finder
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---color=selected-bg:#45475a \
+set -gx FZF_DEFAULT_OPTS " \
+--color=bg+:-1,bg:-1,spinner:1,hl:4 \
+--color=fg:7,header:4,info:5,pointer:1 \
+--color=marker:1,fg+:7,prompt:5,hl+:4 \
+--color=selected-bg:8 \
 --multi \
 --bind 'enter:execute-silent(readlink -f {} | wl-copy)+accept'"
 
@@ -72,9 +70,7 @@ alias svim="sudo -s -E nvim"
 alias lg="lazygit"
 
 ### Bat
-alias grep="batgrep"
 alias man="batman"
-alias diff="batdiff"
 
 ### Zoxide
 alias z=__zoxide_z

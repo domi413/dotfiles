@@ -1,34 +1,39 @@
 notARepository: "skip"
 disableStartupPopups: true
 promptToReturnFromSubprocess: false
+showCommandLog: false
 
 os:
   editPreset: "nvim"
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --paging=never --detect-dark-light always
 
 gui:
   nerdFontsVersion: "3"
   statusPanelView: allBranchesLog
 
-  # Catppuccin-mocha
   theme:
     activeBorderColor:
-      - "#89b4fa"
+      - blue
       - bold
     inactiveBorderColor:
-      - "#a6adc8"
+      - gray
     optionsTextColor:
-      - "#89b4fa"
+      - blue
     selectedLineBgColor:
-      - "#313244"
+      - default
     selectedRangeBgColor:
-      - "#313244"
+      - black
     cherryPickedCommitBgColor:
-      - "#45475a"
+      - darkgray
     cherryPickedCommitFgColor:
-      - "#89b4fa"
+      - blue
     unstagedChangesColor:
-      - "#f38ba8"
+      - red
     defaultFgColor:
-      - "#cdd6f4"
+      - default
     searchingActiveBorderColor:
-      - "#f9e2af"
+      - yellow

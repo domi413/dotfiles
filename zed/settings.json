@@ -25,6 +25,7 @@
 //   - Installing new (icon-)theme results in buggy pop up
 //   - Debugger support
 //   - Strikethrough text
+//   - Choose specific font type e.g., italic, not just the family
 //   - Icons in auto completion
 //   - Icons in outline
 //   - Cursor animation
@@ -56,6 +57,9 @@
 //   - TODO-comments
 
 {
+  // Update through package manager
+  "auto_update": false,
+
   // Auto-install extensions
   "auto_install_extensions": {
     "catppuccin": true,
@@ -186,7 +190,7 @@
   // ╰──────────────────────────────────────────────────────────╯
   "agent": {
     "always_allow_tool_actions": true,
-    "default_profile": "write",
+    "default_profile": "ask",
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4"
@@ -249,12 +253,6 @@
           "forwardSearch": {
             "executable": "zathura",
             "args": ["--synctex-forward", "%l:1:%f", "%p"]
-          },
-          "latexFormatter": "latexindent",
-          "latexindent": {
-            "local": "/home/dominator/Documents/typetrace-docs/.latexindent.yaml",
-            "modifyLineBreaks": true,
-            "replacement": "-rv"
           }
         }
       }
@@ -273,6 +271,14 @@
     },
     "JSONC": {
       "format_on_save": "on"
+    },
+    "LaTeX": {
+      "formatter": {
+        "external": {
+          "command": "latexindent",
+          "arguments": ["-m", "-rv", "-l"]
+        }
+      }
     },
     "Lua": {
       "format_on_save": "on",

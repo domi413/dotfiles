@@ -110,18 +110,14 @@
     }
   },
   {
-    "context": "(Editor && vim_mode == normal || ProjectPanel) && !showing_code_actions || AgentPanel",
+    "context": "(Editor && vim_mode == normal || ProjectPanel) && !showing_code_actions",
     "bindings": {
       // tmux like navigation
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight"
-    }
-  },
-  {
-    "context": "(Editor && vim_mode == normal || ProjectPanel) && !showing_code_actions",
-    "bindings": {
+      "ctrl-l": "workspace::ActivatePaneRight",
+
       "s": "vim::PushSneak",
       "shift-s": "vim::PushSneakBackward",
 
