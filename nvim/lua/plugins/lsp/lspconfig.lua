@@ -49,46 +49,53 @@ return {
 		end
 
 		mason_lspconfig.setup({
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["clangd"] = function()
-				lspconfig["clangd"].setup({
-					capabilities = capabilities,
-					cmd = {
-						"clangd",
-						"--clang-tidy",
-						"--background-index",
-						"--inlay-hints=false",
-					},
-					filetypes = { "c", "cpp", "objc", "objcpp" },
-					root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
-				})
-			end,
-			["gopls"] = function()
-				lspconfig["gopls"].setup({
-					capabilities = capabilities,
-					settings = {
-						gopls = {
-							analyses = { unusedparams = true },
-							gofumpt = true,
-							hints = {
-								assignVariableType = false,
-								compositeLiteralFields = false,
-								compositeLiteralTypes = false,
-								constantValues = true,
-								functionTypeParameters = true,
-								parameterNames = true,
-								rangeVariableTypes = true,
-							},
-							staticcheck = true,
-							usePlaceholders = true,
+			handlers = {
+				function(server_name)
+					lspconfig[server_name].setup({
+						capabilities = capabilities,
+					})
+				end,
+				["clangd"] = function()
+					lspconfig["clangd"].setup({
+						capabilities = capabilities,
+						cmd = {
+							"clangd",
+							"--clang-tidy",
+							"--background-index",
+							"--inlay-hints=false",
 						},
-					},
-				})
-			end,
+						filetypes = { "c", "cpp", "objc", "objcpp" },
+						root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+					})
+				end,
+				["gopls"] = function()
+					lspconfig["gopls"].setup({
+						capabilities = capabilities,
+						settings = {
+							gopls = {
+								analyses = { unusedparams = true },
+								gofumpt = true,
+								hints = {
+									assignVariableType = false,
+									compositeLiteralFields = false,
+									compositeLiteralTypes = false,
+									constantValues = true,
+									functionTypeParameters = true,
+									parameterNames = true,
+									rangeVariableTypes = true,
+								},
+								staticcheck = true,
+								usePlaceholders = true,
+							},
+						},
+					})
+				end,
+				["lua_ls"] = function()
+					lspconfig["lua_ls"].setup({
+						capabilities = capabilities,
+					})
+				end,
+			},
 		})
 	end,
 }

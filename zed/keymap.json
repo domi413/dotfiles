@@ -1,5 +1,17 @@
 [
   {
+    "bindings": {
+      "shift-enter": "workspace::ToggleZoom"
+    }
+  },
+  {
+    "context": "MessageEditor > Editor",
+    "bindings": {
+      "enter": "editor::Newline",
+      "ctrl-enter": "agent::Chat"
+    }
+  },
+  {
     "context": "vim_mode != insert",
     "bindings": {
       // Go to next/previous selection
@@ -37,7 +49,7 @@
       "shift-alt-h": "pane::SplitLeft",
       "shift-alt-l": "pane::SplitRight",
 
-      // BUG: terminal::Clear also clears starship prompt
+      "ctrl-l": ["workspace::SendKeystrokes", "clear enter"],
 
       // Navigation
       "ctrl-shift-u": "terminal::ScrollLineUp",
@@ -173,6 +185,9 @@
       // Toggle inlay hints
       "space t t": "editor::ToggleInlayHints",
 
+      // Toggle inline diagnostics
+      "space t d": "editor::ToggleInlineDiagnostics",
+
       // Diagnostic
       "space d n": "editor::GoToDiagnostic",
       "space d p": "editor::GoToPreviousDiagnostic",
@@ -248,21 +263,37 @@
     }
   },
   {
-    // Make configuration more nvim-tree like
+    "context": "FileFinder || (FileFinder > Picker > Editor)",
+    "bindings": {
+      "ctrl-s": "file_finder::ToggleSplitMenu"
+    }
+  },
+  {
+    // nvim-tree like configuration
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "a": "project_panel::NewFile",
       "A": "project_panel::NewDirectory",
       "c": "project_panel::Copy",
-      "x": "project_panel::Cut",
-      "o": "project_panel::Open",
       "d": "project_panel::Delete",
-      "r": "project_panel::Rename",
-      "y": "workspace::CopyRelativePath",
-      "shift-y": "workspace::CopyPath",
+      "D": "project_panel::Trash",
+      "g y": "workspace::CopyPath",
+      "g e": "workspace::CopyRelativePath",
+      "o": "project_panel::Open",
+      "shift-o": "project_panel::OpenPermanent",
       "p": "project_panel::Paste",
-      "shift-o": "project_panel::RevealInFileManager",
-      "s": "project_panel::OpenWithSystem"
+      "q": "workspace::ToggleLeftDock",
+      "r": "project_panel::Rename",
+      "s": "project_panel::OpenWithSystem",
+      "S": "project_panel::NewSearchInDirectory",
+      "W": "project_panel::CollapseAllEntries",
+      "x": "project_panel::Cut",
+      "y": "workspace::CopyPath",
+      "shift-y": "workspace::CopyRelativePath"
+
+      // `E` Expand All
+      // `H` Toggle Filter: Dotfiles
+      // `I` Toggle Filter: Git Ignore
     }
   }
 ]

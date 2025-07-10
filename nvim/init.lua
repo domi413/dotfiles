@@ -20,7 +20,6 @@ vim.opt.rtp:prepend(lazypath)
 -- ╰──────────────────────────────────────────────────────────╯
 -- Setup vim.opt, keymaps, ... before loading lazy.nvim
 -- so that mappings are correct.
-require("core.disable_cutting")
 require("core.options")
 require("core.keymap")
 require("core.run_code")
@@ -33,7 +32,6 @@ require("lazy").setup({
 		-- ╰──────────────────────────────────────────────────────────╯
 		{ import = "plugins.treesitter" },
 		{ import = "plugins" },
-		{ import = "plugins.debugger" },
 		{ import = "plugins.git" },
 		{ import = "plugins.lsp" },
 	},

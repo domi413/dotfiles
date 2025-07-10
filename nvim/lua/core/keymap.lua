@@ -7,6 +7,12 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- ╭──────────────────────────────────────────────────────────╮
+-- │ Disable cutting                                          │
+-- ╰──────────────────────────────────────────────────────────╯
+keymap.set("n", "x", '"_x')
+keymap.set("n", "X", '"_x')
+
+-- ╭──────────────────────────────────────────────────────────╮
 -- │ Window tiling                                            │
 -- ╰──────────────────────────────────────────────────────────╯
 keymap.set("n", "<leader>sk", "<cmd>topleft split<CR>", { desc = "Split window up" })
@@ -86,11 +92,6 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope session-lens<CR>", { desc = "Searc
 keymap.set("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Search sessions" })
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Zen-Mode                                                 │
--- ╰──────────────────────────────────────────────────────────╯
-keymap.set("n", "<leader>tz", "<cmd>ZenMode<CR>", { desc = "Toggle ZenMode" })
-
--- ╭──────────────────────────────────────────────────────────╮
 -- │ UndoTree                                                 │
 -- ╰──────────────────────────────────────────────────────────╯
 keymap.set("n", "<leader>tu", "<cmd>UndotreeToggle<CR>", { desc = "Toggle undoTree" })
@@ -143,11 +144,6 @@ end, { desc = "Toggle TOC" })
 keymap.set("n", "<leader>ts", "<cmd>set spell!<CR>", { desc = "Toggle spellchecker" })
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ NVIM Tree (File Explorer)                                │
--- ╰──────────────────────────────────────────────────────────╯
--- keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-
--- ╭──────────────────────────────────────────────────────────╮
 -- │ LSP                                                      │
 -- ╰──────────────────────────────────────────────────────────╯
 -- lsp configs are defined in lua/plugins/lsp/lspconfig.lua
@@ -164,11 +160,6 @@ end
 -- ╰──────────────────────────────────────────────────────────╯
 -- treesitter motions are defined in
 -- lua/plugins/treesitter/nvim-treesitter-text-objects.lua
-
--- ╭──────────────────────────────────────────────────────────╮
--- │ Debugger                                                 │
--- ╰──────────────────────────────────────────────────────────╯
--- debugger configs are defined in lua/plugins/debugger/nvim-dap.lua
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Git                                                      │

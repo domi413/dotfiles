@@ -11,14 +11,12 @@
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.list.smoothScrolling": true,
   "workbench.navigationControl.enabled": false,
-  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
   "workbench.preferredLightColorTheme": "Catppuccin Latte",
-  "workbench.startupEditor": "none",
+  "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.indent": 20,
 
   // EDITOR
-  "editor.autoClosingOvertype": "always", // "Jumping" over the bracket when typing ")"
-  "editor.bracketPairColorization.enabled": false,
+  "editor.autoClosingOvertype": "always",
   "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.fontFamily": "CaskaydiaCove Nerd Font",
@@ -51,9 +49,6 @@
   "editor.smoothScrolling": true,
   "editor.stickyScroll.enabled": false,
   "editor.suggest.showWords": false,
-
-  // OTHERS
-  "breadcrumbs.enabled": false,
   "chat.commandCenter.enabled": false,
   "git.blame.editorDecoration.enabled": false,
   "git.blame.editorDecoration.template": "${authorName} - ${hashShort}",
@@ -109,6 +104,9 @@
 
   // *** Scroll percentage ***
   "scroll-percentage.cursor": "cursor",
+
+  // *** Error lens ***
+  "errorLens.enabledDiagnosticLevels": ["warning", "error"],
 
   // *** TODO Tree ***
   "todo-tree.highlights.defaultHighlight": {
@@ -425,5 +423,31 @@
       // "before": ["x"],
       // "after": [ "\"", "_", "x" ]
     }
-  ]
+  ],
+  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+  "editor.bracketPairColorization.enabled": false,
+  "editor.experimental.preferTreeSitter.css": true,
+  "editor.experimental.preferTreeSitter.ini": true,
+  "editor.experimental.preferTreeSitter.regex": true,
+  "editor.experimental.preferTreeSitter.typescript": true,
+  "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.goToTypeDefinition",
+  "editor.lightbulb.enabled": "off",
+  "breadcrumbs.enabled": false,
+  "workbench.settings.editor": "json",
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.restore": false,
+  "terminal.external.linuxExec": "ghostty",
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.smoothScrolling": true,
+  "notebook.lineNumbers": "on",
+  "update.mode": "manual",
+  "telemetry.feedback.enabled": false,
+  "security.workspace.trust.enabled": false,
+  "terminal.integrated.enableImages": true,
+  "security.workspace.trust.startupPrompt": "never",
+  "[typst]": {
+    "editor.defaultFormatter": "myriad-dreamin.tinymist"
+  }
 }
