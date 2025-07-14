@@ -252,6 +252,13 @@
     }
   },
   {
+    "context": "(vim_mode == insert || vim_mode == normal) && showing_signature_help && !showing_completions",
+    "bindings": {
+      "ctrl-k": "editor::SignatureHelpPrevious",
+      "ctrl-j": "editor::SignatureHelpNext"
+    }
+  },
+  {
     // Copy code from assistant
     "context": "AssistantPanel || vim_mode == normal",
     "bindings": {

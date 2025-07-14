@@ -256,11 +256,15 @@
           "build": {
             "onSave": true,
             "forwardSearchAfter": true,
-            // "executable": "tectonic",
-            // "args": ["-Z", "shell-escape", "%f"]
-            "executable": "pdflatex",
-            "args": ["--shell-escape", "%f"]
+            "executable": "tectonic",
+            "args": ["-Z", "shell-escape", "%f"]
+            // "executable": "pdflatex",
+            // "args": ["--shell-escape", "%f"]
           }
+        },
+        "forwardSearch": {
+          "executable": "zathura",
+          "args": ["--synctex-forward", "%l:1:%f", "%p"]
         }
       }
     }
