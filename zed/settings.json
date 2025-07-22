@@ -20,8 +20,9 @@
 //   - Don't select the first suggestion when pressing enter
 //   - / search should no remove highlighting when pressing esc (only when :nohl)
 //   - Show live changes when changing regex with %s  https://github.com/zed-industries/zed/issues/4411
+//   - Vim mode in rename pop-up
 //   - % navigation (bash, lua, etc.)
-//  -  zL/zH doesn't move cursor
+//   -  zL/zH doesn't move cursor
 //   - scrolling shouldn't exceed last line, only with zz e.g.
 //   - Which-key like window
 //   - Insert from Register-overview when pressing "
@@ -49,14 +50,14 @@
 //   - Inverted cursor color
 //   - Ligatures under cursor not rendered correctly
 //   - autocompletion: Better UI
-//   - Better rename pop-up
 //   - Telescope like window
 // - Terminal:
+//   - Starship prompt ugly af
 //   - Render TUI border correctly
 //   - Image preview
 
 {
-  // Update through package manager
+  // Updating with package manager
   "auto_update": false,
 
   // Auto-install extensions
@@ -84,10 +85,6 @@
   // ╭──────────────────────────────────────────────────────────╮
   // │ UI                                                       │
   // ╰──────────────────────────────────────────────────────────╯
-  "centered_layout": {
-    "left_padding": 0.1,
-    "right_padding": 0.1
-  },
   "collaboration_panel": {
     "button": true
   },
@@ -152,6 +149,20 @@
   "vertical_scroll_margin": 0,
 
   // ╭──────────────────────────────────────────────────────────╮
+  // │ Vim                                                      │
+  // ╰──────────────────────────────────────────────────────────╯
+  "vim_mode": true,
+  "cursor_blink": false,
+  "relative_line_numbers": true,
+  // "scroll_beyond_last_line": "off",
+  "scrollbar": {
+    "show": "never"
+  },
+  "vim": {
+    "highlight_on_yank_duration": 0
+  },
+
+  // ╭──────────────────────────────────────────────────────────╮
   // │ Font                                                     │
   // ╰──────────────────────────────────────────────────────────╯
   "ui_font_size": 15.5,
@@ -179,36 +190,22 @@
   },
 
   // ╭──────────────────────────────────────────────────────────╮
-  // │ Vim                                                      │
-  // ╰──────────────────────────────────────────────────────────╯
-  "vim_mode": true,
-  "cursor_blink": false,
-  "relative_line_numbers": true,
-  // "scroll_beyond_last_line": "off",
-  "scrollbar": {
-    "show": "never"
-  },
-  "vim": {
-    "highlight_on_yank_duration": 0
-  },
-
-  // ╭──────────────────────────────────────────────────────────╮
   // │ Assistant                                                │
   // ╰──────────────────────────────────────────────────────────╯
   "agent": {
     "always_allow_tool_actions": true,
-    "default_profile": "write",
+    "default_profile": "ask",
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "gemini-2.0-flash-001"
     },
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "model": "gemini-2.5-pro"
     }
   },
   "features": {
-    "edit_prediction_provider": "supermaven"
+    "edit_prediction_provider": "copilot"
   },
   "edit_predictions": {
     "mode": "subtle"
@@ -231,6 +228,17 @@
   // │ LSP                                                      │
   // ╰──────────────────────────────────────────────────────────╯
   "lsp": {
+    "golangci-lint": {
+      "initialization_options": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path=stdout",
+          "--issues-exit-code=1",
+          "--show-stats=false"
+        ]
+      }
+    },
     "gopls": {
       "initialization_options": {
         "analyses": {
@@ -278,10 +286,12 @@
       "format_on_save": "on"
     },
     "C++": {
-      "show_edit_predictions": true,
       "format_on_save": "on"
     },
-    "JSONC": {
+    "Go": {
+      "language_servers": ["gopls", "golangci-lint"]
+    },
+    "Markdown": {
       "format_on_save": "on"
     },
     "LaTeX": {
@@ -293,7 +303,6 @@
       }
     },
     "Lua": {
-      "format_on_save": "on",
       "formatter": {
         "external": {
           "command": "stylua",
@@ -301,12 +310,8 @@
         }
       }
     },
-    "Markdown": {
-      "format_on_save": "on"
-    },
     "Python": {
       "language_servers": ["pyright", "ruff"],
-      "format_on_save": "on",
       "formatter": [
         {
           "code_actions": {

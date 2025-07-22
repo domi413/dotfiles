@@ -50,7 +50,7 @@
   "editor.stickyScroll.enabled": false,
   "editor.suggest.showWords": false,
   "chat.commandCenter.enabled": false,
-  "git.blame.editorDecoration.enabled": false,
+  "git.blame.editorDecoration.enabled": true,
   "git.blame.editorDecoration.template": "${authorName} - ${hashShort}",
   "git.enableSmartCommit": true,
   "security.workspace.trust.untrustedFiles": "open",
@@ -432,7 +432,6 @@
   "editor.experimental.preferTreeSitter.typescript": true,
   "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.goToTypeDefinition",
   "editor.lightbulb.enabled": "off",
-  "breadcrumbs.enabled": false,
   "workbench.settings.editor": "json",
   "zenMode.fullScreen": false,
   "zenMode.hideLineNumbers": false,
@@ -449,5 +448,7 @@
   "security.workspace.trust.startupPrompt": "never",
   "[typst]": {
     "editor.defaultFormatter": "myriad-dreamin.tinymist"
-  }
+  },
+  "breadcrumbs.enabled": false,
+  "github.copilot.nextEditSuggestions.fixes": false
 }

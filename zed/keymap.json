@@ -156,9 +156,6 @@
       // Save file
       "space w": "workspace::Save",
 
-      // Toggle line wrapping
-      "space $": "editor::ToggleSoftWrap",
-
       // Reopen last closed tab
       "space u": "pane::ReopenClosedItem",
 
@@ -167,11 +164,8 @@
       "space t h": "workspace::ToggleLeftDock",
       "space t l": "workspace::ToggleRightDock",
 
-      // Toggle Zen-Mode
-      "space t z": "workspace::ToggleCenteredLayout",
-
-      // Toggle pinned tab
-      "space t p": "pane::TogglePinTab",
+      // Toggle line wrapping
+      "space t w": "editor::ToggleSoftWrap",
 
       // Toggle outline
       "space t o": "outline::Toggle",
@@ -180,7 +174,7 @@
       "space t a": "agent::ToggleFocus",
 
       // Toggle inline git diff
-      "space g h ": "editor::ToggleSelectedDiffHunks",
+      "g h": "editor::ToggleSelectedDiffHunks",
 
       // Toggle inlay hints
       "space t t": "editor::ToggleInlayHints",
@@ -197,6 +191,9 @@
       // Dismiss notification
       "space n d": "workspace::SuppressNotification",
 
+      // Switch tabs
+      "space s t": "tab_switcher::ToggleAll",
+
       // Change theme
       "space f t": "theme_selector::Toggle",
 
@@ -209,15 +206,12 @@
       // Open projects
       "space f p": "projects::OpenRecent",
 
-      // Switch tabs
-      "space s t": "tab_switcher::ToggleAll",
-
       // Search files
       "space f f": "file_finder::Toggle",
 
       // Tasks
       // Lazygit
-      "space l g": [
+      "g l": [
         "task::Spawn",
         { "task_name": "LazyGit", "reveal_target": "center" }
       ],
