@@ -1,9 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-		"linrongbin16/lsp-progress.nvim",
-	},
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 
 	config = function()
 		-- Count selected lines and characters in visual mode
@@ -19,7 +16,7 @@ return {
 
 			-- Assume 30 characters per line and set count limit to limit performance throttle
 			if lines_selected_count * 30 > MAX_CHAR_COUNT then
-				return tostring(lines_selected_count) .. " Ln : >" .. tostring(MAX_CHAR_COUNT) .. " C"
+				return tostring(lines_selected_count) .. " Ln : >" .. "nil".. " C"
 			end
 
 			local region_lines = vim.fn.getregion(v_start_pos, v_end_pos, { type = current_mode_char })
@@ -28,55 +25,17 @@ return {
 			for i, line in ipairs(region_lines) do
 				if char_count <= MAX_CHAR_COUNT then
 					char_count = char_count + vim.fn.strchars(line)
-					if (current_mode_char == "v" or current_mode_char == "V") and i < #region_lines then
+					if (current_mode_char == 'v' or current_mode_char == 'V') and i < #region_lines then
 						char_count = char_count + 1
 					end
 				else
-					char_count = MAX_CHAR_COUNT
+					char_count = ">" .. tostring(MAX_CHAR_COUNT)
 					break
 				end
 			end
-			return tostring(lines_selected_count)
-				.. " Ln : "
-				.. (char_count == MAX_CHAR_COUNT and ">" .. tostring(MAX_CHAR_COUNT) or tostring(char_count))
-				.. " C"
+
+			return tostring(lines_selected_count) .. " Ln : " .. char_count .. " C"
 		end
-
-		-- Check if Codeium plugin is loaded, fallback if not
-		local function codeiumStatus()
-			local ok, codeium = pcall(require, "codeium.virtual_text")
-			if ok and codeium.status_string then
-				return codeium.status_string()
-			end
-			return ""
-		end
-
-		-- Set up Codeium statusbar refresh
-		local ok, codeium = pcall(require, "codeium.virtual_text")
-		if ok and codeium.set_statusbar_refresh then
-			codeium.set_statusbar_refresh(function()
-				require("lualine").refresh()
-			end)
-		end
-
-		require("lsp-progress").setup({
-			format = function(client_messages)
-				local sign = ""
-				local lsp_clients = vim.lsp.get_active_clients()
-				local names = #client_messages > 0 and client_messages or {}
-
-				if #client_messages == 0 and #lsp_clients > 0 then
-					for _, client in ipairs(lsp_clients) do
-						if type(client.name) == "string" and #client.name > 0 then
-							table.insert(names, client.name)
-						end
-					end
-					table.sort(names)
-				end
-
-				return #names > 0 and sign .. " " .. table.concat(names, ", ") or ""
-			end,
-		})
 
 		require("lualine").setup({
 			options = {
@@ -88,19 +47,14 @@ return {
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
 				lualine_b = { "filename", "branch", "diagnostics" },
-				lualine_c = {
-					function()
-						return require("lsp-progress").progress()
-					end,
-				},
+				lualine_c = { "%=" },
 				lualine_x = {},
 				lualine_y = {
-					codeiumStatus,
 					"filetype",
 					"progress",
 				},
 				lualine_z = {
-					{ selectionCount },
+					selectionCount,
 					{ "location", separator = { right = "" }, left_padding = 2 },
 				},
 			},

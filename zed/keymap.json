@@ -19,12 +19,12 @@
       "ctrl-j": "menu::SelectNext"
     }
   },
-  {
-    "context": "!Editor",
-    "bindings": {
-      "ctrl-w": "editor::DeleteToPreviousWordStart"
-    }
-  },
+  // {
+  //   "context": "!Editor",
+  //   "bindings": {
+  //     "ctrl-w": "editor::DeleteToPreviousWordStart"
+  //   }
+  // },
   {
     "context": "Workspace",
     "bindings": {
@@ -210,6 +210,10 @@
       "space f f": "file_finder::Toggle",
 
       // Tasks
+
+      // Task rerun
+      "space r": "task::Rerun",
+
       // Lazygit
       "g l": [
         "task::Spawn",

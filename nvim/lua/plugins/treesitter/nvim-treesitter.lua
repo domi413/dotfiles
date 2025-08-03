@@ -8,8 +8,6 @@ return {
 	},
 	config = function()
 		require("nvim-treesitter.configs").setup({
-
-			-- enable syntax highlighting
 			highlight = {
 				enable = true,
 
@@ -25,31 +23,7 @@ return {
 				additional_vim_regex_highlighting = false,
 			},
 
-			-- enable indentation
 			indent = { enable = true },
-
-			-- ensure these language parsers are installed
-			ensure_installed = {
-				"bash",
-				"c",
-				"cpp",
-				"css",
-				"gitignore",
-				"go",
-				"html",
-				"java",
-				"javascript",
-				"json",
-				"latex",
-				"lua",
-				"markdown",
-				"python",
-				"csv",
-				"rust",
-				"typescript",
-				"vim",
-				"yaml",
-			},
 
 			sync_install = false,
 			auto_install = true,

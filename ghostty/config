@@ -13,8 +13,13 @@ font-style-bold = "italic"
 font-feature = ss19
 
 # Cursor
-cursor-invert-fg-bg
+cursor-color = cell-foreground
+selection-foreground = cell-foreground
 shell-integration-features = no-cursor
+
+# Mouse
+mouse-scroll-multiplier = 0.5
+mouse-hide-while-typing
 
 # Window
 unfocused-split-opacity = 1
@@ -27,8 +32,6 @@ clipboard-paste-protection = false
 confirm-close-surface = false
 
 # Miscellaneous
-mouse-scroll-multiplier = 0.3
-mouse-hide-while-typing
 adw-toolbar-style = flat
 
 ### Keybinds
@@ -45,7 +48,6 @@ keybind = ctrl+shift+x=decrease_font_size:0.5
 # Tab
 keybind = ctrl+shift+p=next_tab
 keybind = ctrl+shift+n=previous_tab
-
 keybind = ctrl+shift+enter=toggle_tab_overview
 
 # Window (splits)

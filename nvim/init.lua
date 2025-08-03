@@ -22,7 +22,6 @@ vim.opt.rtp:prepend(lazypath)
 -- so that mappings are correct.
 require("core.options")
 require("core.keymap")
-require("core.run_code")
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -33,11 +32,9 @@ require("lazy").setup({
 		{ import = "plugins.treesitter" },
 		{ import = "plugins" },
 		{ import = "plugins.git" },
-		{ import = "plugins.lsp" },
 	},
 	-- Configure any other settings here.
 	-- colorscheme that will be used when installing plugins.
-	-- install = { colorscheme = { "rose-pine" } },
 	install = { colorscheme = { "catpuccin" } },
 
 	-- automatically check for plugin updates
