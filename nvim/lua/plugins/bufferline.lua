@@ -1,8 +1,8 @@
 require("bufferline").setup({
 	options = {
-		mode = "buffers",
+		mode = "tabs",
 		numbers = "none",
-		close_command = "bdelete! %d",
+		close_command = "tabclose %d",
 		diagnostics = false,
 		style_preset = require("bufferline").style_preset.no_italic,
 		show_close_icon = false,
@@ -13,12 +13,5 @@ require("bufferline").setup({
 		close_icon = "",
 		separator_style = "thin",
 		indicator = { style = "none" },
-		offsets = {
-			{
-				filetype = "NvimTree",
-				text = "File Explorer",
-				text_align = "left",
-			},
-		},
 	},
 })

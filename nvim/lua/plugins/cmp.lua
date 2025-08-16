@@ -17,7 +17,7 @@ require("blink.cmp").setup({
 			border = "rounded",
 			draw = {
 				columns = { { "label", "label_description", gap = 1 }, { "kind_icon", gap = 1, "kind" } },
-				-- treesitter = { "lsp" }, -- This enables syntax highlighing in auto-complete menu
+				-- tree-sitter = { "lsp" }, -- This enables syntax highlighting in auto-complete menu
 			},
 		},
 	},

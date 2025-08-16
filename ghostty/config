@@ -2,7 +2,7 @@
 theme = dark:catppuccin-mocha,light:catppuccin-latte
 
 ### Font
-font-size=11.5
+font-size=11
 
 # CaskaydiaCove
 font-family = "CaskaydiaCove Nerd Font"
@@ -33,11 +33,12 @@ confirm-close-surface = false
 
 # Miscellaneous
 adw-toolbar-style = flat
+custom-shader-animation = true
 
 ### Keybinds
 keybind = ctrl+shift+r=reload_config
 keybind = ctrl+shift+f2=open_config
-keybind = unconsumed:ctrl+l=clear_screen
+keybind = performable:ctrl+l=clear_screen
 keybind = f12=toggle_window_decorations
 keybind = ctrl+shift+w=close_surface
 

@@ -33,6 +33,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		opts.desc = "Go definition"
 		keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
+		opts.desc = "Go definition in new tab"
+		keymap.set("n", "gD", "<cmd>tab split | Telescope lsp_definitions<CR>", opts)
+
 		opts.desc = "Show diagnostics"
 		keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 

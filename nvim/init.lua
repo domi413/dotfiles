@@ -45,9 +45,10 @@ vim.g.mapleader = " "
 map("n", "x", '"_x')
 map("n", "X", '"_x')
 
--- Buffer
+-- Window
 map("n", "<C-p>", "<cmd>BufferLineCycleNext<CR>")
 map("n", "<C-n>", "<cmd>BufferLineCyclePrev<CR>")
+map("n", "<C-w>t", "<cmd>tabnew<CR>")
 
 -- Editor / Editing
 map("n", "<leader>nh", "<cmd>nohl<CR>", { desc = "Clear search highlights" })
@@ -226,11 +227,7 @@ require("outline").setup({
 })
 
 require("render-markdown").setup({
-	code = {
-		conceal_delimiters = false,
-		language = false,
-		border = "none",
-	},
+	code = { border = "thick" },
 })
 
 require("which-key").setup({
