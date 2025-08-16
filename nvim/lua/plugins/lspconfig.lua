@@ -39,6 +39,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		opts.desc = "Show diagnostics"
 		keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
+		opts.desc = "Show line diagnostics"
+		vim.keymap.set("n", "<leader>dl", function()
+			vim.diagnostic.open_float()
+		end, opts)
+
 		opts.desc = "Go to previous diagnostic"
 		keymap.set("n", "<leader>dp", function()
 			vim.diagnostic.jump({ count = -1, float = false })

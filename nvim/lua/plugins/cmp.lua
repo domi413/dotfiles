@@ -17,12 +17,11 @@ require("blink.cmp").setup({
 			border = "rounded",
 			draw = {
 				columns = { { "label", "label_description", gap = 1 }, { "kind_icon", gap = 1, "kind" } },
-				-- tree-sitter = { "lsp" }, -- This enables syntax highlighting in auto-complete menu
+				-- treesitter = { "lsp" }, -- This enables syntax highlighting in auto-complete menu
 			},
 		},
 	},
 	keymap = {
-		-- set to 'none' to disable the 'default' preset
 		preset = "none",
 
 		["<C-k>"] = { "select_prev", "fallback" },
@@ -38,7 +37,17 @@ require("blink.cmp").setup({
 			preset = "inherit",
 			["<CR>"] = { "accept_and_enter", "fallback" },
 		},
-		completion = { menu = { auto_show = true } },
+		completion = {
+			menu = {
+				auto_show = true,
+			},
+			list = {
+				selection = {
+					preselect = false,
+					auto_insert = true,
+				},
+			},
+		},
 	},
 	signature = {
 		enabled = true,

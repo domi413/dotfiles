@@ -13,7 +13,7 @@ local diagnostic_configs = {
 
 vim.diagnostic.config(diagnostic_configs.inline)
 
-vim.keymap.set("n", "<Leader>dl", function()
+vim.keymap.set("n", "<Leader>tl", function()
 	if diagnostic_states.enabled then
 		diagnostic_states.inline = not diagnostic_states.inline
 		vim.diagnostic.config(diagnostic_states.inline and diagnostic_configs.inline or diagnostic_configs.detailed)

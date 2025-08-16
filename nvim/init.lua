@@ -156,8 +156,6 @@ vim.pack.add({
 	{ src = "https://github.com/numToStr/Comment.nvim" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/rmagatti/auto-session" },
-	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "https://github.com/tommcdo/vim-exchange" },
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 })
 
