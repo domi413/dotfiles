@@ -13,10 +13,9 @@ font-style-bold = "italic"
 font-feature = ss19
 
 # Cursor
-# cursor-color = cell-foreground
-# selection-foreground = cell-foreground
-# shell-integration-features = no-cursor
-cursor-invert-fg-bg
+cursor-color = cell-foreground
+selection-foreground = cell-foreground
+shell-integration-features = no-cursor
 
 # Mouse
 mouse-scroll-multiplier = 0.5

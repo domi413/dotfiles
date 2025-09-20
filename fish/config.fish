@@ -1,6 +1,7 @@
 # ╭──────────────────────────────────────────────────────────╮
 # │ Sources                                                  │
 # ╰──────────────────────────────────────────────────────────╯
+
 starship init fish | source
 fzf --fish | source
 zoxide init fish | source
@@ -8,6 +9,7 @@ zoxide init fish | source
 # ╭──────────────────────────────────────────────────────────╮
 # │ Env variables                                            │
 # ╰──────────────────────────────────────────────────────────╯
+
 # GO
 set -gx GOPATH "$HOME/.go"
 fish_add_path "$GOPATH/bin"
@@ -15,9 +17,13 @@ fish_add_path "$GOPATH/bin"
 # Disable `ctrl+shift+u` unicode input
 set -gx GTK_IM_MODULE none
 
+# VCPKG
+set -gx VCPKG_ROOT "$HOME/.vcpkg"
+
 # ╭──────────────────────────────────────────────────────────╮
 # │ Themes                                                   │
 # ╰──────────────────────────────────────────────────────────╯
+
 ### Bat
 set -gx BAT_THEME "ansi"
 
@@ -33,6 +39,7 @@ set -gx FZF_DEFAULT_OPTS " \
 # ╭──────────────────────────────────────────────────────────╮
 # │ Fish shell                                               │
 # ╰──────────────────────────────────────────────────────────╯
+
 set fish_greeting
 set -U fish_color_command blue
 
@@ -49,6 +56,7 @@ set -gx SUDO_EDITOR $EDITOR
 # ╭──────────────────────────────────────────────────────────╮
 # │ Aliases                                                  │
 # ╰──────────────────────────────────────────────────────────╯
+
 ### System
 # Logout
 alias logout="gnome-session-quit"
@@ -67,7 +75,7 @@ alias vi="nvim"
 alias svim="sudo -s -E nvim"
 
 ### Lazygit
-alias lg="lazygit"
+alias gl="lazygit"
 
 ### Bat
 alias man="batman"
@@ -104,6 +112,7 @@ alias zed="zeditor"
 # ╭──────────────────────────────────────────────────────────╮
 # │ Custom Functions                                         │
 # ╰──────────────────────────────────────────────────────────╯
+
 function do --description "Rerun the last command using sudo"
     if test (count $argv) -eq 0
         echo sudo $history[1]

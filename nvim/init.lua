@@ -142,6 +142,7 @@ vim.pack.add({
 	{ src = "https://github.com/akinsho/bufferline.nvim" },
 	{ src = "https://github.com/brenoprata10/nvim-highlight-colors" },
 	{ src = "https://github.com/catppuccin/nvim" },
+	{ src = "https://github.com/chentoast/marks.nvim" },
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/folke/todo-comments.nvim" },
 	{ src = "https://github.com/folke/which-key.nvim" },
@@ -179,13 +180,12 @@ require("plugins.vimtex")
 require("Comment").setup()
 require("auto-session").setup()
 require("dressing").setup()
+require("marks").setup()
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("nvim-autopairs").setup()
-require("nvim-highlight-colors").setup()
 require("nvim-surround").setup()
 require("plugins.flash")
-require("todo-comments").setup()
 
 require("better_escape").setup({
 	mappings = {
@@ -220,12 +220,24 @@ require("ibl").setup({
 	scope = { enabled = false },
 })
 
+require("nvim-highlight-colors").setup({
+	render = "virtual",
+	virtual_symbol = " ⬤",
+	virtual_symbol_position = "eow",
+	enabled_tailwind = true,
+})
+
 require("outline").setup({
 	preview_window = { live = true },
 })
 
 require("render-markdown").setup({
 	code = { border = "thick" },
+})
+
+require("todo-comments").setup({
+	search = { pattern = [[\b(KEYWORDS)(\([^\)]*\))?:]] },
+	highlight = { pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):]] },
 })
 
 require("which-key").setup({
