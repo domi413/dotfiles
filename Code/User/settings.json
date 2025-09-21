@@ -129,6 +129,19 @@
     }
   },
 
+  // *** GO ***
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--path-mode=abs", "--fast-only"],
+  "go.formatTool": "custom",
+  "go.alternateTools": {
+    "customFormatter": "golangci-lint"
+  },
+  "go.formatFlags": ["fmt", "--stdin"],
+  "go.toolsManagement.autoUpdate": true,
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+
   // *** JAVA ***
   "redhat.telemetry.enabled": false,
 
@@ -208,6 +221,7 @@
     { "before": ["C-r"], "commands": ["redo"] }
   ],
   "vim.normalModeKeyBindings": [
+    { "before": ["Y"], "after": ["y", "$"] }, // Use neovim-like yank
     {
       // New line below
       "before": ["leader", "o"],
@@ -235,7 +249,7 @@
     },
     {
       // Toggle lazygit
-      "before": ["leader", "l", "g"],
+      "before": ["g", "l"],
       "commands": ["lazygit-vscode.toggle"]
     },
 
@@ -382,14 +396,15 @@
       "before": ["leader", ":"],
       "commands": ["workbench.action.showCommands"]
     },
+    { "before": ["leader", "/"], "commands": ["actions.find"] }, // Local search (or in file search)
     {
-      // Local search (or in file search)
-      "before": ["leader", "/"],
-      "commands": ["actions.find"]
+      // Find files
+      "before": ["leader", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
     },
     {
       // Global search
-      "before": ["leader", "f", "f"],
+      "before": ["leader", "f", "c"],
       "commands": ["workbench.action.findInFiles"]
     },
     {
@@ -433,10 +448,6 @@
   "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.goToTypeDefinition",
   "editor.lightbulb.enabled": "off",
   "workbench.settings.editor": "json",
-  "zenMode.fullScreen": false,
-  "zenMode.hideLineNumbers": false,
-  "zenMode.hideStatusBar": false,
-  "zenMode.restore": false,
   "terminal.external.linuxExec": "ghostty",
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.smoothScrolling": true,
@@ -446,9 +457,6 @@
   "security.workspace.trust.enabled": false,
   "terminal.integrated.enableImages": true,
   "security.workspace.trust.startupPrompt": "never",
-  "[typst]": {
-    "editor.defaultFormatter": "myriad-dreamin.tinymist"
-  },
   "breadcrumbs.enabled": false,
   "github.copilot.nextEditSuggestions.fixes": false
 }

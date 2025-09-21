@@ -60,20 +60,20 @@
 
 {
   // Updating with package manager
+  "format_on_save": "on",
   "auto_update": false,
 
   // Auto-install extensions
   "auto_install_extensions": {
+    "basher": true,
     "catppuccin": true,
     "catppuccin-icons": true,
     "cspell": true,
     "html": true,
     "latex": true,
     "lua": true,
-    "ruff": true,
     "toml": true,
-    "xml": true,
-    "basher": true
+    "xml": true
   },
 
   // ╭──────────────────────────────────────────────────────────╮
@@ -109,6 +109,7 @@
     "sticky_scroll": false
   },
   "tab_bar": {
+    "show": true,
     "show_nav_history_buttons": false
   },
   "search": {
@@ -125,12 +126,13 @@
     "breadcrumbs": false,
     "quick_actions": false
   },
+  "zoomed_padding": false,
 
   // ╭──────────────────────────────────────────────────────────╮
   // │ Editor                                                   │
   // ╰──────────────────────────────────────────────────────────╯
   "always_treat_brackets_as_autoclosed": true,
-  "auto_signature_help": true,
+  "auto_signature_help": false,
   "diagnostics": {
     "inline": {
       "enabled": true,
@@ -195,23 +197,50 @@
   // │ Assistant                                                │
   // ╰──────────────────────────────────────────────────────────╯
   "agent": {
+    "play_sound_when_agent_done": false,
+    "profiles": {
+      "write": {
+        "name": "Write",
+        "tools": {
+          "copy_path": true,
+          "create_directory": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "terminal": true,
+          "thinking": true,
+          "web_search": true,
+          "open": false
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {}
+      }
+    },
     "always_allow_tool_actions": true,
-    "default_profile": "minimal",
+    "default_profile": "write",
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "gemini-2.0-flash-001"
+      "model": "claude-sonnet-4"
     },
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4"
     }
   },
-  "show_edit_predictions": true,
+  "show_edit_predictions": false,
   "features": {
     "edit_prediction_provider": "copilot"
   },
   "edit_predictions": {
-    "mode": "subtle"
+    "mode": "eager"
   },
   "disable_ai": false,
 
@@ -239,7 +268,9 @@
           "run",
           "--output.json.path=stdout",
           "--issues-exit-code=1",
-          "--show-stats=false"
+          "--show-stats=false",
+          "--fix",
+          "--enable-only=wsl_v5"
         ]
       }
     },
@@ -266,17 +297,23 @@
       "settings": {
         "texlab": {
           "build": {
-            "onSave": true,
+            "onSave": false,
             "forwardSearchAfter": true,
-            "executable": "tectonic",
-            "args": ["-Z", "shell-escape", "%f"]
-            // "executable": "pdflatex",
-            // "args": ["--shell-escape", "%f"]
+            // "executable": "tectonic",
+            // "args": ["-Z", "shell-escape", "%f"]
+            "executable": "pdflatex",
+            "args": ["--shell-escape", "%f"]
           }
         },
         "forwardSearch": {
           "executable": "zathura",
-          "args": ["--synctex-forward", "%l:1:%f", "%p"]
+          "args": [
+            "--synctex-forward",
+            "%l:1:%f",
+            "-x",
+            "zed %%{input}:%%{line}",
+            "%p"
+          ]
         }
       }
     }
@@ -286,6 +323,9 @@
   // │ Language config                                          │
   // ╰──────────────────────────────────────────────────────────╯
   "languages": {
+    "TypeScript": {
+      "show_edit_predictions": false
+    },
     "C": {
       "format_on_save": "on"
     },

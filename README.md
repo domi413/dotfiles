@@ -1,7 +1,3 @@
 My dotfiles...
 
-Paste them into `$HOME/.config/`
-
-### INFO:
-
-- The `.ideavimrc` needs to be moved to `$HOME`
+Run `./load.sh load` to deploy the dotfiles to the system (`~/.config/` and `~/`)

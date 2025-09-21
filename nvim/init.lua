@@ -95,8 +95,10 @@ end
 
 -- Git
 map("n", "gl", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
+map("n", "gB", "<cmd>Gitsigns blame_line<CR>", { desc = "Show blame" })
 
 map("n", "gh", function()
+	vim.cmd("Gitsigns toggle_word_diff")
 	vim.cmd("Gitsigns toggle_deleted")
 	vim.cmd("Gitsigns toggle_linehl")
 end, { desc = "Toggle show changes" })
@@ -154,6 +156,7 @@ vim.pack.add({
 	{ src = "https://github.com/max397574/better-escape.nvim" },
 	{ src = "https://github.com/mbbill/undotree" },
 	{ src = "https://github.com/mikavilpas/yazi.nvim" },
+	{ src = "https://github.com/nat-418/boole.nvim" },
 	{ src = "https://github.com/numToStr/Comment.nvim" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/rmagatti/auto-session" },
@@ -167,7 +170,6 @@ vim.cmd("colorscheme catppuccin-mocha")
 
 require("plugins.bufferline")
 require("plugins.cmp")
-require("plugins.git")
 require("plugins.formatter")
 require("plugins.lspconfig")
 require("plugins.lsplines")
@@ -177,8 +179,8 @@ require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.vimtex")
 
-require("Comment").setup()
 require("auto-session").setup()
+require("Comment").setup()
 require("dressing").setup()
 require("marks").setup()
 require("mason").setup()
@@ -193,6 +195,13 @@ require("better_escape").setup({
 		t = { j = { false } }, --lazygit navigation fix
 		v = { j = { k = false } }, -- visual select fix
 		s = { j = { k = false } }, -- selection mode (snippets) fix
+	},
+})
+
+require("boole").setup({
+	mappings = {
+		increment = "<C-a>",
+		decrement = "<C-x>",
 	},
 })
 
@@ -214,6 +223,25 @@ require("codeium").setup({
 			prev = "<C-,>",
 		},
 	},
+})
+
+require("gitsigns").setup({
+	current_line_blame = true,
+	current_line_blame_opts = {
+		virt_text = true,
+		virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+		delay = 1000,
+		ignore_whitespace = false,
+		virt_text_priority = 100,
+		use_focus = true,
+	},
+	current_line_blame_formatter = "<author>, <abbrev_sha> - <summary>",
+
+	preview_config = {
+		border = "rounded",
+	},
+
+	gh = true,
 })
 
 require("ibl").setup({

@@ -19,59 +19,12 @@
       "ctrl-j": "menu::SelectNext"
     }
   },
-  // {
-  //   "context": "!Editor",
-  //   "bindings": {
-  //     "ctrl-w": "editor::DeleteToPreviousWordStart"
-  //   }
-  // },
   {
     "context": "Workspace",
     "bindings": {
       // Move to next/previous window
       "ctrl-p": "pane::ActivateNextItem",
       "ctrl-n": "pane::ActivatePreviousItem"
-    }
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-k": "terminal_panel::ToggleFocus",
-      "ctrl-j": null,
-      "ctrl-p": null,
-      "ctrl-n": null,
-      // Create new terminal
-      "ctrl-shift-t": "workspace::NewTerminal",
-
-      // Split terminal
-      "shift-alt-k": "pane::SplitUp",
-      "shift-alt-j": "pane::SplitDown",
-      "shift-alt-h": "pane::SplitLeft",
-      "shift-alt-l": "pane::SplitRight",
-
-      "ctrl-l": ["workspace::SendKeystrokes", "clear enter"],
-
-      // Navigation
-      "ctrl-shift-u": "terminal::ScrollLineUp",
-      "ctrl-shift-d": "terminal::ScrollLineDown",
-      "ctrl-shift-b": "terminal::ScrollPageUp",
-      "ctrl-shift-f": "terminal::ScrollPageDown",
-      "ctrl-shift-^": "terminal::ScrollToTop", // Not working
-      "ctrl-shift-$": "terminal::ScrollToBottom", // Not working
-
-      "ctrl-shift-p": "pane::ActivateNextItem",
-      "ctrl-shift-n": "pane::ActivatePreviousItem",
-
-      "ctrl-shift-k": "workspace::ActivatePaneUp",
-      "ctrl-shift-j": "workspace::ActivatePaneDown",
-      "ctrl-shift-h": "workspace::ActivatePaneLeft",
-      "ctrl-shift-l": "workspace::ActivatePaneRight"
-    }
-  },
-  {
-    "context": "BufferSearchBar",
-    "bindings": {
-      "ctrl-r": "search::ToggleReplace"
     }
   },
   {
@@ -82,33 +35,29 @@
     }
   },
   {
-    "context": "vim_mode == insert || vim_mode == replace || (showing_code_actions || showing_completions)",
+    "context": "vim_mode == insert || vim_mode == replace",
     "bindings": {
       // Leave insert mode with jk
       "j k": "vim::NormalBefore"
     }
   },
   {
-    "context": "vim_mode == insert || (showing_code_actions || showing_completions)",
+    "context": "vim_mode == insert",
     "bindings": {
       // Go to next/previous selection (in auto-completion and code actions)
       "ctrl-k": "editor::ContextMenuPrevious",
       "ctrl-j": "editor::ContextMenuNext",
-
       // Show completion (map behavior to neovim)
       "ctrl-p": "editor::ShowCompletions",
       "ctrl-n": "editor::ShowCompletions",
-
       // Navigate within snippet placeholders
       "ctrl-l": "editor::Tab",
       "ctrl-h": "editor::Backtab",
-
       // Assistant inline completion
       "ctrl-.": "editor::NextEditPrediction",
       "ctrl-,": "editor::PreviousEditPrediction",
-      "ctrl-space": "editor::AcceptPartialEditPrediction",
-      "ctrl-f": "editor::AcceptEditPrediction",
-
+      "alt-space": "editor::AcceptPartialEditPrediction",
+      "alt-f": "editor::AcceptEditPrediction",
       // Prevent tab from accepting suggestion
       "tab": "editor::Tab"
     }
@@ -122,98 +71,59 @@
     }
   },
   {
-    "context": "(Editor && vim_mode == normal || ProjectPanel) && !showing_code_actions",
+    "context": "Editor && vim_mode == normal",
     "bindings": {
-      // tmux like navigation
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-
       "s": "vim::PushSneak",
       "shift-s": "vim::PushSneakBackward",
-
-      // Create new/close window
-      "space n t": "workspace::NewFile",
-      "space x": "pane::CloseActiveItem",
-
-      // Window tiling
-      "space s k": "pane::SplitUp",
-      "space s j": "pane::SplitDown",
-      "space s h": "pane::SplitLeft",
-      "space s l": "pane::SplitRight",
-
       // Remap Y to Neovim-like behavior
       "shift-y": ["workspace::SendKeystrokes", "y $"],
-
+      // Why is this mapping missing?!
+      "ctrl-w t": "workspace::NewFile",
       // Repeat last macro
       "#": ["workspace::SendKeystrokes", "@ @"],
-
       // Create new line above/below in normal mode
       "space o": ["workspace::SendKeystrokes", "o escape"],
       "space O": ["workspace::SendKeystrokes", "shift-o escape"],
-
       // Save file
       "space w": "workspace::Save",
-
       // Reopen last closed tab
       "space u": "pane::ReopenClosedItem",
-
       // Toggle docks
       "space t j": "workspace::ToggleBottomDock",
       "space t h": "workspace::ToggleLeftDock",
       "space t l": "workspace::ToggleRightDock",
-
       // Toggle line wrapping
       "space t w": "editor::ToggleSoftWrap",
-
       // Toggle outline
       "space t o": "outline::Toggle",
-
       // Toggle Assistant
       "space t a": "agent::ToggleFocus",
-
       // Toggle inline git diff
       "g h": "editor::ToggleSelectedDiffHunks",
-
       // Toggle inlay hints
       "space t t": "editor::ToggleInlayHints",
-
       // Toggle inline diagnostics
       "space t d": "editor::ToggleInlineDiagnostics",
-
       // Diagnostic
       "space d n": "editor::GoToDiagnostic",
       "space d p": "editor::GoToPreviousDiagnostic",
       "space D": "diagnostics::Deploy",
-      // "space d l": "diagnostics::Deploy",
-
+      // "space d l": "diagnostics::Deploy", // should show all current line diagnostics
       // Dismiss notification
       "space n d": "workspace::SuppressNotification",
-
-      // Switch tabs
-      "space s t": "tab_switcher::ToggleAll",
-
       // Change theme
       "space f t": "theme_selector::Toggle",
-
       // Open marks
       "space f m": "vim::ToggleMarksView",
-
       // Open registers
       "space f r": "vim::ToggleRegistersView",
-
       // Open projects
       "space f p": "projects::OpenRecent",
-
       // Search files
       "space f f": "file_finder::Toggle",
-
-      // Tasks
-
+      // *** Tasks ***
       // Task rerun
       "space r": "task::Rerun",
-
       // Lazygit
       "g l": [
         "task::Spawn",
@@ -257,20 +167,33 @@
     }
   },
   {
-    // Copy code from assistant
-    "context": "AssistantPanel || vim_mode == normal",
+    "context": "Terminal",
     "bindings": {
-      // Copy code from assistant
-      "space a c": "assistant::CopyCode",
-
-      // Insert from assistant
-      "space a i": "assistant::InsertIntoEditor"
-    }
-  },
-  {
-    "context": "FileFinder || (FileFinder > Picker > Editor)",
-    "bindings": {
-      "ctrl-s": "file_finder::ToggleSplitMenu"
+      "ctrl-k": "terminal_panel::ToggleFocus",
+      "ctrl-j": null,
+      "ctrl-p": null,
+      "ctrl-n": null,
+      // Create new terminal
+      "ctrl-shift-t": "workspace::NewTerminal",
+      // Split terminal
+      "shift-alt-k": "pane::SplitUp",
+      "shift-alt-j": "pane::SplitDown",
+      "shift-alt-h": "pane::SplitLeft",
+      "shift-alt-l": "pane::SplitRight",
+      "ctrl-l": ["workspace::SendKeystrokes", "clear enter"],
+      // Navigation
+      "ctrl-shift-u": "terminal::ScrollLineUp",
+      "ctrl-shift-d": "terminal::ScrollLineDown",
+      "ctrl-shift-b": "terminal::ScrollPageUp",
+      "ctrl-shift-f": "terminal::ScrollPageDown",
+      "ctrl-shift-^": "terminal::ScrollToTop", // Not working
+      "ctrl-shift-$": "terminal::ScrollToBottom", // Not working
+      "ctrl-shift-p": "pane::ActivateNextItem",
+      "ctrl-shift-n": "pane::ActivatePreviousItem",
+      "ctrl-shift-k": "workspace::ActivatePaneUp",
+      "ctrl-shift-j": "workspace::ActivatePaneDown",
+      "ctrl-shift-h": "workspace::ActivatePaneLeft",
+      "ctrl-shift-l": "workspace::ActivatePaneRight"
     }
   },
   {
@@ -289,16 +212,23 @@
       "p": "project_panel::Paste",
       "q": "workspace::ToggleLeftDock",
       "r": "project_panel::Rename",
-      "s": "project_panel::OpenWithSystem",
+      "s": "workspace::OpenWithSystem",
       "S": "project_panel::NewSearchInDirectory",
       "W": "project_panel::CollapseAllEntries",
       "x": "project_panel::Cut",
       "y": "workspace::CopyPath",
       "shift-y": "workspace::CopyRelativePath"
-
       // `E` Expand All
       // `H` Toggle Filter: Dotfiles
       // `I` Toggle Filter: Git Ignore
+    }
+  },
+  {
+    "context": "Editor && mode != full",
+    "bindings": {
+      "ctrl-h": "editor::Backspace",
+      "ctrl-u": "editor::DeleteToBeginningOfLine",
+      "ctrl-w": "editor::DeleteToPreviousWordStart"
     }
   }
 ]

@@ -12,6 +12,7 @@ prepend_previewers = [
 
 [mgr]
 linemode = "rtime"
+sort_by = "natural"
 
 [preview]
 max_width = 1000
