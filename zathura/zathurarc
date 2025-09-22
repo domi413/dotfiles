@@ -7,9 +7,6 @@ set scroll-step 150
 set window-title-basename true
 set window-title-page true
 
-set synctex true
-set synctex-editor-command "texlab inverse-search -i %{input} -l %{line}"
-
 map k feedkeys "<C-Up>"
 map j feedkeys "<C-Down>"
 map h feedkeys "<C-Left>"

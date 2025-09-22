@@ -114,8 +114,8 @@ vim.pack.add({
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 
 	-- LSP, Auto-completion & Formatter
+	{ src = "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
 	{ src = "https://github.com/hedyhli/outline.nvim" },
-	{ src = "https://github.com/maan2003/lsp_lines.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
@@ -168,7 +168,6 @@ vim.pack.add({
 -- ╰──────────────────────────────────────────────────────────╯
 vim.cmd("colorscheme catppuccin-mocha")
 
-require("plugins.bufferline")
 require("plugins.cmp")
 require("plugins.formatter")
 require("plugins.lspconfig")
@@ -202,6 +201,23 @@ require("boole").setup({
 	mappings = {
 		increment = "<C-a>",
 		decrement = "<C-x>",
+	},
+})
+
+require("bufferline").setup({
+	options = {
+		mode = "tabs",
+		numbers = "none",
+		close_command = "tabclose %d",
+		diagnostics = false,
+		style_preset = require("bufferline").style_preset.no_italic,
+		right_mouse_command = "",
+		middle_mouse_command = "",
+		buffer_close_icon = "󰅖",
+		modified_icon = "●",
+		close_icon = "",
+		separator_style = "thin",
+		indicator = { style = "none" },
 	},
 })
 
