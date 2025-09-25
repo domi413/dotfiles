@@ -103,6 +103,14 @@ map("n", "gh", function()
 	vim.cmd("Gitsigns toggle_linehl")
 end, { desc = "Toggle show changes" })
 
+-- Dial (Enhanced increment/decrement)
+vim.keymap.set("n", "<C-x>", function()
+	require("dial.map").manipulate("decrement", "normal")
+end)
+vim.keymap.set("n", "<C-a>", function()
+	require("dial.map").manipulate("increment", "normal")
+end)
+
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Plugins                                                  │
 -- ╰──────────────────────────────────────────────────────────╯
@@ -116,6 +124,7 @@ vim.pack.add({
 	-- LSP, Auto-completion & Formatter
 	{ src = "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
 	{ src = "https://github.com/hedyhli/outline.nvim" },
+	{ src = "https://github.com/linrongbin16/lsp-progress.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
@@ -152,11 +161,10 @@ vim.pack.add({
 	{ src = "https://github.com/kylechui/nvim-surround" },
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 	{ src = "https://github.com/lervag/vimtex" },
-	{ src = "https://github.com/linrongbin16/lsp-progress.nvim" },
 	{ src = "https://github.com/max397574/better-escape.nvim" },
 	{ src = "https://github.com/mbbill/undotree" },
 	{ src = "https://github.com/mikavilpas/yazi.nvim" },
-	{ src = "https://github.com/nat-418/boole.nvim" },
+	{ src = "https://github.com/monaqa/dial.nvim" },
 	{ src = "https://github.com/numToStr/Comment.nvim" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/rmagatti/auto-session" },
@@ -169,6 +177,7 @@ vim.pack.add({
 vim.cmd("colorscheme catppuccin-mocha")
 
 require("plugins.cmp")
+require("plugins.flash")
 require("plugins.formatter")
 require("plugins.lspconfig")
 require("plugins.lsplines")
@@ -179,15 +188,6 @@ require("plugins.treesitter")
 require("plugins.vimtex")
 
 require("auto-session").setup()
-require("Comment").setup()
-require("dressing").setup()
-require("marks").setup()
-require("mason").setup()
-require("mason-lspconfig").setup()
-require("nvim-autopairs").setup()
-require("nvim-surround").setup()
-require("plugins.flash")
-
 require("better_escape").setup({
 	mappings = {
 		i = { j = { j = false, k = "<ESC>" } },
@@ -196,14 +196,6 @@ require("better_escape").setup({
 		s = { j = { k = false } }, -- selection mode (snippets) fix
 	},
 })
-
-require("boole").setup({
-	mappings = {
-		increment = "<C-a>",
-		decrement = "<C-x>",
-	},
-})
-
 require("bufferline").setup({
 	options = {
 		mode = "tabs",
@@ -220,14 +212,11 @@ require("bufferline").setup({
 		indicator = { style = "none" },
 	},
 })
-
 require("codeium").setup({
 	enable_cmp_source = false,
 	virtual_text = {
 		enabled = true,
-
 		default_filetype_enabled = true,
-
 		idle_delay = 75,
 
 		key_bindings = {
@@ -240,7 +229,28 @@ require("codeium").setup({
 		},
 	},
 })
+require("Comment").setup()
 
+local augend = require("dial.augend")
+require("dial.config").augends:register_group({
+	default = {
+		augend.integer.alias.decimal,
+		augend.integer.alias.hex,
+		augend.constant.alias.bool,
+		augend.date.new({
+			pattern = "%Y/%m/%d",
+			default_kind = "day",
+		}),
+		augend.date.new({
+			pattern = "%Y-%m-%d",
+			default_kind = "day",
+		}),
+		augend.hexcolor.new({
+			case = "prefer_upper",
+		}),
+	},
+})
+require("dressing").setup()
 require("gitsigns").setup({
 	current_line_blame = true,
 	current_line_blame_opts = {
@@ -252,43 +262,39 @@ require("gitsigns").setup({
 		use_focus = true,
 	},
 	current_line_blame_formatter = "<author>, <abbrev_sha> - <summary>",
-
-	preview_config = {
-		border = "rounded",
-	},
-
+	preview_config = { border = "rounded" },
 	gh = true,
 })
-
 require("ibl").setup({
 	scope = { enabled = false },
 })
-
+require("marks").setup()
+require("mason").setup()
+require("mason-lspconfig").setup({
+	automatic_enable = false,
+})
+require("nvim-autopairs").setup()
 require("nvim-highlight-colors").setup({
 	render = "virtual",
 	virtual_symbol = " ⬤",
 	virtual_symbol_position = "eow",
 	enabled_tailwind = true,
 })
-
+require("nvim-surround").setup()
 require("outline").setup({
 	preview_window = { live = true },
 })
-
 require("render-markdown").setup({
 	code = { border = "thick" },
 })
-
 require("todo-comments").setup({
 	search = { pattern = [[\b(KEYWORDS)(\([^\)]*\))?:]] },
 	highlight = { pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):]] },
 })
-
 require("which-key").setup({
 	delay = 500,
 	icons = { mappings = false },
 })
-
 require("yazi").setup({
 	open_for_directories = true,
 })
