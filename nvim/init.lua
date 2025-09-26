@@ -56,7 +56,7 @@ map("n", "<leader>o", "o<Esc>", { desc = "Insert line above" })
 map("n", "<leader>O", "O<Esc>", { desc = "Insert line below" })
 map("n", "<leader>e", "<cmd>Yazi<cr>", { desc = "Open Yazi" })
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
-map("n", "<leader>to", "<cmd>Outline<CR>", { desc = "Toggle outline" })
+map("n", "<leader>to", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Toggle outline (Functions)" })
 map("n", "<leader>ts", "<cmd>set spell!<CR>", { desc = "Toggle spellchecker" })
 map("n", "<leader>tu", "<cmd>UndotreeToggle<CR>", { desc = "Toggle undoTree" })
 map("n", "<leader>tw", "<cmd>set wrap!<CR>", { desc = "Toggle line wrapping" })
@@ -123,7 +123,6 @@ vim.pack.add({
 
 	-- LSP, Auto-completion & Formatter
 	{ src = "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
-	{ src = "https://github.com/hedyhli/outline.nvim" },
 	{ src = "https://github.com/linrongbin16/lsp-progress.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason
@@ -281,9 +280,6 @@ require("nvim-highlight-colors").setup({
 	enabled_tailwind = true,
 })
 require("nvim-surround").setup()
-require("outline").setup({
-	preview_window = { live = true },
-})
 require("render-markdown").setup({
 	code = { border = "thick" },
 })
