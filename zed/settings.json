@@ -235,7 +235,7 @@
       "model": "claude-sonnet-4"
     }
   },
-  "show_edit_predictions": false,
+  "show_edit_predictions": true,
   "features": {
     "edit_prediction_provider": "copilot"
   },
@@ -323,14 +323,27 @@
   // │ Language config                                          │
   // ╰──────────────────────────────────────────────────────────╯
   "languages": {
-    "TypeScript": {
-      "show_edit_predictions": false
-    },
     "C": {
       "format_on_save": "on"
     },
     "C++": {
       "format_on_save": "on"
+    },
+    "CMake": {
+      "formatter": {
+        "external": {
+          "command": "gersemi",
+          "arguments": ["{buffer_path}"]
+        }
+      }
+    },
+    "CSharp": {
+      "formatter": {
+        "external": {
+          "command": "/home/domi/.dotnet/tools/csharpier",
+          "arguments": ["format"]
+        }
+      }
     },
     "Go": {
       "language_servers": ["gopls", "golangci-lint"]
