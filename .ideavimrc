@@ -1,32 +1,72 @@
 " Vim configs for jetbrains IDEs
 
+" Define spacebar as leader
+let mapleader=" "
+
 " Allow copy to clipboard
 set clipboard+=unnamed
 
 " Enable relative line numbers
 set rnu
 
+" Search configs
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
 " Enable vim commentary
 set commentary
 
-" Define spacebar as leader
-let mapleader=" "
+" Vim surround
+set surround
+
+set nerdtree
 
 " Disable copying when deleting in normal mode
 nnoremap x "_x
 
 " Insert a new line below/above current line
-nmap <leader>o o<Esc>
-nmap <leader>O O<Esc>
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
 
 " Invert case
-nmap <leader>i ~<Esc>
+nnoremap <leader>i ~<Esc>
+xnoremap <leader>i ~
 
 " Save file
-nmap <leader>w :w <CR>
+nnoremap <leader>w :w<CR>
+
+" Clear search
+nnoremap <leader>nh :nohl<CR>
+
+" Rerun last macro
+nnoremap # @@
+
+" Tab navigation
+nnoremap <C-p> :tabnext<CR>
+nnoremap <C-n> :tabprev<CR>
 
 " Use jk to exit insert mode (doesn't work because j is getting buggy)
-imap jk <Esc>
+inoremap jk <Esc>
+
+" Popup navigation (C-j doesnt seem to work and has to be set manually in the settings)
+imap <C-j> <Action>(EditorDown)
+imap <C-k> <Action>(EditorUp)
+
+" Finder
+map <leader>ff <Action>(GotoFile)
+map <leader>fc <Action>(FindInPath)
+map <leader>fr :register<CR>
+map <leader>fm :marks<CR>
+
+"Refactoring
+map grn <Action>(RenameElement)
+map gra <Action>(ShowIntentionActions)
+
+" File Explorer
+map <leader>th :NERDTreeToggle<CR>
+map <leader>e :NERDTreeFocus<CR>
 
 " vim.flash
 map s <Action>(flash.search)

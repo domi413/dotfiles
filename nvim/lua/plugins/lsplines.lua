@@ -7,7 +7,8 @@ local diagnostic_states = {
 
 local diagnostic_configs = {
 	inline = {
-		virtual_text = { true, prefix = "●", severity = { min = vim.diagnostic.severity.WARN } },
+		-- virtual_text = { true, prefix = "●", severity = { min = vim.diagnostic.severity.WARN } },
+		virtual_text = { true, prefix = "●" },
 		virtual_lines = false,
 	},
 	detailed = {

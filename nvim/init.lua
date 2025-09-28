@@ -49,6 +49,8 @@ map("n", "X", '"_x')
 map("n", "<C-p>", "<cmd>BufferLineCycleNext<CR>")
 map("n", "<C-n>", "<cmd>BufferLineCyclePrev<CR>")
 map("n", "<C-w>t", "<cmd>tabnew<CR>")
+map("n", "<C-w><C-t>", "<cmd>tabnew<CR>")
+map("n", "<C-w><C-c>", "<cmd>tabclose<CR>")
 
 -- Editor / Editing
 map("n", "<leader>nh", "<cmd>nohl<CR>", { desc = "Clear search highlights" })
@@ -74,7 +76,6 @@ map("n", "<leader>ft", "<cmd>Telescope colorscheme enable_preview=true<CR>", { d
 map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { desc = "Open registers" })
 map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "Open marks" })
 map("n", "<leader>fg", "<cmd>TodoTelescope<CR>", { desc = "Browse TODO comments" })
-map("n", "<leader>st", "<cmd>Telescope buffers<CR>", { desc = "Switch buffer" })
 
 -- Vimtex
 map("n", "<leader>lc", "<cmd>w | VimtexCompile<CR><CR>", { desc = "Start compilation" })
@@ -85,6 +86,16 @@ map("n", "<leader>lt", function()
 	vim.cmd("VimtexTocToggle")
 	vim.cmd("wincmd h")
 end, { desc = "Toggle TOC" })
+
+-- Clear registers
+vim.keymap.set("n", "cr", function()
+	local regs = 'abcdefghijklmnopqrstuvwxyz0123456789/-"*+'
+	for i = 1, #regs do
+		local reg = regs:sub(i, i)
+		vim.fn.setreg(reg, {})
+	end
+	print("All registers cleared!")
+end, { desc = "Clear all registers", noremap = true })
 
 -- LSP
 if vim.lsp.inlay_hint then
@@ -116,7 +127,6 @@ end)
 -- ╰──────────────────────────────────────────────────────────╯
 vim.pack.add({
 	-- TODO: Improve dependency handling
-
 	-- Git
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
@@ -147,6 +157,7 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-ts-autotag" },
 
 	-- Others
+	{ src = "https://github.com/akinsho/git-conflict.nvim" },
 	{ src = "https://github.com/Exafunction/windsurf.nvim" },
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 	{ src = "https://github.com/akinsho/bufferline.nvim" },
@@ -250,6 +261,7 @@ require("dial.config").augends:register_group({
 	},
 })
 require("dressing").setup()
+require("git-conflict").setup()
 require("gitsigns").setup({
 	current_line_blame = true,
 	current_line_blame_opts = {
