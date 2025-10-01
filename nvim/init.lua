@@ -40,24 +40,12 @@ local map = vim.keymap.set
 
 vim.g.mapleader = " "
 
--- Disable cutting
--- map("n", "x", '"_x')
--- map("n", "X", '"_x')
-
--- Window
--- map("n", "<C-p>", "<cmd>BufferLineCycleNext<CR>")
--- map("n", "<C-n>", "<cmd>BufferLineCyclePrev<CR>")
--- map("n", "<C-w>t", "<cmd>tabnew<CR>")
--- map("n", "<C-w><C-t>", "<cmd>tabnew<CR>")
--- map("n", "<C-w><C-c>", "<cmd>tabclose<CR>")
-
 -- Editor / Editing
 map("n", "<leader>nh", "<cmd>nohl<CR>", { desc = "Clear search highlights" })
 map("n", "<leader>o", "o<Esc>", { desc = "Insert line above" })
 map("n", "<leader>O", "O<Esc>", { desc = "Insert line below" })
 map("n", "<leader>e", "<cmd>Yazi<cr>", { desc = "Open Yazi" })
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
-map("n", "<leader>tu", "<cmd>UndotreeToggle<CR>", { desc = "Toggle undoTree" })
 map("n", "<leader>tw", "<cmd>set wrap!<CR>", { desc = "Toggle line wrapping" })
 map("n", "#", "@@", { desc = "Repeat last macro" })
 map({ "n", "v", "s", "x" }, "<leader>i", "~", { desc = "Toggle case" })
@@ -130,7 +118,6 @@ vim.pack.add({
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 
 	-- LSP, Auto-completion & Formatter
-	{ src = "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
@@ -157,7 +144,6 @@ vim.pack.add({
 	{ src = "https://github.com/akinsho/git-conflict.nvim" },
 	{ src = "https://github.com/Exafunction/windsurf.nvim" },
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
-	{ src = "https://github.com/akinsho/bufferline.nvim" },
 	{ src = "https://github.com/brenoprata10/nvim-highlight-colors" },
 	{ src = "https://github.com/catppuccin/nvim" },
 	{ src = "https://github.com/chentoast/marks.nvim" },
@@ -169,7 +155,6 @@ vim.pack.add({
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 	{ src = "https://github.com/lervag/vimtex" },
 	{ src = "https://github.com/max397574/better-escape.nvim" },
-	{ src = "https://github.com/mbbill/undotree" },
 	{ src = "https://github.com/mikavilpas/yazi.nvim" },
 	{ src = "https://github.com/monaqa/dial.nvim" },
 	{ src = "https://github.com/numToStr/Comment.nvim" },
@@ -187,7 +172,6 @@ require("plugins.cmp")
 require("plugins.flash")
 require("plugins.formatter")
 require("plugins.lspconfig")
-require("plugins.lsplines")
 require("plugins.lualine")
 require("plugins.scroll")
 require("plugins.telescope")
@@ -203,22 +187,6 @@ require("better_escape").setup({
 		s = { j = { k = false } }, -- selection mode (snippets) fix
 	},
 })
--- require("bufferline").setup({
--- 	options = {
--- 		mode = "tabs",
--- 		numbers = "none",
--- 		close_command = "tabclose %d",
--- 		diagnostics = false,
--- 		style_preset = require("bufferline").style_preset.no_italic,
--- 		right_mouse_command = "",
--- 		middle_mouse_command = "",
--- 		buffer_close_icon = "󰅖",
--- 		modified_icon = "●",
--- 		close_icon = "",
--- 		separator_style = "thin",
--- 		indicator = { style = "none" },
--- 	},
--- })
 require("codeium").setup({
 	enable_cmp_source = false,
 	virtual_text = {
@@ -244,6 +212,11 @@ require("dial.config").augends:register_group({
 		augend.integer.alias.decimal,
 		augend.integer.alias.hex,
 		augend.constant.alias.bool,
+		augend.constant.new({
+			elements = { "True", "False" },
+			word = true,
+			cyclic = true,
+		}),
 		augend.date.new({
 			pattern = "%Y/%m/%d",
 			default_kind = "day",
@@ -276,7 +249,7 @@ require("gitsigns").setup({
 require("ibl").setup({
 	scope = { enabled = false },
 })
-require("marks").setup() ---@diagnostic disable: undefined-field
+require("marks").setup() ---@diagnostic disable-line: undefined-field
 require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_enable = {

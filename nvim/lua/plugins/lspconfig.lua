@@ -134,3 +134,36 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#E5
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#E0B644" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = "#419BEF" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = "#49B675" })
+
+-----------------------------------------------------------
+-- Toggling virtual lines
+-----------------------------------------------------------
+local diagnostic_states = { enabled = true, inline = true }
+
+local diagnostic_configs = {
+	inline = { virtual_text = { prefix = "●" }, virtual_lines = false },
+	detailed = { virtual_text = false, virtual_lines = true },
+	disabled = { virtual_text = false, virtual_lines = false },
+}
+
+local function get_active_config()
+	if not diagnostic_states.enabled then
+		return diagnostic_configs.disabled
+	end
+	return diagnostic_states.inline and diagnostic_configs.inline or diagnostic_configs.detailed
+end
+
+-- Apply the initial configuration
+vim.diagnostic.config(get_active_config())
+
+vim.keymap.set("n", "<Leader>tl", function()
+	if diagnostic_states.enabled then
+		diagnostic_states.inline = not diagnostic_states.inline
+		vim.diagnostic.config(get_active_config())
+	end
+end, { desc = "Toggle detailed diagnostics" })
+
+vim.keymap.set("n", "<Leader>td", function()
+	diagnostic_states.enabled = not diagnostic_states.enabled
+	vim.diagnostic.config(get_active_config())
+end, { desc = "Toggle diagnostics" })
