@@ -282,7 +282,12 @@ require("ibl").setup({
 require("marks").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
-	automatic_enable = false,
+	automatic_enable = {
+		exclude = {
+			"clangd",
+			"cspell_ls",
+		},
+	},
 })
 require("nvim-autopairs").setup()
 require("nvim-highlight-colors").setup({
