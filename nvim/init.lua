@@ -18,7 +18,6 @@ o.shiftwidth = 4
 o.shortmess:append("I")
 o.signcolumn = "yes"
 o.smartcase = true
-o.spelllang = "en,de"
 o.splitbelow = true
 o.splitright = true
 o.swapfile = false
@@ -42,15 +41,15 @@ local map = vim.keymap.set
 vim.g.mapleader = " "
 
 -- Disable cutting
-map("n", "x", '"_x')
-map("n", "X", '"_x')
+-- map("n", "x", '"_x')
+-- map("n", "X", '"_x')
 
 -- Window
-map("n", "<C-p>", "<cmd>BufferLineCycleNext<CR>")
-map("n", "<C-n>", "<cmd>BufferLineCyclePrev<CR>")
-map("n", "<C-w>t", "<cmd>tabnew<CR>")
-map("n", "<C-w><C-t>", "<cmd>tabnew<CR>")
-map("n", "<C-w><C-c>", "<cmd>tabclose<CR>")
+-- map("n", "<C-p>", "<cmd>BufferLineCycleNext<CR>")
+-- map("n", "<C-n>", "<cmd>BufferLineCyclePrev<CR>")
+-- map("n", "<C-w>t", "<cmd>tabnew<CR>")
+-- map("n", "<C-w><C-t>", "<cmd>tabnew<CR>")
+-- map("n", "<C-w><C-c>", "<cmd>tabclose<CR>")
 
 -- Editor / Editing
 map("n", "<leader>nh", "<cmd>nohl<CR>", { desc = "Clear search highlights" })
@@ -58,8 +57,6 @@ map("n", "<leader>o", "o<Esc>", { desc = "Insert line above" })
 map("n", "<leader>O", "O<Esc>", { desc = "Insert line below" })
 map("n", "<leader>e", "<cmd>Yazi<cr>", { desc = "Open Yazi" })
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
-map("n", "<leader>to", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Toggle outline (Functions)" })
-map("n", "<leader>ts", "<cmd>set spell!<CR>", { desc = "Toggle spellchecker" })
 map("n", "<leader>tu", "<cmd>UndotreeToggle<CR>", { desc = "Toggle undoTree" })
 map("n", "<leader>tw", "<cmd>set wrap!<CR>", { desc = "Toggle line wrapping" })
 map("n", "#", "@@", { desc = "Repeat last macro" })
@@ -76,6 +73,7 @@ map("n", "<leader>ft", "<cmd>Telescope colorscheme enable_preview=true<CR>", { d
 map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { desc = "Open registers" })
 map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "Open marks" })
 map("n", "<leader>fg", "<cmd>TodoTelescope<CR>", { desc = "Browse TODO comments" })
+map("n", "<leader>to", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Toggle outline (Functions)" })
 
 -- Vimtex
 map("n", "<leader>lc", "<cmd>w | VimtexCompile<CR><CR>", { desc = "Start compilation" })
@@ -133,7 +131,6 @@ vim.pack.add({
 
 	-- LSP, Auto-completion & Formatter
 	{ src = "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
-	{ src = "https://github.com/linrongbin16/lsp-progress.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
@@ -206,22 +203,22 @@ require("better_escape").setup({
 		s = { j = { k = false } }, -- selection mode (snippets) fix
 	},
 })
-require("bufferline").setup({
-	options = {
-		mode = "tabs",
-		numbers = "none",
-		close_command = "tabclose %d",
-		diagnostics = false,
-		style_preset = require("bufferline").style_preset.no_italic,
-		right_mouse_command = "",
-		middle_mouse_command = "",
-		buffer_close_icon = "󰅖",
-		modified_icon = "●",
-		close_icon = "",
-		separator_style = "thin",
-		indicator = { style = "none" },
-	},
-})
+-- require("bufferline").setup({
+-- 	options = {
+-- 		mode = "tabs",
+-- 		numbers = "none",
+-- 		close_command = "tabclose %d",
+-- 		diagnostics = false,
+-- 		style_preset = require("bufferline").style_preset.no_italic,
+-- 		right_mouse_command = "",
+-- 		middle_mouse_command = "",
+-- 		buffer_close_icon = "󰅖",
+-- 		modified_icon = "●",
+-- 		close_icon = "",
+-- 		separator_style = "thin",
+-- 		indicator = { style = "none" },
+-- 	},
+-- })
 require("codeium").setup({
 	enable_cmp_source = false,
 	virtual_text = {
@@ -261,7 +258,7 @@ require("dial.config").augends:register_group({
 	},
 })
 require("dressing").setup()
-require("git-conflict").setup()
+require("git-conflict").setup({})
 require("gitsigns").setup({
 	current_line_blame = true,
 	current_line_blame_opts = {
@@ -279,13 +276,14 @@ require("gitsigns").setup({
 require("ibl").setup({
 	scope = { enabled = false },
 })
-require("marks").setup()
+require("marks").setup() ---@diagnostic disable: undefined-field
 require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_enable = {
 		exclude = {
 			"clangd",
 			"cspell_ls",
+			"gopls",
 		},
 	},
 })

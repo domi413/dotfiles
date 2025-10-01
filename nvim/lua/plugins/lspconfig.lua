@@ -6,6 +6,7 @@ require("mason-tool-installer").setup({
 		"cspell-lsp",
 		"css-lsp",
 		"gersemi",
+		"golangci-lint-langserver",
 		"gopls",
 		"html-lsp",
 		"lua_ls",

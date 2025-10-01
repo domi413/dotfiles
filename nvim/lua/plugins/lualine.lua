@@ -50,25 +50,6 @@ if ok and codeium.set_statusbar_refresh then
 	end)
 end
 
-require("lsp-progress").setup({
-	format = function(client_messages)
-		local sign = ""
-		local lsp_clients = vim.lsp.get_clients()
-		local names = #client_messages > 0 and client_messages or {}
-
-		if #client_messages == 0 and #lsp_clients > 0 then
-			for _, client in ipairs(lsp_clients) do
-				if type(client.name) == "string" and #client.name > 0 then
-					table.insert(names, client.name)
-				end
-			end
-			table.sort(names)
-		end
-
-		return #names > 0 and sign .. " " .. table.concat(names, ", ") or ""
-	end,
-})
-
 require("lualine").setup({
 	options = {
 		theme = "auto",
@@ -79,15 +60,12 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
 		lualine_b = { "filename", "branch", "diagnostics" },
-		lualine_c = {
-			function()
-				return require("lsp-progress").progress()
-			end,
-		},
-		lualine_x = {},
+		lualine_c = { "lsp_status" },
+		lualine_x = { "searchcount" },
 		lualine_y = {
 			codeiumStatus,
 			"filetype",
+			"fileformat",
 			"progress",
 		},
 		lualine_z = {

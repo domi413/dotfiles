@@ -1,4 +1,26 @@
 require("nvim-treesitter.configs").setup({
+	modules = {},
+	ignore_install = {},
+	ensure_installed = {
+		"bash",
+		"c",
+		"cmake",
+		"cpp",
+		"css",
+		"gitignore",
+		"go",
+		"html",
+		"javascript",
+		"json",
+		"latex",
+		"lua",
+		"markdown",
+		"python",
+		"toml",
+		"typescript",
+		"yaml",
+	},
+
 	highlight = {
 		enable = true,
 
