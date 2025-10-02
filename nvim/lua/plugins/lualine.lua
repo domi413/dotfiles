@@ -61,7 +61,7 @@ require("lualine").setup({
 		lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
 		lualine_b = { "filename", "branch", "diagnostics" },
 		lualine_c = { "lsp_status" },
-		lualine_x = { "searchcount" },
+		lualine_x = {},
 		lualine_y = {
 			codeiumStatus,
 			"filetype",
