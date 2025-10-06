@@ -18,7 +18,7 @@ require("flash").setup({
 	},
 })
 
-vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#e24efc" })
+vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#e24efc", bold = true })
 
 vim.keymap.set({ "n", "x", "o" }, "s", function()
 	require("flash").jump()

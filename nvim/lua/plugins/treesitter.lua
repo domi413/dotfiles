@@ -41,20 +41,6 @@ require("nvim-treesitter.configs").setup({
 	sync_install = false,
 	auto_install = true,
 
-	-- Autotag setup
-	require("nvim-ts-autotag").setup({
-		enable = true,
-		filetypes = {
-			"html",
-			"javascript",
-			"javascriptreact",
-			"typescriptreact",
-			"svelte",
-			"vue",
-			"xml",
-		},
-	}),
-
 	textobjects = {
 		select = {
 			enable = true,

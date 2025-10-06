@@ -5,6 +5,7 @@ require("mason-tool-installer").setup({
 		"clangd",
 		"cspell-lsp",
 		"css-lsp",
+		"eslint-lsp",
 		"gersemi",
 		"golangci-lint-langserver",
 		"gopls",
@@ -22,8 +23,6 @@ require("mason-tool-installer").setup({
 	},
 })
 
-local lspconfig = require("lspconfig")
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(args)
@@ -40,7 +39,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "gD", "<cmd>tab split | Telescope lsp_definitions<CR>", opts)
 
 		opts.desc = "Show diagnostics"
-		keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+		keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics<CR>", opts)
 
 		opts.desc = "Go to previous diagnostic"
 		keymap.set("n", "<leader>dp", function()
@@ -66,12 +65,14 @@ for type, icon in pairs(signs) do
 	local severityName = string.upper(type)
 	local severity = vim.diagnostic.severity[severityName]
 	local hl = "DiagnosticSign" .. type
+
 	signConf.text[severity] = icon
 	signConf.texthl[severity] = hl
 	signConf.numhl[severity] = hl
 end
 
--- This disables the css color highlighting from the lsp
+-- This disables the css color highlighting from the lsp,
+-- since the highlighting is handled by `nvim-highlight-colors`
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function()
 		vim.lsp.document_color.enable(false)
@@ -82,27 +83,18 @@ vim.diagnostic.config({
 	signs = signConf,
 })
 
-lspconfig.clangd.setup({
-	cmd = {
-		"clangd",
-		"--clang-tidy",
-		"--background-index",
-		"--inlay-hints=false",
-	},
-	filetypes = { "c", "cpp", "objc", "objcpp" },
-	root_dir = require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
-})
-lspconfig.gopls.setup({
+vim.lsp.config("gopls", {
 	settings = {
 		gopls = {
 			analyses = { unusedparams = true },
 			gofumpt = true,
 			hints = {
-				assignVariableType = false,
+				assignVariableTypes = false,
 				compositeLiteralFields = false,
 				compositeLiteralTypes = false,
 				constantValues = true,
 				functionTypeParameters = true,
+				ignoredError = false,
 				parameterNames = true,
 				rangeVariableTypes = true,
 			},
@@ -111,7 +103,8 @@ lspconfig.gopls.setup({
 		},
 	},
 })
-lspconfig.lua_ls.setup({
+
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
 			runtime = {

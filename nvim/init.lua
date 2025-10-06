@@ -27,10 +27,7 @@ o.undofile = true
 o.wrap = false
 
 -- Mouse
-vim.cmd([[
-  aunmenu PopUp.How-to\ disable\ mouse
-  aunmenu PopUp.-2-
-]])
+o.mousemodel = "extend"
 o.mouse = "a"
 
 -- ╭──────────────────────────────────────────────────────────╮
@@ -112,25 +109,29 @@ end)
 -- │ Plugins                                                  │
 -- ╰──────────────────────────────────────────────────────────╯
 vim.pack.add({
-	-- TODO: Improve dependency handling
+	-- TODO:
+	-- 1. Improve dependency handling
+	-- 2. Currently things such as fzf-native or blink have to be built manually in .local
+	-- 3. Automatically enable lsp's with lsp.config, so we can drop `mason-lspconfig`.
+	--    Also stop, restart and start commands e.g., LspStart, LspRestart, LspStop are required
+	-- 4. Update tree-sitter to main branch configs
+
 	-- Git
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 
 	-- LSP, Auto-completion & Formatter
 	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason, TODO: Drop
+	{ src = "https://github.com/RRethy/vim-illuminate" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" }, -- TODO: Drop
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "https://github.com/stevearc/dressing.nvim" },
+	{ src = "https://github.com/stevearc/dressing.nvim" }, -- TODO: We can drop this or replace with more lightweight solution
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" }, -- dep: mason
 
 	-- Telescope
 	{ src = "https://github.com/nvim-lua/plenary.nvim" }, -- dep: telescope
-	-- TODO: currently, must be built manually by going to:
-	--       ~/.local/share/nvim/site/pack/core/opt/telescope-fzf-native.nvim/
-	--       and running `make`
 	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" }, -- dep: telescope
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" }, -- dep: telescope
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
@@ -141,7 +142,7 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-ts-autotag" },
 
 	-- Others
-	{ src = "https://github.com/akinsho/git-conflict.nvim" },
+	{ src = "https://github.com/v3ceban/git-conflict.nvim" },
 	{ src = "https://github.com/Exafunction/windsurf.nvim" },
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 	{ src = "https://github.com/brenoprata10/nvim-highlight-colors" },
@@ -149,7 +150,6 @@ vim.pack.add({
 	{ src = "https://github.com/chentoast/marks.nvim" },
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/folke/todo-comments.nvim" },
-	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/karb94/neoscroll.nvim" },
 	{ src = "https://github.com/kylechui/nvim-surround" },
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
@@ -242,21 +242,25 @@ require("gitsigns").setup({
 		virt_text_priority = 100,
 		use_focus = true,
 	},
-	current_line_blame_formatter = "<author>, <abbrev_sha> - <summary>",
+	current_line_blame_formatter = "<author> - <summary>",
 	preview_config = { border = "rounded" },
 	gh = true,
 })
 require("ibl").setup({
 	scope = { enabled = false },
 })
+require("illuminate").configure({
+	filetypes_denylist = {
+		"markdown",
+	},
+})
 require("marks").setup() ---@diagnostic disable-line: undefined-field
 require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_enable = {
 		exclude = {
-			"clangd",
 			"cspell_ls",
-			"gopls",
+			"eslint-lsp",
 		},
 	},
 })
@@ -268,16 +272,17 @@ require("nvim-highlight-colors").setup({
 	enabled_tailwind = true,
 })
 require("nvim-surround").setup()
+require("nvim-ts-autotag").setup()
 require("render-markdown").setup({
-	code = { border = "thick" },
+	code = {
+		border = "thin",
+		sign = false,
+		language = false,
+	},
 })
 require("todo-comments").setup({
 	search = { pattern = [[\b(KEYWORDS)(\([^\)]*\))?:]] },
 	highlight = { pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):]] },
-})
-require("which-key").setup({
-	delay = 500,
-	icons = { mappings = false },
 })
 require("yazi").setup({
 	open_for_directories = true,
