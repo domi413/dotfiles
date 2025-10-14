@@ -5,6 +5,7 @@ require("conform").setup({
 		cmake = { "gersemi" },
 		cpp = { "clang_format" },
 		css = { "prettier" },
+		cs = { "csharpier" },
 		go = { "gopls" },
 		html = { "prettier" },
 		javascript = { "prettier" },
@@ -43,6 +44,18 @@ require("conform").setup({
 				| ruff format\
 				--stdin-filename\
 				{buffer_path}",
+			},
+		},
+		csharpier = {
+			command = "csharpier",
+			args = { "format" },
+		},
+		gersemi = {
+			command = "gersemi",
+			args = {
+				"--list-expansion=favour-expansion",
+				"--no-warn-about-unknown-commands",
+				"-", -- stdin
 			},
 		},
 	},

@@ -37,6 +37,10 @@ local map = vim.keymap.set
 
 vim.g.mapleader = " "
 
+-- Disable cutting
+map("n", "x", '"_x')
+map("n", "X", '"_x')
+
 -- Editor / Editing
 map("n", "<leader>nh", "<cmd>nohl<CR>", { desc = "Clear search highlights" })
 map("n", "<leader>o", "o<Esc>", { desc = "Insert line above" })
@@ -49,7 +53,7 @@ map({ "n", "v", "s", "x" }, "<leader>i", "~", { desc = "Toggle case" })
 
 -- Sessions
 map("n", "<leader>fs", "<cmd>Telescope session-lens<CR>", { desc = "Search sessions" })
-map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Search sessions" })
+map("n", "<leader>ss", "<cmd>AutoSession save<CR>", { desc = "Search sessions" })
 
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
@@ -59,16 +63,6 @@ map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { desc = "Open registers"
 map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "Open marks" })
 map("n", "<leader>fg", "<cmd>TodoTelescope<CR>", { desc = "Browse TODO comments" })
 map("n", "<leader>to", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Toggle outline (Functions)" })
-
--- Vimtex
-map("n", "<leader>lc", "<cmd>w | VimtexCompile<CR><CR>", { desc = "Start compilation" })
-map("n", "<leader>lp", "<cmd>VimtexView<CR>", { desc = "Jump in PDF to current position" })
-map("n", "<leader>lC", "<cmd>VimtexClean<CR><CR>", { desc = "Cleanup files" })
-
-map("n", "<leader>lt", function()
-	vim.cmd("VimtexTocToggle")
-	vim.cmd("wincmd h")
-end, { desc = "Toggle TOC" })
 
 -- Clear registers
 vim.keymap.set("n", "cr", function()
@@ -142,18 +136,16 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-ts-autotag" },
 
 	-- Others
-	{ src = "https://github.com/v3ceban/git-conflict.nvim" },
+	{ src = "https://github.com/akinsho/git-conflict.nvim" },
 	{ src = "https://github.com/Exafunction/windsurf.nvim" },
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 	{ src = "https://github.com/brenoprata10/nvim-highlight-colors" },
 	{ src = "https://github.com/catppuccin/nvim" },
-	{ src = "https://github.com/chentoast/marks.nvim" },
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/folke/todo-comments.nvim" },
 	{ src = "https://github.com/karb94/neoscroll.nvim" },
 	{ src = "https://github.com/kylechui/nvim-surround" },
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
-	{ src = "https://github.com/lervag/vimtex" },
 	{ src = "https://github.com/max397574/better-escape.nvim" },
 	{ src = "https://github.com/mikavilpas/yazi.nvim" },
 	{ src = "https://github.com/monaqa/dial.nvim" },
@@ -176,7 +168,6 @@ require("plugins.lualine")
 require("plugins.scroll")
 require("plugins.telescope")
 require("plugins.treesitter")
-require("plugins.vimtex")
 
 require("auto-session").setup()
 require("better_escape").setup({
@@ -254,7 +245,6 @@ require("illuminate").configure({
 		"markdown",
 	},
 })
-require("marks").setup() ---@diagnostic disable-line: undefined-field
 require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_enable = {
