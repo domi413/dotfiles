@@ -136,6 +136,10 @@
       "rev": "19d461d",
       "src": "https://github.com/folke/todo-comments.nvim"
     },
+    "vgit.nvim": {
+      "rev": "a7be45a",
+      "src": "https://github.com/tanvirtin/vgit.nvim"
+    },
     "vim-illuminate": {
       "rev": "0d1e936",
       "src": "https://github.com/RRethy/vim-illuminate"

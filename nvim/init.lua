@@ -36,10 +36,9 @@ o.mouse = "a"
 local map = vim.keymap.set
 
 vim.g.mapleader = " "
-
 -- Disable cutting
 map("n", "x", '"_x')
-map("n", "X", '"_x')
+map("n", "X", '"_X')
 
 -- Editor / Editing
 map("n", "<leader>nh", "<cmd>nohl<CR>", { desc = "Clear search highlights" })
@@ -136,7 +135,6 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-ts-autotag" },
 
 	-- Others
-	{ src = "https://github.com/akinsho/git-conflict.nvim" },
 	{ src = "https://github.com/Exafunction/windsurf.nvim" },
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 	{ src = "https://github.com/brenoprata10/nvim-highlight-colors" },
@@ -222,7 +220,6 @@ require("dial.config").augends:register_group({
 	},
 })
 require("dressing").setup()
-require("git-conflict").setup({})
 require("gitsigns").setup({
 	current_line_blame = true,
 	current_line_blame_opts = {
