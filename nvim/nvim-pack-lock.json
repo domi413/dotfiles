@@ -13,7 +13,7 @@
       "src": "https://github.com/max397574/better-escape.nvim"
     },
     "blink.cmp": {
-      "rev": "5037cfa",
+      "rev": "cb87357",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "conform.nvim": {
@@ -24,17 +24,9 @@
       "rev": "f0404ec",
       "src": "https://github.com/monaqa/dial.nvim"
     },
-    "dressing.nvim": {
-      "rev": "2d7c2db",
-      "src": "https://github.com/stevearc/dressing.nvim"
-    },
     "flash.nvim": {
       "rev": "2febce6",
       "src": "https://github.com/folke/flash.nvim"
-    },
-    "git-conflict.nvim": {
-      "rev": "a1badcd",
-      "src": "https://github.com/akinsho/git-conflict.nvim"
     },
     "gitsigns.nvim": {
       "rev": "1ee5c1f",
@@ -49,7 +41,7 @@
       "src": "https://github.com/kdheepak/lazygit.nvim"
     },
     "lualine.nvim": {
-      "rev": "b8c2315",
+      "rev": "3946f01",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mason-lspconfig.nvim": {
@@ -68,14 +60,6 @@
       "rev": "f957373",
       "src": "https://github.com/karb94/neoscroll.nvim"
     },
-    "neotest": {
-      "rev": "7166dc3",
-      "src": "https://github.com/nvim-neotest/neotest"
-    },
-    "neotest-ctest": {
-      "rev": "1677a4d",
-      "src": "https://github.com/orjangj/neotest-ctest"
-    },
     "nvim": {
       "rev": "af58927",
       "src": "https://github.com/catppuccin/nvim"
@@ -91,10 +75,6 @@
     "nvim-lspconfig": {
       "rev": "ac98db2",
       "src": "https://github.com/neovim/nvim-lspconfig"
-    },
-    "nvim-nio": {
-      "rev": "21f5324",
-      "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-surround": {
       "rev": "75de178",
@@ -120,6 +100,10 @@
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "renamer.nvim": {
+      "rev": "1614d46",
+      "src": "https://github.com/filipdutescu/renamer.nvim"
+    },
     "render-markdown.nvim": {
       "rev": "691651d",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
@@ -136,10 +120,6 @@
       "rev": "19d461d",
       "src": "https://github.com/folke/todo-comments.nvim"
     },
-    "vgit.nvim": {
-      "rev": "a7be45a",
-      "src": "https://github.com/tanvirtin/vgit.nvim"
-    },
     "vim-illuminate": {
       "rev": "0d1e936",
       "src": "https://github.com/RRethy/vim-illuminate"
@@ -149,7 +129,7 @@
       "src": "https://github.com/Exafunction/windsurf.nvim"
     },
     "yazi.nvim": {
-      "rev": "84fa726",
+      "rev": "87b71b7",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }

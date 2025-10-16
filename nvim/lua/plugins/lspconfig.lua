@@ -32,6 +32,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		opts.desc = "Show references"
 		keymap.set("n", "grr", "<cmd>Telescope lsp_references<CR>", opts)
 
+		opts.desc = "Rename"
+		keymap.set("n", "grn", "<cmd>lua require('renamer').rename()<CR>", opts)
+
 		opts.desc = "Go definition"
 		keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 

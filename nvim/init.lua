@@ -114,13 +114,13 @@ vim.pack.add({
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 
 	-- LSP, Auto-completion & Formatter
+	{ src = "https://github.com/filipdutescu/renamer.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason, TODO: Drop
 	{ src = "https://github.com/RRethy/vim-illuminate" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" }, -- TODO: Drop
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "https://github.com/stevearc/dressing.nvim" }, -- TODO: We can drop this or replace with more lightweight solution
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" }, -- dep: mason
 
 	-- Telescope
@@ -219,7 +219,10 @@ require("dial.config").augends:register_group({
 		}),
 	},
 })
-require("dressing").setup()
+require("renamer").setup({
+	title = "New Name",
+	min_width = 30,
+})
 require("gitsigns").setup({
 	current_line_blame = true,
 	current_line_blame_opts = {
