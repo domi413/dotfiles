@@ -18,7 +18,7 @@
   // EDITOR
   "editor.autoClosingOvertype": "always",
   "editor.cursorBlinking": "solid",
-  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorSmoothCaretAnimation": "off",
   "editor.fontFamily": "CaskaydiaCove Nerd Font",
   "editor.fontLigatures": "'ss19'",
   "editor.fontWeight": "340",
@@ -49,7 +49,10 @@
   "editor.smoothScrolling": true,
   "editor.stickyScroll.enabled": false,
   "editor.suggest.showWords": false,
+
+  // OTHER
   "chat.commandCenter.enabled": false,
+  "debug.inlineValues": "on",
   "git.blame.editorDecoration.enabled": true,
   "git.blame.editorDecoration.template": "${authorName} - ${hashShort}",
   "git.enableSmartCommit": true,
@@ -106,6 +109,8 @@
   "scroll-percentage.cursor": "cursor",
 
   // *** Error lens ***
+  "errorLens.messageBackgroundMode": "message",
+  "errorLens.messageTemplate": " ● $message",
   "errorLens.enabledDiagnosticLevels": ["warning", "error"],
 
   // *** TODO Tree ***
@@ -212,13 +217,7 @@
     { "before": ["s"], "commands": ["flash-vscode.start"] },
     { "before": ["<BS>"], "commands": ["flash-vscode.backspace"] },
 
-    { "before": ["K"], "after": ["g", "h"] }, // Show definition
-
-    // The following two options override the default behavior of the VSCode
-    // VIMs'u' and 'C-r' keys. But because of the fact that they are not
-    // working fully correctly, I prefer the default undo/redo behavior.
-    { "before": ["u"], "commands": ["undo"] },
-    { "before": ["C-r"], "commands": ["redo"] }
+    { "before": ["K"], "after": ["g", "h"] } // Show definition
   ],
   "vim.normalModeKeyBindings": [
     { "before": ["Y"], "after": ["y", "$"] }, // Use neovim-like yank
@@ -366,6 +365,10 @@
       "before": ["leader", "leader", "r", "m"],
       "commands": ["cmake.launchTarget"]
     },
+    {
+      "before": ["leader", "leader", "b", "m"],
+      "commands": ["cmake.build"]
+    },
 
     // LaTeX
     {
@@ -458,5 +461,19 @@
   "terminal.integrated.enableImages": true,
   "security.workspace.trust.startupPrompt": "never",
   "breadcrumbs.enabled": false,
-  "github.copilot.nextEditSuggestions.fixes": false
+  "github.copilot.nextEditSuggestions.fixes": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "java": false
+  },
+  "debug.showVariableTypes": true,
+  "chat.tools.terminal.autoApprove": {
+    "make": true,
+    "mvn test": true,
+    "mvn compile": true
+  },
+  "inlineChat.lineNaturalLanguageHint": false
 }
