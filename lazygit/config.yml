@@ -9,7 +9,7 @@ os:
 git:
   paging:
     colorArg: always
-    pager: delta --paging=never --detect-dark-light always
+    pager: delta --paging=never --detect-dark-light always --side-by-side
 
 gui:
   nerdFontsVersion: "3"
