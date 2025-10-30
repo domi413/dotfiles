@@ -37,3 +37,8 @@ gui:
       - default
     searchingActiveBorderColor:
       - yellow
+
+keybinding:
+  universal:
+    prevPage: <c-b>
+    nextPage: <c-f>
