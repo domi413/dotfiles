@@ -26,14 +26,15 @@ require("mason-tool-installer").setup({
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(args)
-		local opts = { buffer = args.buf, silent = true }
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		local bufnr = args.buf
+		local opts = { buffer = bufnr, silent = true }
 		local keymap = vim.keymap
+
+		require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 
 		opts.desc = "Show references"
 		keymap.set("n", "grr", "<cmd>Telescope lsp_references<CR>", opts)
-
-		opts.desc = "Rename"
-		keymap.set("n", "grn", "<cmd>lua require('renamer').rename()<CR>", opts)
 
 		opts.desc = "Go definition"
 		keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
@@ -61,29 +62,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = " " }
-local signConf = { text = {}, texthl = {}, numhl = {} }
-
-for type, icon in pairs(signs) do
-	local severityName = string.upper(type)
-	local severity = vim.diagnostic.severity[severityName]
-	local hl = "DiagnosticSign" .. type
-
-	signConf.text[severity] = icon
-	signConf.texthl[severity] = hl
-	signConf.numhl[severity] = hl
-end
-
--- This disables the css color highlighting from the lsp,
--- since the highlighting is handled by `nvim-highlight-colors`
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function()
-		vim.lsp.document_color.enable(false)
-	end,
-})
-
-vim.diagnostic.config({
-	signs = signConf,
+vim.lsp.config("clangd", {
+	settings = {
+		clangd = {
+			InlayHints = {
+				Enabled = true,
+				ParameterNames = true,
+				DeducedTypes = true,
+				Designators = true,
+				BlockEnd = true,
+				DefaultArguments = true,
+				TypeNameLimit = 0, -- No limit
+			},
+		},
+	},
 })
 
 vim.lsp.config("gopls", {
@@ -124,6 +116,31 @@ vim.lsp.config("lua_ls", {
 			},
 		},
 	},
+})
+
+local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = " " }
+local signConf = { text = {}, texthl = {}, numhl = {} }
+
+for type, icon in pairs(signs) do
+	local severityName = string.upper(type)
+	local severity = vim.diagnostic.severity[severityName]
+	local hl = "DiagnosticSign" .. type
+
+	signConf.text[severity] = icon
+	signConf.texthl[severity] = hl
+	signConf.numhl[severity] = hl
+end
+
+-- This disables the css color highlighting from the lsp,
+-- since the highlighting is handled by `nvim-highlight-colors`
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function()
+		vim.lsp.document_color.enable(false)
+	end,
+})
+
+vim.diagnostic.config({
+	signs = signConf,
 })
 
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#E55353" })

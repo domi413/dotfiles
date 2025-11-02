@@ -1,4 +1,6 @@
 local function selectionCount()
+	-- If the linecount is greater than 2e+6 / 30 = ~67,000 lines, then don't show the count
+	-- This prevents performance issues
 	local MAX_CHAR_COUNT = 2e+6
 
 	local current_mode_char = vim.api.nvim_get_mode().mode

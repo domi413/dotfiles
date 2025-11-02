@@ -7,28 +7,6 @@ th.git.modified_sign = "M"
 th.git.deleted_sign = "D"
 
 -- Plugins
-require("zoxide"):setup({ update_db = true })
-require("relative-motions"):setup({
-	show_numbers = "relative",
-	show_motion = true,
-})
-require("full-border"):setup({ type = ui.Border.ROUNDED })
-require("git"):setup()
-require("starship"):setup({})
-require("searchjump"):setup({
-	unmatch_fg = "#cdd6f4",
-	match_str_fg = "#cdd6f4",
-	match_str_bg = "#1e1e2e",
-	first_match_str_fg = "#89b4fa",
-	first_match_str_bg = "#1e1e2e",
-	label_fg = "#f38ba8",
-	label_bg = "#1e1e2e",
-	only_current = false,
-	show_search_in_statusbar = false,
-	auto_exit_when_unmatch = true,
-	enable_capital_label = false,
-	search_patterns = { "hell[dk]d", "%d+.1080p", "第%d+集", "第%d+话", "%.E%d+", "S%d+E%d+" },
-})
 require("bookmarks"):setup({
 	last_directory = { enable = false, persist = false, mode = "dir" },
 	persist = "vim",
@@ -45,6 +23,29 @@ require("bookmarks"):setup({
 		},
 	},
 })
+require("full-border"):setup({ type = ui.Border.ROUNDED })
+require("git"):setup()
+require("recycle-bin"):setup()
+require("relative-motions"):setup({
+	show_numbers = "relative",
+	show_motion = true,
+})
+require("starship"):setup({})
+require("searchjump"):setup({
+	unmatch_fg = "#cdd6f4",
+	match_str_fg = "#cdd6f4",
+	match_str_bg = "#1e1e2e",
+	first_match_str_fg = "#89b4fa",
+	first_match_str_bg = "#1e1e2e",
+	label_fg = "#f38ba8",
+	label_bg = "#1e1e2e",
+	only_current = false,
+	show_search_in_statusbar = false,
+	auto_exit_when_unmatch = true,
+	enable_capital_label = false,
+	search_patterns = { "hell[dk]d", "%d+.1080p", "第%d+集", "第%d+话", "%.E%d+", "S%d+E%d+" },
+})
+require("zoxide"):setup({ update_db = true })
 
 Linemode = Linemode or {}
 

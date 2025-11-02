@@ -1,21 +1,74 @@
-[plugin]
-deps = [
-  { use = "dedukun/bookmarks" },
-  { use = "yazi-rs/plugins:full-border" },
-  { use = "yazi-rs/plugins:git" },
-  { use = "yazi-rs/plugins:jump-to-char" },
-  { use = "Lil-Dank/lazygit" },
-  { use = "yazi-rs/plugins:mount" },
-  { use = "dedukun/relative-motions" },
-  { use = "boydaihungst/restore" },
-  { use = "DreamMaoMao/searchjump" },
-  { use = "Rolv-Apneseth/starship" },
-  { use = "yazi-rs/plugins:toggle-pane" },
-  { use = "ndtoan96/ouch" },
-]
+[[plugin.deps]]
+use = "dedukun/bookmarks"
+rev = "9ef1254"
+hash = "92fbb5483657fa7976cdf4e0104e18e0"
 
-[flavor]
-deps = [
-  { use = "yazi-rs/flavors:catppuccin-mocha" },
-  { use = "yazi-rs/flavors:catppuccin-latte" },
-]
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "8f1d971"
+hash = "3996fc74044bc44144b323686f887e1"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "8f1d971"
+hash = "63b6c222bf2103b3023389dde5e2ecfe"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:jump-to-char"
+rev = "8f1d971"
+hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "8f37dc5"
+hash = "ee71543790f0ce3951161045a3787abd"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "8f1d971"
+hash = "4fccaaf10c36dc2466e2438a386ff017"
+
+[[plugin.deps]]
+use = "dedukun/relative-motions"
+rev = "a603d9e"
+hash = "e02a788e5b8ae0fb47fd0193dda589cc"
+
+[[plugin.deps]]
+use = "boydaihungst/restore"
+rev = "2161735"
+hash = "901741afba1979739b4650324265162e"
+
+[[plugin.deps]]
+use = "DreamMaoMao/searchjump"
+rev = "7fafec3"
+hash = "5337bf545993d8c4dec2c229031f49d"
+
+[[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+rev = "a63550b"
+hash = "c2021386289a0cbb3e152a052f67c177"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "8f1d971"
+hash = "8a7c58225816a163a6e8730c0adafbc8"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "0742fff"
+hash = "2bd799b42b8e42b8ef100310be71f8d1"
+
+[[plugin.deps]]
+use = "uhs-robert/recycle-bin"
+rev = "8bb6286"
+hash = "f8d05a771c1d18c87f5558cbd4ae27fa"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "f6b425a"
+hash = "14b111562c00eb1917fe3ca3ae9bb771"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-latte"
+rev = "f6b425a"
+hash = "31f2ba594080bfc2a68d054101cdc5f1"

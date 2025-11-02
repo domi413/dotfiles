@@ -50,6 +50,10 @@
   "editor.stickyScroll.enabled": false,
   "editor.suggest.showWords": false,
 
+  "workbench.colorCustomizations": {
+    "editor.inlineValuesBackground": "#313244" // Example: Semi-transparent Red
+  },
+
   // OTHER
   "chat.commandCenter.enabled": false,
   "debug.inlineValues": "on",
@@ -97,13 +101,25 @@
     "editor.formatOnSave": true
   },
 
-  // *** CMake ***
-  "cmake.options.statusBarVisibility": "icon",
-  "cmake.pinnedCommands": [
-    "workbench.action.tasks.configureTaskRunner",
-    "workbench.action.tasks.runTask"
+  // *** CMake/TestMate ***
+  "testMate.cpp.test.advancedExecutables": [
+    {
+      "pattern": "{build,Build,BUILD,out,Out,OUT}/**/*{test,Test,TEST}*",
+      "runTask": {
+        "before": ["build"]
+      }
+    }
   ],
-  "cmake.showConfigureWithDebuggerNotification": false,
+  "testMate.cpp.discovery.loadOnStartup": true,
+  "testMate.cpp.debug.configTemplate": {
+    "type": "lldb-dap",
+    "program": "${exec}",
+    "args": "${argsArray}",
+    "cwd": "${cwd}",
+    "env": "${envObj}",
+    "environment": "${envObjArray}",
+    "sourceFileMap": "${sourceFileMapObj}"
+  },
 
   // *** Scroll percentage ***
   "scroll-percentage.cursor": "cursor",
@@ -442,7 +458,6 @@
       // "after": [ "\"", "_", "x" ]
     }
   ],
-  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
   "editor.bracketPairColorization.enabled": false,
   "editor.experimental.preferTreeSitter.css": true,
   "editor.experimental.preferTreeSitter.ini": true,
@@ -462,6 +477,7 @@
   "security.workspace.trust.startupPrompt": "never",
   "breadcrumbs.enabled": false,
   "github.copilot.nextEditSuggestions.fixes": false,
+  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
   "github.copilot.enable": {
     "*": false,
     "plaintext": false,
@@ -475,5 +491,6 @@
     "mvn test": true,
     "mvn compile": true
   },
-  "inlineChat.lineNaturalLanguageHint": false
+  "inlineChat.lineNaturalLanguageHint": false,
+  "github.copilot.selectedCompletionModel": ""
 }

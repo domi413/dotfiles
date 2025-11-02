@@ -25,6 +25,9 @@ prepend_keymap = [
     # Restore deleted files
     { on = "u", run = "plugin restore", desc = "Restore last deleted files/folders" },
 
+    # Browse trash-cli
+    { on = ["R","t"], run = "plugin recycle-bin", desc = "Trash-cli menu" },
+
     # Disks
     { on  = "M", run = "plugin mount" },
 

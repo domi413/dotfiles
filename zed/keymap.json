@@ -23,8 +23,8 @@
     "context": "Workspace",
     "bindings": {
       // Move to next/previous window
-      "ctrl-p": "pane::ActivateNextItem",
-      "ctrl-n": "pane::ActivatePreviousItem"
+      "ctrl-p": "vim::GoToTab",
+      "ctrl-n": "vim::GoToPreviousTab"
     }
   },
   {
@@ -75,12 +75,12 @@
     "bindings": {
       "s": "vim::PushSneak",
       "shift-s": "vim::PushSneakBackward",
-      // Remap Y to Neovim-like behavior
-      "shift-y": ["workspace::SendKeystrokes", "y $"],
       // Why is this mapping missing?!
       "ctrl-w t": "workspace::NewFile",
       // Repeat last macro
       "#": ["workspace::SendKeystrokes", "@ @"],
+      // Settings file (not ui...)
+      "ctrl-,": "zed::OpenSettingsFile",
       // Create new line above/below in normal mode
       "space o": ["workspace::SendKeystrokes", "o escape"],
       "space O": ["workspace::SendKeystrokes", "shift-o escape"],
@@ -121,6 +121,8 @@
       "space f p": "projects::OpenRecent",
       // Search files
       "space f f": "file_finder::Toggle",
+      // Switch tab
+      "space s t": "tab_switcher::Toggle",
       // *** Tasks ***
       // Task rerun
       "space r": "task::Rerun",
@@ -221,14 +223,6 @@
       // `E` Expand All
       // `H` Toggle Filter: Dotfiles
       // `I` Toggle Filter: Git Ignore
-    }
-  },
-  {
-    "context": "Editor && mode != full",
-    "bindings": {
-      "ctrl-h": "editor::Backspace",
-      "ctrl-u": "editor::DeleteToBeginningOfLine",
-      "ctrl-w": "editor::DeleteToPreviousWordStart"
     }
   }
 ]

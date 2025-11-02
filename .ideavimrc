@@ -4,7 +4,7 @@
 let mapleader=" "
 
 " Allow copy to clipboard
-set clipboard+=unnamed
+" set clipboard+=unnamed
 
 " Enable relative line numbers
 set rnu

@@ -103,30 +103,29 @@ end)
 -- ╰──────────────────────────────────────────────────────────╯
 vim.pack.add({
 	-- TODO:
-	-- 1. Improve dependency handling
-	-- 2. Currently things such as fzf-native or blink have to be built manually in .local
-	-- 3. Automatically enable lsp's with lsp.config, so we can drop `mason-lspconfig`.
-	--    Also stop, restart and start commands e.g., LspStart, LspRestart, LspStop are required
-	-- 4. Update tree-sitter to main branch configs
+	-- 1. Improve dependency handling -> May never be added in vim.pack
+	-- 2. Currently things such as fzf-native or blink have to be built manually in ~/.local
 
 	-- Git
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
+	{ src = "https://github.com/v3ceban/git-conflict.nvim" }, -- TODO: Unmaintained, but this is a working fork. Note: I should write my own plugin
 
 	-- LSP, Auto-completion & Formatter
-	{ src = "https://github.com/filipdutescu/renamer.nvim" },
+	{ src = "https://github.com/artemave/workspace-diagnostics.nvim" }, -- TODO: we should replace this with `vim.lsp.workspace_diagnostics()`, though this doesnt seem to work yet
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason, TODO: Drop
 	{ src = "https://github.com/RRethy/vim-illuminate" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" }, -- TODO: Drop
+	{ src = "https://github.com/neovim/nvim-lspconfig" }, -- TODO: Drop, is built-in but commands like :LspRestart, will then be missing
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" }, -- dep: mason
+	{ src = "https://github.com/stevearc/dressing.nvim" }, -- TODO: Archived but still relevant (rename and code actions ui)
+	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 
 	-- Telescope
-	{ src = "https://github.com/nvim-lua/plenary.nvim" }, -- dep: telescope
-	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" }, -- dep: telescope
-	{ src = "https://github.com/nvim-tree/nvim-web-devicons" }, -- dep: telescope
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+	{ src = "https://github.com/nvim-mini/mini.icons" },
+	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 
 	-- Treesitter
@@ -168,6 +167,7 @@ require("plugins.telescope")
 require("plugins.treesitter")
 
 require("auto-session").setup()
+
 require("better_escape").setup({
 	mappings = {
 		i = { j = { j = false, k = "<ESC>" } },
@@ -176,6 +176,7 @@ require("better_escape").setup({
 		s = { j = { k = false } }, -- selection mode (snippets) fix
 	},
 })
+
 require("codeium").setup({
 	enable_cmp_source = false,
 	virtual_text = {
@@ -193,6 +194,7 @@ require("codeium").setup({
 		},
 	},
 })
+
 require("Comment").setup()
 
 local augend = require("dial.augend")
@@ -219,10 +221,11 @@ require("dial.config").augends:register_group({
 		}),
 	},
 })
-require("renamer").setup({
-	title = "New Name",
-	min_width = 30,
-})
+
+require("dressing").setup()
+
+require("git-conflict").setup()
+
 require("gitsigns").setup({
 	current_line_blame = true,
 	current_line_blame_opts = {
@@ -237,15 +240,19 @@ require("gitsigns").setup({
 	preview_config = { border = "rounded" },
 	gh = true,
 })
+
 require("ibl").setup({
 	scope = { enabled = false },
 })
+
 require("illuminate").configure({
 	filetypes_denylist = {
 		"markdown",
 	},
 })
+
 require("mason").setup()
+
 require("mason-lspconfig").setup({
 	automatic_enable = {
 		exclude = {
@@ -254,15 +261,25 @@ require("mason-lspconfig").setup({
 		},
 	},
 })
+
+require("mini.icons").setup({
+	style = "glyph",
+})
+MiniIcons.mock_nvim_web_devicons()
+
 require("nvim-autopairs").setup()
+
 require("nvim-highlight-colors").setup({
 	render = "virtual",
 	virtual_symbol = " ⬤",
 	virtual_symbol_position = "eow",
 	enabled_tailwind = true,
 })
+
 require("nvim-surround").setup()
+
 require("nvim-ts-autotag").setup()
+
 require("render-markdown").setup({
 	code = {
 		border = "thin",
@@ -270,10 +287,12 @@ require("render-markdown").setup({
 		language = false,
 	},
 })
+
 require("todo-comments").setup({
 	search = { pattern = [[\b(KEYWORDS)(\([^\)]*\))?:]] },
 	highlight = { pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):]] },
 })
+
 require("yazi").setup({
 	open_for_directories = true,
 })
