@@ -223,9 +223,7 @@ require("dial.config").augends:register_group({
 })
 
 require("dressing").setup()
-
-require("git-conflict").setup()
-
+require("git-conflict").setup() ---@diagnostic disable-line: missing-parameter
 require("gitsigns").setup({
 	current_line_blame = true,
 	current_line_blame_opts = {
@@ -248,6 +246,11 @@ require("ibl").setup({
 require("illuminate").configure({
 	filetypes_denylist = {
 		"markdown",
+	},
+	modes_denylist = {
+		"v",
+		"V",
+		"\22", -- Visual Block?!
 	},
 })
 

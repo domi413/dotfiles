@@ -1,5 +1,5 @@
 # Theme
-theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+theme = dark:Catppuccin Mocha, light:Catppuccin Latte
 
 ### Font
 font-size=11
@@ -15,7 +15,6 @@ font-feature = ss19
 # Cursor
 cursor-color = cell-foreground
 selection-foreground = cell-foreground
-shell-integration-features = no-cursor
 
 # Mouse
 mouse-scroll-multiplier = 0.5
@@ -23,17 +22,19 @@ mouse-hide-while-typing
 
 # Window
 unfocused-split-opacity = 1
-window-inherit-working-directory
 window-height = 29
 window-width = 83
+
+# Cell
+adjust-cell-height = 15%
+adjust-underline-position = 15%
 
 # Don't use protection ;-)
 clipboard-paste-protection = false
 confirm-close-surface = false
 
 # Miscellaneous
-adw-toolbar-style = flat
-custom-shader-animation = true
+gtk-toolbar-style = flat
 
 ### Keybinds
 keybind = ctrl+shift+r=reload_config
