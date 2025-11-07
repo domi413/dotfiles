@@ -16,9 +16,24 @@ require("blink.cmp").setup({
 		menu = {
 			border = "rounded",
 			draw = {
-				columns = { { "label", "label_description", gap = 1 }, { "kind_icon", gap = 1, "kind" } },
+				columns = {
+					{
+
+						"label",
+						"label_description",
+						gap = 1,
+					},
+					{
+						"kind_icon",
+						gap = 1,
+						"kind",
+					},
+				},
 			},
 		},
+	},
+	fuzzy = {
+		implementation = "lua",
 	},
 	keymap = {
 		preset = "none",
