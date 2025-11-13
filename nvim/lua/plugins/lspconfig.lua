@@ -23,15 +23,85 @@ require("mason-tool-installer").setup({
 	},
 })
 
+vim.lsp.config.clangd = {
+	settings = {
+		clangd = {
+			InlayHints = {
+				Enabled = true,
+				ParameterNames = true,
+				DeducedTypes = true,
+				Designators = true,
+				BlockEnd = true,
+				DefaultArguments = true,
+				TypeNameLimit = 0, -- No limit
+			},
+		},
+	},
+}
+
+vim.lsp.config.gopls = {
+	settings = {
+		gopls = {
+			analyses = { unusedparams = true },
+			gofumpt = true,
+			hints = {
+				assignVariableTypes = false,
+				compositeLiteralFields = false,
+				compositeLiteralTypes = false,
+				constantValues = true,
+				functionTypeParameters = true,
+				ignoredError = false,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
+			staticcheck = true,
+			usePlaceholders = true,
+		},
+	},
+}
+
+vim.lsp.config.lua_ls = {
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT",
+			},
+			diagnostics = {
+				globals = { "vim", "require" },
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+}
+
+-----------------------------------------------------------
+-- Diagnostic signs configuration
+-----------------------------------------------------------
+local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = " " }
+local signConf = { text = {}, texthl = {}, numhl = {} }
+
+for type, icon in pairs(signs) do
+	local severityName = string.upper(type)
+	local severity = vim.diagnostic.severity[severityName]
+	local hl = "DiagnosticSign" .. type
+
+	signConf.text[severity] = icon
+	signConf.texthl[severity] = hl
+	signConf.numhl[severity] = hl
+end
+
+-- LSP keybindings and configuration
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		local bufnr = args.buf
 		local opts = { buffer = bufnr, silent = true }
 		local keymap = vim.keymap
-
-		require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 
 		opts.desc = "Show references"
 		keymap.set("n", "grr", "<cmd>Telescope lsp_references<CR>", opts)
@@ -59,90 +129,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "K", function()
 			vim.lsp.buf.hover({ border = "rounded", max_width = 70 })
 		end, opts)
-	end,
-})
 
-vim.lsp.config("clangd", {
-	settings = {
-		clangd = {
-			InlayHints = {
-				Enabled = true,
-				ParameterNames = true,
-				DeducedTypes = true,
-				Designators = true,
-				BlockEnd = true,
-				DefaultArguments = true,
-				TypeNameLimit = 0, -- No limit
-			},
-		},
-	},
-})
-
-vim.lsp.config("gopls", {
-	settings = {
-		gopls = {
-			analyses = { unusedparams = true },
-			gofumpt = true,
-			hints = {
-				assignVariableTypes = false,
-				compositeLiteralFields = false,
-				compositeLiteralTypes = false,
-				constantValues = true,
-				functionTypeParameters = true,
-				ignoredError = false,
-				parameterNames = true,
-				rangeVariableTypes = true,
-			},
-			staticcheck = true,
-			usePlaceholders = true,
-		},
-	},
-})
-
-vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-			},
-			diagnostics = {
-				globals = { "vim", "require" },
-			},
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true),
-			},
-			telemetry = {
-				enable = false,
-			},
-		},
-	},
-})
-
-local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = " " }
-local signConf = { text = {}, texthl = {}, numhl = {} }
-
-for type, icon in pairs(signs) do
-	local severityName = string.upper(type)
-	local severity = vim.diagnostic.severity[severityName]
-	local hl = "DiagnosticSign" .. type
-
-	signConf.text[severity] = icon
-	signConf.texthl[severity] = hl
-	signConf.numhl[severity] = hl
-end
-
--- This disables the css color highlighting from the lsp,
--- since the highlighting is handled by `nvim-highlight-colors`
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function()
+		-- This disables the css color highlighting from the lsp,
+		-- since the highlighting is handled by `nvim-highlight-colors`
 		vim.lsp.document_color.enable(false)
 	end,
 })
+
+-- -- Workspace diagnostics
+-- vim.keymap.set("n", "<leader>x", function()
+-- 	vim.lsp.buf.workspace_diagnostics()
+-- end, { desc = "Request workspace diagnostics" })
 
 vim.diagnostic.config({
 	signs = signConf,
 })
 
+-----------------------------------------------------------
+-- Diagnostic highlight configuration
+-----------------------------------------------------------
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#E55353" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#E0B644" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = "#419BEF" })

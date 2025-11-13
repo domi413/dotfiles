@@ -41,27 +41,38 @@ map("n", "x", '"_x')
 map("n", "X", '"_X')
 
 -- Editor / Editing
-map("n", "<leader>nh", "<cmd>nohl<CR>", { desc = "Clear search highlights" })
-map("n", "<leader>o", "o<Esc>", { desc = "Insert line above" })
-map("n", "<leader>O", "O<Esc>", { desc = "Insert line below" })
-map("n", "<leader>e", "<cmd>Yazi<cr>", { desc = "Open Yazi" })
-map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
-map("n", "<leader>tw", "<cmd>set wrap!<CR>", { desc = "Toggle line wrapping" })
-map("n", "#", "@@", { desc = "Repeat last macro" })
-map({ "n", "v", "s", "x" }, "<leader>i", "~", { desc = "Toggle case" })
+map("n", "<leader>nh", "<cmd>nohl<CR>")
+map("n", "<leader>o", "o<Esc>")
+map("n", "<leader>O", "O<Esc>")
+map("n", "<leader>e", "<cmd>Yazi<cr>")
+map("n", "<leader>w", "<cmd>w<CR>")
+map("n", "<leader>tw", "<cmd>set wrap!<CR>")
+map("n", "#", "@@")
+map({ "n", "v", "s", "x" }, "<leader>i", "~")
 
 -- Sessions
-map("n", "<leader>fs", "<cmd>Telescope session-lens<CR>", { desc = "Search sessions" })
-map("n", "<leader>ss", "<cmd>AutoSession save<CR>", { desc = "Search sessions" })
+map("n", "<leader>fs", "<cmd>Telescope session-lens<CR>")
+map("n", "<leader>ss", "<cmd>AutoSession save<CR>")
 
 -- Telescope
-map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
-map("n", "<leader>fc", "<cmd>Telescope live_grep<CR>", { desc = "Fuzzy find content in cwd" })
-map("n", "<leader>ft", "<cmd>Telescope colorscheme enable_preview=true<CR>", { desc = "Change theme" })
-map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { desc = "Open registers" })
-map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "Open marks" })
-map("n", "<leader>fg", "<cmd>TodoTelescope<CR>", { desc = "Browse TODO comments" })
-map("n", "<leader>to", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Toggle outline (Functions)" })
+map("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+map("n", "<leader>fc", "<cmd>Telescope live_grep<CR>")
+map("n", "<leader>ft", "<cmd>Telescope colorscheme enable_preview=true<CR>")
+map("n", "<leader>fr", "<cmd>Telescope registers<CR>")
+map("n", "<leader>fm", "<cmd>Telescope marks<CR>")
+map("n", "<leader>fg", "<cmd>TodoTelescope<CR>")
+map("n", "<leader>to", "<cmd>Telescope lsp_document_symbols<CR>")
+
+-- Exchange
+map("n", "cx", function()
+	require("substitute.exchange").operator()
+end)
+map("n", "cxx", function()
+	require("substitute.exchange").line()
+end)
+map("x", "X", function()
+	require("substitute.exchange").visual()
+end)
 
 -- Clear registers
 vim.keymap.set("n", "cr", function()
@@ -71,24 +82,24 @@ vim.keymap.set("n", "cr", function()
 		vim.fn.setreg(reg, {})
 	end
 	print("All registers cleared!")
-end, { desc = "Clear all registers", noremap = true })
+end)
 
 -- LSP
 if vim.lsp.inlay_hint then
 	map("n", "<leader>tt", function()
 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
-	end, { desc = "Toggle inlay hints" })
+	end)
 end
 
 -- Git
-map("n", "gl", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
-map("n", "gB", "<cmd>Gitsigns blame_line<CR>", { desc = "Show blame" })
+map("n", "gl", "<cmd>LazyGit<CR>")
+map("n", "gB", "<cmd>Gitsigns blame_line<CR>")
 
 map("n", "gh", function()
 	vim.cmd("Gitsigns toggle_word_diff")
 	vim.cmd("Gitsigns toggle_deleted")
 	vim.cmd("Gitsigns toggle_linehl")
-end, { desc = "Toggle show changes" })
+end)
 
 -- Dial (Enhanced increment/decrement)
 vim.keymap.set("n", "<C-x>", function()
@@ -102,24 +113,19 @@ end)
 -- │ Plugins                                                  │
 -- ╰──────────────────────────────────────────────────────────╯
 vim.pack.add({
-	-- TODO:
-	-- 1. Improve dependency handling -> May never be added in vim.pack
-	-- 2. Currently things such as fzf-native or blink have to be built manually in ~/.local
-
 	-- Git
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 	{ src = "https://github.com/v3ceban/git-conflict.nvim" }, -- TODO: Unmaintained, but this is a working fork. Note: I should write my own plugin
 
 	-- LSP, Auto-completion & Formatter
-	{ src = "https://github.com/artemave/workspace-diagnostics.nvim" }, -- TODO: we should replace this with `vim.lsp.workspace_diagnostics()`, though this doesnt seem to work yet
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" }, -- dep: mason, TODO: Drop
 	{ src = "https://github.com/RRethy/vim-illuminate" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" }, -- TODO: Drop, is built-in but commands like :LspRestart, will then be missing
+	{ src = "https://github.com/neovim/nvim-lspconfig" }, -- TODO: Drop, is built-in but commands like `:LspRestart` will then be missing
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "https://github.com/stevearc/dressing.nvim" }, -- TODO: Archived but still relevant (rename and code actions ui)
+	{ src = "https://github.com/stevearc/dressing.nvim" }, -- NOTE: Archived but still relevant (rename and code actions ui)
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 
 	-- Telescope
@@ -135,6 +141,7 @@ vim.pack.add({
 
 	-- Others
 	{ src = "https://github.com/Exafunction/windsurf.nvim" },
+	{ src = "https://github.com/gbprod/substitute.nvim" },
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 	{ src = "https://github.com/brenoprata10/nvim-highlight-colors" },
 	{ src = "https://github.com/catppuccin/nvim" },
@@ -223,7 +230,9 @@ require("dial.config").augends:register_group({
 })
 
 require("dressing").setup()
+
 require("git-conflict").setup() ---@diagnostic disable-line: missing-parameter
+
 require("gitsigns").setup({
 	current_line_blame = true,
 	current_line_blame_opts = {
@@ -288,6 +297,12 @@ require("render-markdown").setup({
 		border = "thin",
 		sign = false,
 		language = false,
+	},
+})
+
+require("substitute").setup({
+	exchange = {
+		preserve_cursor_position = true,
 	},
 })
 

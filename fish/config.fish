@@ -17,9 +17,6 @@ fish_add_path "$GOPATH/bin"
 # Disable `ctrl+shift+u` unicode input
 set -gx GTK_IM_MODULE none
 
-# VCPKG
-set -gx VCPKG_ROOT "$HOME/.vcpkg"
-
 # ╭──────────────────────────────────────────────────────────╮
 # │ Themes                                                   │
 # ╰──────────────────────────────────────────────────────────╯
