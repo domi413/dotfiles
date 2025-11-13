@@ -12,7 +12,7 @@ require("mason-tool-installer").setup({
 		"html-lsp",
 		"lua_ls",
 		"neocmakelsp",
-		"prettier",
+		"prettierd",
 		"pyright",
 		"ruff",
 		"shellcheck",

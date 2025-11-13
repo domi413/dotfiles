@@ -4,19 +4,19 @@ require("conform").setup({
 		c = { "clang_format" },
 		cmake = { "gersemi" },
 		cpp = { "clang_format" },
-		css = { "prettier" },
+		css = { "prettierd" },
 		cs = { "csharpier" },
 		go = { "gopls" },
-		html = { "prettier" },
-		javascript = { "prettier" },
-		json = { "prettier" },
+		html = { "prettierd" },
+		javascript = { "prettierd" },
+		json = { "prettierd" },
 		lua = { "stylua" },
-		markdown = { "prettier" },
+		markdown = { "prettierd" },
 		python = { "ruff_format", "ruff_organize_imports" },
 		-- rust = { "rustfmt" },
 		tex = { "latexindent" },
-		typescript = { "prettier" },
-		yaml = { "prettier" },
+		typescript = { "prettierd" },
+		yaml = { "prettierd" },
 	},
 	formatters = {
 		latexindent = {
@@ -45,10 +45,6 @@ require("conform").setup({
 				--stdin-filename\
 				{buffer_path}",
 			},
-		},
-		csharpier = {
-			command = "csharpier",
-			args = { "format" },
 		},
 		gersemi = {
 			command = "gersemi",
