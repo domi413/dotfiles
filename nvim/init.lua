@@ -298,6 +298,10 @@ require("render-markdown").setup({
 		sign = false,
 		language = false,
 	},
+	heading = {
+		sign = false,
+		width = "block",
+	},
 })
 
 require("substitute").setup({
